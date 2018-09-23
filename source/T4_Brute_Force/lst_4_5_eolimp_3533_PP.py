@@ -40,12 +40,13 @@ t = [0] * maxN
 
 # зчитування даних задачі
 N, K = map(int, input().split())
+# зчитування вартостей місій та часу їхнього проходження
 for i in range(N):
     a[i], t[i] = map(int, input().split())
 
+findMinTime(0, 0, 0)   # старт рекурсивної функції
 
-findMinTime(0, 0, 0)
-
+# Виведення результату
 if minTime == 100500:
     print(-1)
 else:
