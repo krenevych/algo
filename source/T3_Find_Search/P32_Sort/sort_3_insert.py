@@ -7,8 +7,8 @@ def insertion_sort(array):
     n = len(array)
     for index in range(1, n):
 
-        currentValue = array[index]
-        position = index
+        currentValue = array[index] # запам’ятовуємо елемент, що необхідно вставити
+        position = index            # та його позицію
 
         # пошук позиції для вставки поточного елемента
         while position > 0:

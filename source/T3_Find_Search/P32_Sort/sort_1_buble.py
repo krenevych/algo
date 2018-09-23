@@ -13,8 +13,9 @@ def bubble_sort(array):
                 # виштовхуємо більший елемент нагору
                 array[i], array[i + 1] = array[i + 1], array[i]
 
+        print(array)
 
 if __name__ == "__main__":
-    a = [54, 26, 93, 17, 77, 31, 44, 55, 20, 44]
+    a = [56, 12, 66, 20, 33, 95, 32, 13, 10]
     bubble_sort(a)
     print(a)

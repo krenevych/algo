@@ -54,12 +54,13 @@ def partition(array, first, last):
             # міняємо знайдений елементи місцями
             array[left], array[right] = array[right], array[left]
 
+        # print(array)
     # ставимо опорний елемент на його позицію
     array[first], array[right] = array[right], array[first]
     return right
 
 
 if __name__ == "__main__":
-    a = [54, 26, 93, 17, 77, 61, 44, 55, 20]
+    a = [56, 12, 66, 20, 33, 95, 32, 13, 10]
     quick_sort(a)
     print(a)
