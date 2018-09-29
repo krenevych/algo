@@ -24,21 +24,21 @@ def get_char_digit(digit):
     return str_digit
 
 def convert(dec_number, base):
-    """ перетворює задане десяткове число, до заданої системи числення
+    """ Перетворює задане десяткове число, до заданої системи числення
 
-    :param dec_number: десяткове число
-    :param base: основа системи числення [2, 16]
-    :return: рядок-число у системи числення з основою base
+    :param dec_number: вхідне десяткове число
+    :param base:       основа системи числення [2, 16]
+    :return:           рядок-число у системи числення з основою base
     """
 
-    assert 2 <= base <= 16
+    assert 2 <= base <= 16  # Перевіраємо основу від ділення
 
-    stack = Stack()
+    stack = Stack()  # Використаємо стек, для запису отриманих остач від ділення
     while dec_number > 0:
         stack.push(dec_number % base)
         dec_number //= base
 
-    converted = ""
+    converted = ""    # Рядок, що містить конвертоване число
     while not stack.empty():
         converted = converted + get_char_digit(stack.pop())
 
@@ -47,7 +47,7 @@ def convert(dec_number, base):
 
 # For testing
 if __name__ == "__main__":
-    print(convert(100, 2))
+    print(convert(100, 2)) # у двійкову систему числення
     print(convert(63, 8))
     print(convert(102234, 11))
     print(convert(2286755, 16))
