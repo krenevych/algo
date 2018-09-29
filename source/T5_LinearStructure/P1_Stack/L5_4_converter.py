@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P41_Stack.Stack_recursively import Stack
+from source.T5_LinearStructure.P1_Stack.L5_2_Stack_recursively import Stack
 
 
 def get_char_digit(digit):

@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P42_Queue.Queue import Queue
-from source.T5_LinearStructure.P41_Stack.Stack import Stack
+from source.T5_LinearStructure.P1_Stack.L5_1_Stack import Stack
 from source.T7_Graphs.P51.GraphForAlgorithms import GraphForAlgorithms
 from source.T7_Graphs.P51.VertexForAlgorithms import INF
 from source.utils.benchmark import benchmark

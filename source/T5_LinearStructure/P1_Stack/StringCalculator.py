@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P41_Stack.Stack import Stack
+from source.T5_LinearStructure.P1_Stack.L5_1_Stack import Stack
 from source.utils.annotation import annotation
 
 " Словник операторів, що використовуються у калькуляторі та їхні пріоритети "
@@ -27,8 +27,8 @@ class StringCalculator:
 
     def set_expression(self, str_expression):
         """ Задає калькулятору арифметичний вираз
-
-        Для спрощення передбачається, що вхідний параметр
+        Для спрощення передбачається, що вхідний параметр містить
+        правильний арифметичний вираз у інфіксному вигляді
 
         :param str_expression: рядок, що містить правильний арифметичний вираз у інфіксному вигляді.
         :return: None
