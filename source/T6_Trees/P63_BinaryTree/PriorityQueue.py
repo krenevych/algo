@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P44_PQueue.PriorityQueue import PQElement
+from source.T5_LinearStructure.P4_PQueue.PriorityQueue import PQElement
 from source.T6_Trees.P63_BinaryTree.Heap import Heap
 
 

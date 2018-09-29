@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P42_Queue.Queue import Queue
+from source.T5_LinearStructure.P2_Queue.Queue import Queue
 from source.T6_Trees.P63_BinaryTree.BinaryTree import BinaryTree
 
 

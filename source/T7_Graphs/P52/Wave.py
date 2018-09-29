@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P42_Queue.Queue import Queue
+from source.T5_LinearStructure.P2_Queue.Queue import Queue
 from source.T7_Graphs.P51.GraphForAlgorithms import GraphForAlgorithms
 
 def wave(graph, start):

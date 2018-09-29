@@ -1,6 +1,6 @@
 #Лічилка з використанням черги
 
-from source.T5_LinearStructure.P42_Queue.Queue import *
+from source.T5_LinearStructure.P2_Queue.Queue import *
 
 class Player:
     """ Реалізує клас Гравець
