@@ -84,8 +84,8 @@ class StringCalculator:
     def simple_operation(left, right, operator):
         """ Допоміжний метод, що обчислює значення виразу "left operator right"
 
-        :param left: лівий операнд
-        :param right: правий операнд
+        :param left:     лівий операнд
+        :param right:    правий операнд
         :param operator: оператор
         :return: значення виразу "left operator right"
         """
@@ -188,3 +188,7 @@ if __name__ == "__main__":
 
     for s in ssss:
         calculate_test_case(s)
+
+    print("-------------")
+    calc = StringCalculator("25 * ( 3 + 5 )")
+    print(calc.calculate_by_polish())
