@@ -1,5 +1,5 @@
-from source.T5_LinearStructure.P4_PQueue.PriorityQueue import PQElement
-from source.T6_Trees.P3_BinaryTree.Heap import Heap
+from source.T5_LinearStructure.P2_Queue.PriorityQueue import PQElement
+from source.T6_Trees.P2_BinaryTree.Heap import Heap
 
 
 class PriorityQueue(Heap):
