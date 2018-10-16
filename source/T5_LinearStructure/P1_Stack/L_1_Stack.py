@@ -5,14 +5,14 @@ class Stack:
     def __init__(self):
         """ Конструктор
         """
-        self.items = []
+        self.mItems = []
 
     def empty(self):
         """ Перевіряє чи стек порожній
 
         :return: True, якщо стек порожній
         """
-        return len(self.items) == 0
+        return len(self.mItems) == 0
 
     def push(self, item):
         """ Додає елемент у стек
@@ -20,7 +20,7 @@ class Stack:
         :param item: елемент, що додається у стек
         :return: None
         """
-        self.items.append(item)
+        self.mItems.append(item)
 
     def pop(self):
         """ Забирає верхівку стека
@@ -30,7 +30,7 @@ class Stack:
         """
         if self.empty():
             raise Exception("Stack: 'pop' applied to empty container")
-        return self.items.pop()
+        return self.mItems.pop()
 
     def top(self):
         """ Повертає верхівку стека
@@ -41,20 +41,20 @@ class Stack:
 
         if self.empty():
             raise Exception("Stack: 'top' applied to empty container")
-        return self.items[-1]
+        return self.mItems[-1]
 
     def __len__(self):
         """ Розмір стеку
 
         :return: Розмір стеку
         """
-        return len(self.items)
+        return len(self.mItems)
 
     def __str__(self):
         """ Перевизначає оператор "str()"
         :return: Зображення стека у виляді рядка
         """
-        return  str(self.items)
+        return  str(self.mItems)
 
 
 # For testing

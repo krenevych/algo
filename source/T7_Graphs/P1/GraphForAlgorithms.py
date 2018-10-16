@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P1_Stack.L5_1_Stack import Stack
+from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
 from source.T7_Graphs.P1.Graph import Graph
 from source.T7_Graphs.P1.VertexForAlgorithms import VertexForAlgorithms, INF
 

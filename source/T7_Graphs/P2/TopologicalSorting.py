@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P1_Stack.L5_1_Stack import Stack
+from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
 from source.T7_Graphs.P1.ColorGraph import ColorGraph, BLACK, GRAY
 
 def __helper(graph, vertex, stack):

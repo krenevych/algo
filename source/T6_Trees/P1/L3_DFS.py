@@ -6,7 +6,7 @@ def DFS(tree: Tree):
     :param tree: дерево
     """
 
-    print(tree.getKey(), end=" -> ")  # Опрацьовуємо корінь
+    print(tree.key(), end=" -> ")  # Опрацьовуємо корінь
 
     # запускаємо DFS для всіх дітей кореня
     for child in tree.getChildren():

@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P1_Stack.L5_2_Stack_recursively import Stack
+from source.T5_LinearStructure.P1_Stack.L_2_Stack_recursively import Stack
 
 def bracketsChecker(brackets_sequence):
     """ Перевіряє чи brackets_sequence правильна дужкова послідовність

@@ -1,7 +1,7 @@
-from source.T5_LinearStructure.P1_Stack.L5_2_Stack_recursively import Stack
+from source.T5_LinearStructure.P1_Stack.L_2_Stack_recursively import Stack
 
 
-def get_char_digit(digit):
+def getCharDigit(digit):
     """ Допоміжний метод, що за числом повертає символ-цифру системи числення
 
     0 -> '0'
@@ -40,7 +40,7 @@ def convert(dec_number, base):
 
     converted = ""    # Рядок, що містить конвертоване число
     while not stack.empty():
-        converted = converted + get_char_digit(stack.pop())
+        converted = converted + getCharDigit(stack.pop())
 
     return converted
 

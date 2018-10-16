@@ -7,8 +7,8 @@ class Node:
 
         :param item: навантаження вузла
         """
-        self.item = item   # створюєм поле для зберігання навантаження
-        self.next = None   # посилання на наступний вузол стеку
+        self.mItem = item   # створюєм поле для зберігання навантаження
+        self.mNext = None   # посилання на наступний вузол стеку
 
 
 class Stack:
@@ -18,14 +18,14 @@ class Stack:
     def __init__(self):
         """ Конструктор
         """
-        self.top_node = None  # посилання на верхівку стеку
+        self.mTopNode = None  # посилання на верхівку стеку
 
     def empty(self):
         """ Перевіряє чи стек порожній
 
         :return: True, якщо стек порожній
         """
-        return self.top_node is None
+        return self.mTopNode is None
 
     def push(self, item):
         """ Додає елемент у стек
@@ -36,9 +36,9 @@ class Stack:
 
         new_node = Node(item)              # Створюємо новий вузол стеку
         if not self.empty():               # Якщо стек не порожній, то новий вузол
-            new_node.next = self.top_node  # має посилатися на поточну верхівку
+            new_node.mNext = self.mTopNode  # має посилатися на поточну верхівку
 
-        self.top_node = new_node  # змінюємо верхівку стека новим вузлом
+        self.mTopNode = new_node  # змінюємо верхівку стека новим вузлом
 
     def pop(self):
         """ Забирає верхівку стека
@@ -49,9 +49,9 @@ class Stack:
         if self.empty():   # Якщо стек порожній
             raise Exception("Stack: 'pop' applied to empty container")
 
-        current_top = self.top_node         # запам'ятовуємо поточну верхівку стека
+        current_top = self.mTopNode         # запам'ятовуємо поточну верхівку стека
         item = current_top.item             # запам'ятовуємо навантаження верхівки
-        self.top_node = self.top_node.next  # замінюємо верхівку стека наступним вузлом у стеці
+        self.mTopNode = self.mTopNode.next  # замінюємо верхівку стека наступним вузлом у стеці
         del current_top  # видаляємо запам'ятований вузол, що місить попередню верхівку стека
 
         return item
@@ -65,7 +65,7 @@ class Stack:
 
         if self.empty():
             raise Exception("Stack: 'top' applied to empty container")
-        return self.top_node.item
+        return self.mTopNode.item
 
 
 # For testing

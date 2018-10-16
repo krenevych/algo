@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
-from source.T5_LinearStructure.P1_Stack.L5_1_Stack import Stack
+from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
 
 WALL_CELL = 0  # Не прохідна клітина лабіринту або його стіна
 

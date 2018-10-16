@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P1_Stack.L5_1_Stack import Stack
+from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
 from source.utils.annotation import annotation
 
 " Словник операторів, що використовуються у калькуляторі та їхні пріоритети "
@@ -21,11 +21,11 @@ class StringCalculator:
         :param str_expression: рядок, що містить правильний арифметичний вираз у інфіксному вигляді.
         """
         self.mInfixStr = str_expression               # Поле (рядок), що містить арифметичний вираз у інфіксному вигляді
-        self.mPostfixList = self.convert_to_polish()  # Поле (список), що містить арифметичний вираз у постфіксному вигляді
+        self.mPostfixList = self.convertToPolish()  # Поле (список), що містить арифметичний вираз у постфіксному вигляді
 
         # self.set_expression(str_expression)         # замість двох попередніх рядків краще викликати відповідний метод
 
-    def set_expression(self, str_expression):
+    def setExpression(self, str_expression):
         """ Задає калькулятору арифметичний вираз
         Для спрощення передбачається, що вхідний параметр містить
         правильний арифметичний вираз у інфіксному вигляді
@@ -34,9 +34,9 @@ class StringCalculator:
         :return: None
         """
         self.mInfixStr = str_expression
-        self.mPostfixList = self.convert_to_polish()
+        self.mPostfixList = self.convertToPolish()
 
-    def convert_to_polish(self):
+    def convertToPolish(self):
         """ Конвертує арифметичний вираз з інфіксного у постфіксний вигляд
 
             Для коректної роботи цього методу, передбачається, що у рядку
@@ -81,7 +81,7 @@ class StringCalculator:
         return postfix_list
 
     @staticmethod
-    def simple_operation(left, right, operator):
+    def simpleOperation(left, right, operator):
         """ Допоміжний метод, що обчислює значення виразу "left operator right"
 
         :param left:     лівий операнд
@@ -104,7 +104,7 @@ class StringCalculator:
         elif operator == "/":
             return left / right
 
-    def calculate_by_polish(self):
+    def calculateByPolish(self):
         """ Обчилює значення виразу використовуючи оберенений польский запис
 
         :return: Значення арифметичного виразу
@@ -116,7 +116,7 @@ class StringCalculator:
                 right_operand = stack.pop()  # Дістаємо перший елемент зі стеку - він відповідає правому операнду
                 left__operand = stack.pop()  # Дістаємо другий елемент зі стеку - він відповідає лівому операнду
                 # Обчислюємо значення простого арифмтемтиного виразу
-                res = self.simple_operation(left__operand, right_operand, token)
+                res = self.simpleOperation(left__operand, right_operand, token)
                 stack.push(res)    # Кладемо результат обчислень у стек
 
             else:                  # Якщо поточний токен є операндом
@@ -140,14 +140,14 @@ class StringCalculator:
 
         :return: значення поточного арифметичного виразу
         """
-        return self.calculate_by_polish()
+        return self.calculateByPolish()
 
     def __int__(self):
         """ Повератає int-значення поточного арифметичного виразу
 
         :return: ціла частина значення поточного арифметичного виразу
         """
-        return int(self.calculate_by_polish())
+        return int(self.calculateByPolish())
 
 
 @annotation
@@ -191,4 +191,4 @@ if __name__ == "__main__":
 
     print("-------------")
     calc = StringCalculator("25 * ( 3 + 5 )")
-    print(calc.calculate_by_polish())
+    print(calc.calculateByPolish())
