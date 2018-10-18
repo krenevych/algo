@@ -9,7 +9,7 @@ def DFS(tree: Tree):
     for child in tree.getChildren():
         DFS(child)
 
-    print(tree.key(), end=" -> ")  # Опрацьовуємо корінь
+    print(tree.key(), end=" -> ")  # Опрацьовуємо корінь після опрацювання дітей
 
 
 if __name__ == "__main__":

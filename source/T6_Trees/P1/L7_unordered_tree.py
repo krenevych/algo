@@ -1,4 +1,9 @@
-class UnorderedTree:
+from source.T6_Trees.P1.L2_tree import Tree
+from source.T6_Trees.P1.L3_DFS import DFS
+from source.T6_Trees.P1.L5_BFS import BFS
+
+
+class UnorderedTree(Tree):
     """
     Клас, що реалізує структуру даних невпорядковане дерево
     """
@@ -8,22 +13,9 @@ class UnorderedTree:
         Конструктор - створює вузол дерева
         :param key: ключ вузла, що створюється
         """
-        self.mKey = key       # ключ вузла
+
+        super().__init__(key) # Виклик конструктора батьківського класу
         self.mChildren = {}   # словник дітей вузла, місить пари {ключ: піддерево}
-
-    def empty(self):
-        """
-        Перевіряє чи дерево порожнє
-        :return: True, якщо дерево порожнє
-        """
-        return self.mKey is None and len(self.mChildren) == 0
-
-    def setKey(self, key):
-        """
-        Встановлює ключ для поточного вузла
-        :param key: нове значення ключа
-        """
-        self.mKey = key
 
     def addChild(self, child):
         """
@@ -44,20 +36,6 @@ class UnorderedTree:
         else:
             return False
 
-    def key(self):
-        """
-        Повертає ключ поточного вузла
-        :return: ключ поточного вузла
-        """
-        return self.mKey
-
-    def getChildren(self):
-        """
-        Повертає словник дітей поточного вузла
-        :return: Список дітей
-        """
-        return self.mChildren
-
     def getChild(self, key):
         """
         За заданим ключем, повертає вузол зі списку дітей
@@ -69,6 +47,13 @@ class UnorderedTree:
         else:
             return None
 
+    def getChildren(self):
+        """
+        Повертає список дітей поточного вузла
+        :return: Список дітей
+        """
+        return self.mChildren.values()
+
     def __str__(self):
         """
         Повертає ключ вузла і список ключів дітей.
@@ -77,7 +62,7 @@ class UnorderedTree:
         return str(self.mKey) + " : " + str(self.mChildren.keys())
 
 
-def createSampleTree():
+def createSampleTree() -> UnorderedTree:
     """
     Створювати дерево будемо знизу вгору - спочатку листя,
     потім внутрішні вузли, додаючи до них відповідні піддерева.
@@ -132,7 +117,11 @@ def createSampleTree():
 if __name__ == "__main__":
     tree = createSampleTree()
 
-    node11 = tree.getChild(2).getChild(5).getChild(11)
+    # node11 = tree.getChild(2).getChild(5).getChildren()
 
-    print(node11)
+    # print(node11)
+
+    BFS(tree)
+    print()
+    DFS(tree)
 
