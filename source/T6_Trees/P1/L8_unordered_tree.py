@@ -1,11 +1,12 @@
-from source.T6_Trees.P1.L2_tree import Tree
-from source.T6_Trees.P1.L3_DFS import DFS
-from source.T6_Trees.P1.L5_BFS import BFS
+from source.T6_Trees.P1.L2_Node import Node
+from source.T6_Trees.P1.L4_DFS import DFS
+from source.T6_Trees.P1.L6_BFS import BFS
 
 
-class UnorderedTree(Tree):
+class UnorderedTree(Node):
     """
     Клас, що реалізує структуру даних невпорядковане дерево
+
     """
 
     def __init__(self, key=None):
@@ -59,7 +60,7 @@ class UnorderedTree(Tree):
         Повертає ключ вузла і список ключів дітей.
         :return: рядок, у вигляді "key1 : [child1, child2, child13,...]"
         """
-        return str(self.mKey) + " : " + str(self.mChildren.keys())
+        return super().__str__() + " : " + str(self.mChildren.keys())
 
 
 def createSampleTree() -> UnorderedTree:

@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
-from source.T6_Trees.P1.L2_tree import createSampleTree, Tree
+from source.T6_Trees.P1.L3_Tree import createSampleTree, Tree
 
 
 def search(tree: Tree, elem: int) -> bool:

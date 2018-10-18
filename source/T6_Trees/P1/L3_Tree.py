@@ -1,4 +1,7 @@
-class Tree:
+from source.T6_Trees.P1.L2_Node import Node
+
+
+class Tree(Node):
     """
     Клас, що реалізує структуру даних дерево
     """
@@ -8,7 +11,7 @@ class Tree:
         Конструктор - створює вузол дерева
         :param key: ключ вузла, що створюється
         """
-        self.mKey = key
+        super().__init__(key)
         self.mChildren = []
 
     def empty(self):
@@ -16,14 +19,7 @@ class Tree:
         Перевіряє чи дерево порожнє
         :return: True, якщо дерево порожнє
         """
-        return self.mKey is None and len(self.mChildren) == 0
-
-    def setKey(self, key):
-        """
-        Встановлює ключ для поточного вузла
-        :param key: нове значення ключа
-        """
-        self.mKey = key
+        return super().empty() and len(self.mChildren) == 0
 
     def addChild(self, child):
         """
@@ -44,20 +40,6 @@ class Tree:
                 return True
         return False
 
-    def key(self):
-        """
-        Повертає ключ поточного вузла
-        :return: ключ поточного вузла
-        """
-        return self.mKey
-
-    def getChildren(self):
-        """
-        Повертає список дітей поточного вузла
-        :return: Список дітей
-        """
-        return self.mChildren
-
     def getChild(self, key):
         """
         За заданим ключем, повертає вузол зі списку дітей
@@ -69,12 +51,19 @@ class Tree:
                 return child
         return None  # якщо ключ не знайдено
 
+    def getChildren(self):
+        """
+        Повертає список дітей поточного вузла
+        :return: Список дітей
+        """
+        return self.mChildren
+
     def __str__(self):
         """
         Повертає ключ вузла і список ключів дітей.
         :return: рядок, у вигляді "key1 : [child1, child2, child13,...]"
         """
-        return str(self.mKey) + " : " + str([el.key() for el in self.mChildren])
+        return super().__str__() + " : " + str([el.key() for el in self.mChildren])
 
 
 def createSampleTree():
