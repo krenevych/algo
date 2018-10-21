@@ -1,12 +1,11 @@
 from source.T6_Trees.P1.L2_Node import Node
-from source.T6_Trees.P1.L4_DFS import DFS
-from source.T6_Trees.P1.L6_BFS import BFS
+from source.T6_Trees.P1.L5_DFS import DFS
+from source.T6_Trees.P1.L7_BFS import BFS
 
 
 class UnorderedTree(Node):
     """
     Клас, що реалізує структуру даних невпорядковане дерево
-
     """
 
     def __init__(self, key=None):
@@ -27,7 +26,7 @@ class UnorderedTree(Node):
 
     def removeChild(self, key):
         """
-         Видаляє у поточному вузлі вузол-дитину
+         Видаляє для поточного вузла, вузол-дитину
         :param key: ключ вузла, що видаляється
         :return: False, якщо вузол не містить дитину заданим ключем
         """
@@ -39,7 +38,7 @@ class UnorderedTree(Node):
 
     def getChild(self, key):
         """
-        За заданим ключем, повертає вузол зі списку дітей
+        За заданим ключем, повертає відповідний вузол-дитину
         :param key: ключ вузла
         :return: знайдений вузол якщо його знайдено, None у іншому випадку
         """
@@ -50,10 +49,11 @@ class UnorderedTree(Node):
 
     def getChildren(self):
         """
-        Повертає список дітей поточного вузла
-        :return: Список дітей
+        Повертає дітей поточного вузла
+        :return: Послідовність дітей
         """
         return self.mChildren.values()
+
 
     def __str__(self):
         """
@@ -63,7 +63,7 @@ class UnorderedTree(Node):
         return super().__str__() + " : " + str(self.mChildren.keys())
 
 
-def createSampleTree() -> UnorderedTree:
+def createSampleUnorderedTree() -> UnorderedTree:
     """
     Створювати дерево будемо знизу вгору - спочатку листя,
     потім внутрішні вузли, додаючи до них відповідні піддерева.
@@ -116,7 +116,7 @@ def createSampleTree() -> UnorderedTree:
 
 # Головна програма – виклик підпрограми, що створює дерево
 if __name__ == "__main__":
-    tree = createSampleTree()
+    tree = createSampleUnorderedTree()
 
     # node11 = tree.getChild(2).getChild(5).getChildren()
 

@@ -2,7 +2,7 @@ from source.T5_LinearStructure.P2_Queue.Queue import Queue
 from source.T6_Trees.P1.L3_Tree import createSampleTree, Tree
 
 
-def BFS(tree: Tree):
+def BFS(tree):
     """ Обхід дерева в ширину
 
     :param tree: дерево
