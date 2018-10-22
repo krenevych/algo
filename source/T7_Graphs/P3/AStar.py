@@ -41,7 +41,7 @@ def AStar(graph, start, end):
     visited = [False] * len(graph)
 
     while not pq.empty():                  # Поки черга не порожня
-        vertex_key = pq.extract_minimum()  # Беремо індекс вершини з черги з найнижчим пріоритетом
+        vertex_key = pq.extractMinimum()  # Беремо індекс вершини з черги з найнижчим пріоритетом
         visited[vertex_key] = True         # та позначаємо її як відвідану
         vertex = graph[vertex_key]         # Беремо поточну вершину за індексом
 
@@ -63,7 +63,7 @@ def AStar(graph, start, end):
                     f = newDist + h                   # f(x) = g(x) + h(x) - обчилюємо новий пріорітет для вершини-сусіда.
 
                     if neighbor_key in pq:                    # Якщо вершина сусід міститься у черзі
-                        pq.decrease_priority(neighbor_key, f)  # перераховуємо її пріоритет в черзі
+                        pq.decreasePriority(neighbor_key, f)  # перераховуємо її пріоритет в черзі
                     else:
                         pq.insert(neighbor_key, f)            # або додаємо елемент до черги, якщо його там ще немає.
 

@@ -25,7 +25,7 @@ class SearchTree(BinaryTree):
         #  запускаємо пошук item у дереві, починаючи з кореня
         return self.__search_helper(self, item)
 
-    def add_items(self, *items):
+    def addItems(self, *items):
         """ Додає послідовність елементів у дерево пошуку
 
         :param items: Послідовність елементів, що додаються у дерево пошуку
@@ -43,23 +43,23 @@ class SearchTree(BinaryTree):
         """
 
         if sub_tree.empty():                 # якщо піддерево з коренем startNode порожнє
-            sub_tree.set_node(item)          # вставляємо елемент item
+            sub_tree.setNode(item)          # вставляємо елемент item
         else:
-            node = sub_tree.node()           # беремо node - навантаження піддерева startNode
+            node = sub_tree.item()           # беремо node - навантаження піддерева startNode
 
             if item < node:                  # якщо елемент для вставки має міститися у лівому піддереві
-                if sub_tree.has_left():      # якщо дерево має лівого нащадка
+                if sub_tree.hasLeft():      # якщо дерево має лівого нащадка
                     #  запускаємо рекурсивно вставку item у ліве піддерево
-                    self.__insert_helper(sub_tree.left_subtree(), item)
+                    self.__insert_helper(sub_tree.leftChild(), item)
                 else:                        # якщо дерево не має лівого нащадка
-                    sub_tree.set_left(item)  # додаємо item у ролі лівого нащадка
+                    sub_tree.setLeft(item)  # додаємо item у ролі лівого нащадка
 
             elif item > node:                # якщо елемент для вставки має міститися у правому піддереві
-                if sub_tree.has_right():     # якщо дерево має правого нащадка
+                if sub_tree.hasRight():     # якщо дерево має правого нащадка
                     #  запускаємо рекурсивно вставку item у праве піддерево
-                    self.__insert_helper(sub_tree.right_subtree(), item)
+                    self.__insert_helper(sub_tree.rightChild(), item)
                 else:                        # якщо дерево не має правого нащадка
-                    sub_tree.set_right(item) # додаємо item у ролі правого нащадка
+                    sub_tree.setRight(item) # додаємо item у ролі правого нащадка
 
     def __search_helper(self, sub_tree, item):
         """ Допопоміжний рекурсиввий метод, для пошуку елементу у заданому піддереві.
@@ -72,26 +72,26 @@ class SearchTree(BinaryTree):
         if sub_tree.empty():             # якщо піддерево sub_tree порожнє, а отже
             return False                 # елемент item не знайдено повертаємо False
         else:
-            node = sub_tree.node()       # node - навантаження піддерева sub_tree
+            node = sub_tree.item()       # node - навантаження піддерева sub_tree
             if node == item:             # якщо node є шуканим елементом,
                 return True              # повертаємо True
             elif item < node:            # випадок: шуканий елемент може міститися у лівому піддереві
-                if sub_tree.has_left():  # якщо дерево має лівого нащадка
+                if sub_tree.hasLeft():  # якщо дерево має лівого нащадка
                     #  запускаємо рекурсивний пошук item у лівому піддереві
-                    return self.__search_helper(sub_tree.left_subtree(), item)
+                    return self.__search_helper(sub_tree.leftChild(), item)
                 else:                    # якщо дерево не має лівого нащадка
                     return False         # дерево не містить шуканого елемента item
             else:                        # випадок: шуканий елемент може міститися у правому піддереві
-                if sub_tree.has_right(): # якщо дерево має правого нащадка
+                if sub_tree.hasRight(): # якщо дерево має правого нащадка
                     #  запускаємо рекурсивний пошук item у правому піддереві
-                    return self.__search_helper(sub_tree.right_subtree(), item)
+                    return self.__search_helper(sub_tree.rightChild(), item)
                 else:                    # якщо дерево не має правого нащадка
                     return False         # дерево не містить шуканого елемента item
 
 
 if __name__ == "__main__":
     t = SearchTree()
-    t.add_items(10, 15, 3, 12, 122, 14, 133, 13, 1, 4, 90, 11)
+    t.addItems(10, 15, 3, 12, 122, 14, 133, 13, 1, 4, 90, 11)
 
     print(t)
 

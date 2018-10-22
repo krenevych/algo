@@ -8,13 +8,13 @@ def DFS(tree: BinaryTree):
     :return: None
     """
 
-    if tree.has_left():                   # якщо дерево має лівого нащадка
-        DFS(tree.left_subtree())          # запускаємо DFS для лівого нащадка
+    if tree.hasLeft():                   # якщо дерево має лівого нащадка
+        DFS(tree.leftChild())          # запускаємо DFS для лівого нащадка
 
-    if tree.has_right():                  # якщо дерево має правого нащадка
-        DFS(tree.right_subtree())         # запускаємо DFS для правого нащадка
+    if tree.hasRight():                  # якщо дерево має правого нащадка
+        DFS(tree.rightChild())         # запускаємо DFS для правого нащадка
 
-    print(tree.node())                   # Опрацьовуємо корінь елемент
+    print(tree.item())                   # Опрацьовуємо корінь елемент
 
 
 if __name__ == "__main__":

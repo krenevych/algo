@@ -3,8 +3,8 @@ class Node:
 
     def __init__(self, item):
         """ Конструктор """
-        self.item = item   # навантаження вузла
-        self.next = None   # посилання на наступний вузол списку
+        self.mItem = item   # навантаження вузла
+        self.mNext = None   # посилання на наступний вузол списку
 
 
 class ListWithCurrent:
@@ -12,15 +12,15 @@ class ListWithCurrent:
     def __init__(self):
         """ Конструктор - створює новий порожній список.
         """
-        self.prev = None  # Вузол, що передує поточному елементу списку
-        self.curr = None  # Поточний вузол списку
+        self.mPrev = None  # Вузол, що передує поточному елементу списку
+        self.mCurr = None  # Поточний вузол списку
 
     def empty(self):
         """ Перевіряє чи список порожній
 
         :return: True, якщо список не містить жодного елемента
         """
-        return self.curr is None
+        return self.mCurr is None
 
     def next(self):
         """ Перейти до наступного елемента.
@@ -28,9 +28,9 @@ class ListWithCurrent:
         Породжує виключення StopIteration, якщо наступний елемент порожній
         :return: None
         """
-        if self.curr is not None:
-            self.prev = self.curr
-            self.curr = self.curr.next
+        if self.mCurr is not None:
+            self.mPrev = self.mCurr
+            self.mCurr = self.mCurr.next
         else:
             raise StopIteration
 
@@ -39,8 +39,8 @@ class ListWithCurrent:
 
         :return: Навантаження поточного елементу
         """
-        if self.curr is not None:
-            return self.curr.item
+        if self.mCurr is not None:
+            return self.mCurr.item
         else:
             return None
 
@@ -51,15 +51,15 @@ class ListWithCurrent:
         :return: None
         """
         node = Node(item)  # Створюємо вузол для елементу
-        node.next = self.curr
+        node.mNext = self.mCurr
 
         if self.empty():   # список порожній
-            node.next = node
-            self.curr = node
+            node.mNext = node
+            self.mCurr = node
         else:   # список містить принаймні один вузол
-            self.prev.next = node
+            self.mPrev.mNext = node
 
-        self.prev = node
+        self.mPrev = node
 
     def __str__(self):
         return str(self.current())

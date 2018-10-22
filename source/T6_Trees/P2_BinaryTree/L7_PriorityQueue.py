@@ -21,8 +21,8 @@ class PriorityQueue(Heap):
         :param j: другий індекс
         :return: None
         """
-        posi = self.elems[i].item()  # Поточна позиція елемента i у масиві
-        posj = self.elems[j].item()  # Поточна позиція елемента j у масиві
+        posi = self.mItems[i].item()  # Поточна позиція елемента i у масиві
+        posj = self.mItems[j].item()  # Поточна позиція елемента j у масиві
         self.mElementsMap[posi] = j
         self.mElementsMap[posj] = i
 
@@ -47,13 +47,13 @@ class PriorityQueue(Heap):
 
         el = PQElement(k[0], k[1])
 
-        self.size += 1
-        self.elems.append(el)                  # Вставляємо на останню позицію,
-        self.mElementsMap[k[0]] = self.size    # S
+        self.mSize += 1
+        self.mItems.append(el)                  # Вставляємо на останню позицію,
+        self.mElementsMap[k[0]] = self.mSize    # S
 
-        self.sift_up()          # просіюємо елемент вгору
+        self.siftUp()          # просіюємо елемент вгору
 
-    def decrease_priority(self, item, priority):
+    def decreasePriority(self, item, priority):
         """ Метод перерахунку пріоритету елемента.
 
         Працює лише у випадку підвищення пріоритету у черзі, тобто якщо
@@ -66,38 +66,38 @@ class PriorityQueue(Heap):
         """
 
         i = self.mElementsMap[item]
-        self.elems[i].set_priority(priority)
+        self.mItems[i].setPriority(priority)
 
         # просіювання вгору для елемента зі зміненим пріоритетом
         while i > 1:
             parent = i // 2
-            if self.elems[i] < self.elems[parent]:
+            if self.mItems[i] < self.mItems[parent]:
                 self.swap(parent, i)
             i = parent
 
         return True
 
-    def extract_minimum(self):
+    def extractMinimum(self):
         """ Повертає елемент черги з мінімальним пріоритетом
             Перевизначає метод батькывського класу Heap для випадку пари - (елемент, пріоритет)
 
         :return: Елемент черги з мінімальним пріоритетом
         """
 
-        min_el = self.elems[1][0]          # Запам'ятовуємо значення кореня дерева
+        min_el = self.mItems[1][0]          # Запам'ятовуємо значення кореня дерева
 
-        self.elems[1] = self.elems[-1]     # Переставляємо на першу позицію останній елемент (за номером) у купі
+        self.mItems[1] = self.mItems[-1]     # Переставляємо на першу позицію останній елемент (за номером) у купі
 
-        pos_last = self.elems[-1].item()   # Поточна позиція останнього елемента у масиві
+        pos_last = self.mItems[-1].item()   # Поточна позиція останнього елемента у масиві
         self.mElementsMap[pos_last] = 1    # Переставляємо на першу позицію
 
-        self.elems.pop()                   # Видаляємо останній (за позицією у масиві) елемент купи
+        self.mItems.pop()                   # Видаляємо останній (за позицією у масиві) елемент купи
         if min_el in self:                 # Якщо елемент міститься у черзі
             del self.mElementsMap[min_el]  # Видаляємо елемент з мапи елементів
 
-        self.size -= 1
+        self.mSize -= 1
 
-        self.sift_down()  # Здійснюємо операцію просіювання вниз, для того,
+        self.siftDown()  # Здійснюємо операцію просіювання вниз, для того,
                           # щоб опустити переставлений елемент на відповідну позицію у купі
 
         return min_el
@@ -108,8 +108,8 @@ class PriorityQueue(Heap):
          :return: Зображення черги у вигляді рядка
          """
         res = ""
-        for i in range(1, self.size + 1):
-            res += str(self.elems[i]) + "\n"
+        for i in range(1, self.mSize + 1):
+            res += str(self.mItems[i]) + "\n"
         return res
 
 
@@ -130,16 +130,16 @@ if __name__ == "__main__":
 
     print(h)
 
-    h.decrease_priority(11, 1)
+    h.decreasePriority(11, 1)
 
     print()
     #
-    print(h.extract_minimum())
+    print(h.extractMinimum())
 
     # print("==========")
 
-    h.decrease_priority(11, 5)
+    h.decreasePriority(11, 5)
     # print(h)
 
     while not h.empty():
-        print(h.extract_minimum())
+        print(h.extractMinimum())

@@ -3,14 +3,14 @@ class Deque:
         """ Конструктор деку
         Створює порожній дек.
         """
-        self.items = []   # Список елементів деку
+        self.mItems = []   # Список елементів деку
 
     def empty(self):
         """ Перевіряє чи дек порожній
 
         :return: True, якщо дек порожній
         """
-        return len(self.items) == 0
+        return len(self.mItems) == 0
 
     def append(self, item):
         """ Додає елемент у кінець деку
@@ -18,7 +18,7 @@ class Deque:
         :param item: елемент, що додається
         :return: None
         """
-        self.items.append(item)
+        self.mItems.append(item)
 
     def pop(self):
         """ Повертає елемент з кінця деку.
@@ -27,7 +27,7 @@ class Deque:
         """
         if self.empty():
             raise Exception("Deque: 'popBack' applied to empty container")
-        return self.items.pop()
+        return self.mItems.pop()
 
     def appendleft(self, item):
         """ Додає елемент до початку деку
@@ -35,7 +35,7 @@ class Deque:
         :param item: елемент, що додається
         :return: None
         """
-        self.items.insert(0, item)
+        self.mItems.insert(0, item)
 
     def popleft(self):
         """ Повертає елемент з початку деку.
@@ -44,14 +44,14 @@ class Deque:
         """
         if self.empty():
             raise Exception("Deque: 'popFront' applied to empty container")
-        return self.items.pop(0)
+        return self.mItems.pop(0)
 
     def __len__(self):
         """ Розмір деку
 
         :return: Кількість елементів у деку
         """
-        return len(self.items)
+        return len(self.mItems)
 
 
 if __name__ == "__main__":  # For testing

@@ -16,7 +16,7 @@ class PQElement:
         self.mItem = item
         self.mPriority = priority
 
-    def set_priority(self, priority):
+    def setPriority(self, priority):
         """ Встановлює пріоритет для поточного елементу
 
         :param priority: Пріорітет
@@ -24,7 +24,7 @@ class PQElement:
         """
         self.mPriority = priority
 
-    def set_item(self, item):
+    def setItem(self, item):
         """ Встановлення ключа поточного елементу
 
         :param item: Нове значення ключа
@@ -131,7 +131,7 @@ class PriorityQueue:
         pqitem = PQElement(item, priority)
         self.items.append(pqitem)
 
-    def extract_minimum(self):
+    def extractMinimum(self):
         """ Повертає елемент з чеги з найвищим пріорітетом
             У цій реалізації черги з пріоритетом, найвищий пріоритет для
             вилучення має той елемент, у якого поле priority має найменше значення
@@ -154,7 +154,7 @@ class PriorityQueue:
 
         return self.items.pop(minpos).item()
 
-    def decrease_priority(self, item, priority):
+    def decreasePriority(self, item, priority):
         """ Півищує пріоритет заданого елементу заданим значенням
 
         :param item: Елемент черги
@@ -163,7 +163,7 @@ class PriorityQueue:
         """
         for el in self.items:
             if el.item() == item:
-                el.set_priority(priority)
+                el.setPriority(priority)
 
     def empty(self):
         """ Перевіряє чи черга порожня

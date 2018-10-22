@@ -7,9 +7,9 @@ class Node:
 
         :param item: Елемент деку
         """
-        self.item = item  # поле, що містить елемент деку
-        self.next = None  # наступний вузол
-        self.prev = None  # попередній вузол
+        self.mItem = item  # поле, що містить елемент деку
+        self.mNext = None  # наступний вузол
+        self.mPrev = None  # попередній вузол
 
 
 class Deque:
@@ -18,15 +18,15 @@ class Deque:
     def __init__(self):
         """ Конструктор деку - Створює порожній дек.
         """
-        self.front = None  # Посилання на перший елемент деку
-        self.back = None   # Посилання на останній елемент деку
+        self.mFront = None  # Посилання на перший елемент деку
+        self.mBack = None   # Посилання на останній елемент деку
 
     def empty(self):
         """ Перевіряє чи дек порожній
 
         :return: True, якщо дек порожній
         """
-        return self.front is None and self.back is None
+        return self.mFront is None and self.mBack is None
 
     def appendleft(self, item):
         """ Додає елемент до початку деку
@@ -35,12 +35,12 @@ class Deque:
         :return: None
         """
         node = Node(item)           # створюємо новий вузол деку
-        node.next = self.front      # наступний вузол для нового - це елемент, який є першим
+        node.mNext = self.mFront      # наступний вузол для нового - це елемент, який є першим
         if not self.empty():        # якщо додаємо до непорожнього деку
-            self.front.prev = node  # новий вузол стає попереднім для першого
+            self.mFront.mPrev = node  # новий вузол стає попереднім для першого
         else:
-            self.back = node  # якщо додаємо до порожнього деку, новий вузол буде й останнім
-        self.front = node     # новий вузол стає першим у деку
+            self.mBack = node  # якщо додаємо до порожнього деку, новий вузол буде й останнім
+        self.mFront = node     # новий вузол стає першим у деку
 
     def popleft(self):
         """ Повертає елемент з початку деку.
@@ -49,13 +49,13 @@ class Deque:
         """
         if self.empty():
             raise Exception('pop_front: Дек порожній')
-        node = self.front       # node - перший вузол деку
+        node = self.mFront       # node - перший вузол деку
         item = node.item        # запам'ятовуємо навантаження
-        self.front = node.next  # першим стає наступний вузлом деку
-        if self.front is None:  # якщо в деку був 1 елемент
-            self.back = None    # дек стає порожнім
+        self.mFront = node.next  # першим стає наступний вузлом деку
+        if self.mFront is None:  # якщо в деку був 1 елемент
+            self.mBack = None    # дек стає порожнім
         else:
-            self.front.prev = None  # інакше перший елемент посилається на None
+            self.mFront.prev = None  # інакше перший елемент посилається на None
         del node                    # Видаляємо вузол
         return item
 
@@ -67,12 +67,12 @@ class Deque:
         :return: None
         """
         elem = Node(item)
-        elem.prev = self.back
+        elem.mPrev = self.mBack
         if not self.empty():
-            self.back.next = elem
+            self.mBack.mNext = elem
         else:
-            self.front = elem
-        self.back = elem
+            self.mFront = elem
+        self.mBack = elem
 
     def pop(self):
         """ Повертає елемент з кінця деку.
@@ -81,13 +81,13 @@ class Deque:
         """
         if self.empty():
             raise Exception('pop_back: Дек порожній')
-        node = self.back
+        node = self.mBack
         item = node.item
-        self.back = node.prev
-        if self.back is None:
-            self.front = None
+        self.mBack = node.prev
+        if self.mBack is None:
+            self.mFront = None
         else:
-            self.back.next = None
+            self.mBack.next = None
         del node
         return item
 
@@ -97,11 +97,11 @@ class Deque:
 
         :return: None
         """
-        while self.front is not None:  # проходимо по всіх елементах деку
-            node = self.front  # запам'ятовуємо посилання на елемент
-            self.front = self.front.next  # переходимо до наступного елементу
+        while self.mFront is not None:  # проходимо по всіх елементах деку
+            node = self.mFront  # запам'ятовуємо посилання на елемент
+            self.mFront = self.mFront.next  # переходимо до наступного елементу
             del node  # видаляємо елемент
-        self.back = None
+        self.mBack = None
 
 
 def clone(deque):

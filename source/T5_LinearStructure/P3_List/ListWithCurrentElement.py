@@ -3,8 +3,8 @@ class Node:
 
     def __init__(self, item):
         """ Конструктор """
-        self.item = item   # навантаження вузла
-        self.next = None   # посилання на наступний вузол списку
+        self.mItem = item   # навантаження вузла
+        self.mNext = None   # посилання на наступний вузол списку
 
 
 class ListWithCurrent:
@@ -12,22 +12,22 @@ class ListWithCurrent:
     def __init__(self):
         """ Конструктор - створює новий порожній список.
         """
-        self.head = None  # Перший вузол списку
-        self.prev = None  # Вузол, що передує поточному елементу списку
-        self.curr = None  # Поточний вузол списку
+        self.mHead = None  # Перший вузол списку
+        self.mPrev = None  # Вузол, що передує поточному елементу списку
+        self.mCurr = None  # Поточний вузол списку
 
     def empty(self):
         """ Перевіряє чи список порожній
 
         :return: True, якщо список не містить жодного елемента
         """
-        return self.head is None
+        return self.mHead is None
 
     def reset(self):
         """ Зробити поточний елемент першим.
         """
-        self.curr = self.head
-        self.prev = None
+        self.mCurr = self.mHead
+        self.mPrev = None
 
     def next(self):
         """ Перейти до наступного елемента.
@@ -35,9 +35,9 @@ class ListWithCurrent:
         Породжує виключення StopIteration, якщо наступний елемент порожній
         :return: None
         """
-        if self.curr is not None:
-            self.prev = self.curr
-            self.curr = self.curr.next
+        if self.mCurr is not None:
+            self.mPrev = self.mCurr
+            self.mCurr = self.mCurr.mNext
         else:
             raise StopIteration
 
@@ -46,8 +46,8 @@ class ListWithCurrent:
 
         :return: Навантаження поточного елементу
         """
-        if self.curr is not None:
-            return self.curr.item
+        if self.mCurr is not None:
+            return self.mCurr.mItem
         else:
             return None
 
@@ -58,15 +58,15 @@ class ListWithCurrent:
         :return: None
         """
         node = Node(item)
-        node.next = self.curr
+        node.mNext = self.mCurr
 
-        if self.curr == self.head:
-            self.head = node
+        if self.mCurr == self.mHead:
+            self.mHead = node
 
-        if self.prev is not None:
-            self.prev.next = node
+        if self.mPrev is not None:
+            self.mPrev.mNext = node
 
-        self.prev = node
+        self.mPrev = node
 
     def remove(self):
         """ Видалити поточний елемент у списку
@@ -79,13 +79,13 @@ class ListWithCurrent:
         return str(self.current())
 
     def __iter__(self):
-        self._iterator = self.head
+        self.mIterator = self.mHead
         return self
 
     def __next__(self):
-        if self._iterator is not None:
-            cur = self._iterator.item
-            self._iterator = self._iterator.next
+        if self.mIterator is not None:
+            cur = self.mIterator.mItem
+            self.mIterator = self.mIterator.mNext
             return cur
         else:
             raise StopIteration

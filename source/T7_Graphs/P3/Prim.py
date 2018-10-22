@@ -46,7 +46,7 @@ def Prim(graph: GraphForAlgorithms):
 
     while not pq.empty():
 
-        vertex_key = pq.extract_minimum()  # Беремо індекс вершини з черги з найнижчим пріоритетом
+        vertex_key = pq.extractMinimum()  # Беремо індекс вершини з черги з найнижчим пріоритетом
         vertex = graph[vertex_key]         # Беремо вершину за індексом
 
         for neighbor_key in vertex.neighbors():        # Для всіх сусідів (за ключами) поточної вершини
@@ -56,7 +56,7 @@ def Prim(graph: GraphForAlgorithms):
                                                              # потенційна відстань у вершині-сусіді менша за її поточне значення
                 neighbour.set_distance(newDist)              # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
                 neighbour.set_source(vertex_key)             # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
-                pq.decrease_priority(neighbor_key, newDist)  # перераховуємо її пріоритет в черзі
+                pq.decreasePriority(neighbor_key, newDist)  # перераховуємо її пріоритет в черзі
 
     # Будуємо граф, що є каркасним деревом
     spanning_tree = GraphForAlgorithms()

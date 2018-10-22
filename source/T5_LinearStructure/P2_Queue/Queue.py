@@ -4,14 +4,14 @@ class Queue:
 
     def __init__(self):
         """ Конструктор """
-        self.items = []  # Список елементів черги
+        self.mItems = []  # Список елементів черги
 
     def empty(self):
         """ Перевіряє чи черга порожня
 
         :return: True, якщо черга порожня
         """
-        return len(self.items) == 0
+        return len(self.mItems) == 0
 
     def enqueue(self, item):
         """ Додає елемент у чергу (в кінець)
@@ -19,7 +19,7 @@ class Queue:
         :param item: елемент, що додається
         :return: None
         """
-        self.items.append(item)
+        self.mItems.append(item)
 
     def dequeue(self):
         """ Прибирає перший елемент з черги
@@ -29,14 +29,14 @@ class Queue:
         """
         if self.empty():
             raise Exception("Queue: 'dequeue' applied to empty container")
-        return self.items.pop(0)
+        return self.mItems.pop(0)
 
     def __len__(self):
         """ Розмір черги
 
         :return: Кількість елементів у черзі
         """
-        return len(self.items)
+        return len(self.mItems)
 
 
 # For testing

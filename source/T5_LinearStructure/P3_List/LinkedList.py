@@ -6,31 +6,31 @@ class Node:
 
         :param item: навантаження вузла
         """
-        self.item = item   # навантаження вузла
-        self.next = None   # посилання на наступний вузол списку
+        self.mItem = item   # навантаження вузла
+        self.mNext = None   # посилання на наступний вузол списку
 
 
 class LinkedList:
 
     def __init__(self):
         """ Конструктор - створює порожній зв'язний список """
-        self.first = None
+        self.mFirst = None
 
     def empty(self):
         """ Перевіряє чи список є порожнім
 
         :return: True, якщо список порожній
         """
-        return self.first is None
+        return self.mFirst is None
 
     def insert(self, item):
         """ Вставляє заданий елемент у початок списку
 
         :param item: елемент для вставки
         """
-        node = Node(item)       # створюємо новий елемент списку
-        node.next = self.first  # наступний елемент для нового - це елемент, який є першим
-        self.first = node       # новий елемент стає першим у списку
+        node = Node(item)         # створюємо новий елемент списку
+        node.mNext = self.mFirst  # наступний елемент для нового - це елемент, який є першим
+        self.mFirst = node        # новий елемент стає першим у списку
 
     def head(self):
         """ Повертає навантаження голови списку
@@ -40,7 +40,7 @@ class LinkedList:
         if self.empty():
             return None
         else:
-            return self.first.item
+            return self.mFirst.mItem
 
     def tail(self):
         """ Повератє хвіст списку
@@ -51,7 +51,7 @@ class LinkedList:
         if self.empty():
             raise Exception("LinkedList: 'tail' applied to empty container")
 
-        self.first = self.first.next
+        self.mFirst = self.mFirst.mNext
         return self
 
     def __str__(self):

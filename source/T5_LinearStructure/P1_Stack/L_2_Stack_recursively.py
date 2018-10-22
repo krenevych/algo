@@ -15,12 +15,14 @@ class Stack:
     """ Клас, що реалізує стек елементів
         як рекурсивну структуру """
 
+    mTopNode: Node # Верхівка стеку
+
     def __init__(self):
         """ Конструктор
         """
         self.mTopNode = None  # посилання на верхівку стеку
 
-    def empty(self):
+    def empty(self) -> bool:
         """ Перевіряє чи стек порожній
 
         :return: True, якщо стек порожній
@@ -50,8 +52,8 @@ class Stack:
             raise Exception("Stack: 'pop' applied to empty container")
 
         current_top = self.mTopNode         # запам'ятовуємо поточну верхівку стека
-        item = current_top.item             # запам'ятовуємо навантаження верхівки
-        self.mTopNode = self.mTopNode.next  # замінюємо верхівку стека наступним вузлом у стеці
+        item = current_top.mItem             # запам'ятовуємо навантаження верхівки
+        self.mTopNode = self.mTopNode.mNext  # замінюємо верхівку стека наступним вузлом у стеці
         del current_top  # видаляємо запам'ятований вузол, що місить попередню верхівку стека
 
         return item
