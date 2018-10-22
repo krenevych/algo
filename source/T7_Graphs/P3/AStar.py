@@ -1,5 +1,5 @@
 from source.T7_Graphs.P1.VertexForAlgorithms import INF
-from source.T6_Trees.P2_BinaryTree.PriorityQueue import PriorityQueue
+from source.T6_Trees.P2_BinaryTree.L7_PriorityQueue import PriorityQueue
 from source.utils.benchmark import benchmark
 
 # Алготитм А* подібний до алгоритму Дейкстри.

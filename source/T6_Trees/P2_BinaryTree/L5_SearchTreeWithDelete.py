@@ -1,4 +1,4 @@
-from source.T6_Trees.P2_BinaryTree.SearchTree import SearchTree
+from source.T6_Trees.P2_BinaryTree.L4_SearchTree import SearchTree
 
 
 class SearchTreeWithDelete(SearchTree):

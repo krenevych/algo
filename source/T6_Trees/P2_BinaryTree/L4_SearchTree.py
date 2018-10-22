@@ -1,4 +1,4 @@
-from source.T6_Trees.P2_BinaryTree.BinaryTree import BinaryTree
+from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree
 
 
 class SearchTree(BinaryTree):

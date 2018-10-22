@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
-from source.T6_Trees.P2_BinaryTree.BinaryTree import BinaryTree
+from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree
 
 
 def BFS(tree: BinaryTree):
