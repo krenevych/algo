@@ -1,4 +1,4 @@
-from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree
+from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree, createSampleTree
 
 
 def DFS(tree: BinaryTree):
@@ -8,19 +8,17 @@ def DFS(tree: BinaryTree):
     :return: None
     """
 
-    if tree.hasLeft():                   # якщо дерево має лівого нащадка
-        DFS(tree.leftChild())          # запускаємо DFS для лівого нащадка
+    print(tree.item())            # Опрацьовуємо корінь елемент
 
-    if tree.hasRight():                  # якщо дерево має правого нащадка
-        DFS(tree.rightChild())         # запускаємо DFS для правого нащадка
+    if tree.hasLeft():            # якщо дерево має лівого сина
+        DFS(tree.leftChild())     # запускаємо DFS для лівого сина
 
-    print(tree.item())                   # Опрацьовуємо корінь елемент
+    if tree.hasRight():           # якщо дерево має правого сина
+        DFS(tree.rightChild())    # запускаємо DFS для правого сина
 
 
 if __name__ == "__main__":
-    B1 = BinaryTree(1, 11, 111)
-    B3 = BinaryTree(3, 33, 333)
-    B2 = BinaryTree(2, 22, B3)
-    B = BinaryTree(item=0, left=B1, right=B2)
+    B = createSampleTree()
+    print(B)
 
     DFS(B)

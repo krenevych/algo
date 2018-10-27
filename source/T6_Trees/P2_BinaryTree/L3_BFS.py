@@ -13,13 +13,14 @@ def BFS(tree: BinaryTree):
 
     while not q.empty():
         current = q.dequeue()    # Беремо перший елемент з черги
-        print(current.item())  # Опрацьовуємо взятий елемент
+        print(current.item())    # Опрацьовуємо взятий елемент
 
-        # Додаємо в чергу лівий і правий нащадки поточного вузла
-        if current.hasLeft():                      # якщо поточний вузол має лівого нащадка
-            q.enqueue(current.leftChild())   # додаємо у чергу лівого нащадка
-        if current.hasRight():                     # якщо поточний вузол має правого нащадка
-            q.enqueue(current.rightChild())  # додаємо у чергу правого нащадка
+        # Додаємо в чергу лівий і правий сини поточного вузла
+        if current.hasLeft():                # якщо поточний вузол має лівого сина
+            q.enqueue(current.leftChild())   # додаємо у чергу лівого сина
+        if current.hasRight():               # якщо поточний вузол має правого сина
+            q.enqueue(current.rightChild())  # додаємо у чергу правого сина
+
 
 
 if __name__ == "__main__":
