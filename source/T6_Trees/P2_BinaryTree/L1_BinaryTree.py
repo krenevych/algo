@@ -28,7 +28,7 @@ class BinaryTree:
         if right is not None:
             self.setRight(right)  # встановлюємо правого сина
 
-    def empty(self):
+    def empty(self) -> bool:
         """ Перевіряє чи дерево порожнє, тобто чи має воно навантаження та дітей
 
         :return: True, якщо дерево немає ключа та дітей
@@ -37,30 +37,21 @@ class BinaryTree:
                 and self.mLeftChild is None
                 and self.mRightChild is None)
 
-    def item(self):
-        """ Повертає навантаження поточного вузла дерева
-
-        :return: Навантаження
-        """
-        if self.empty():
-            raise Exception('BinaryTree: Дерево порожнє')
-        return self.mKey
-
-    def hasLeft(self):
+    def hasLeft(self) -> bool:
         """ Чи містить дерево лівого сина
 
         :return: True, якщо дерево має лівого сина.
         """
         return self.mLeftChild is not None
 
-    def hasRight(self):
+    def hasRight(self) -> bool:
         """ Чи містить дерево правого сина
 
         :return: True, якщо дерево має правого сина.
         """
         return self.mRightChild is not None
 
-    def hasNoChildren(self):
+    def hasNoChildren(self) -> bool:
         """ Визначає чи має дерево дітей
 
         :return: True, якщо дерево немає дітей.
@@ -98,7 +89,7 @@ class BinaryTree:
     def setRight(self, item):
         """ Змінює правого сина
 
-        :param item: Навантаження або піддерево
+        :param item: Ключ або піддерево
         :return: None
         """
         if isinstance(item, BinaryTree):         # якщо item є деревом
@@ -115,15 +106,7 @@ class BinaryTree:
 
         :return: Зображення дерева у виляді рядка
         """
-        S = "               "
-        if self.hasLeft():
-            S += str(self.mLeftChild.mKey)
-
-        S += " <- " + str(self.mKey) + " -> "
-
-        if self.hasRight():
-            S += str(self.mRightChild.mKey)
-        return S
+        return str(self.mKey)
 
 
 def createSampleTree():
@@ -167,4 +150,9 @@ def createSampleTree():
 if __name__ == "__main__":
 
     B = createSampleTree()
+
+    B1 = BinaryTree(33, 444, 555)
+    B.mLeftChild.setNode(B1)
+
+    print(B1)
     print(B)

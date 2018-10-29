@@ -21,10 +21,10 @@ class PriorityQueue(Heap):
         :param j: другий індекс
         :return: None
         """
-        posi = self.mItems[i].item()  # Поточна позиція елемента i у масиві
-        posj = self.mItems[j].item()  # Поточна позиція елемента j у масиві
-        self.mElementsMap[posi] = j
-        self.mElementsMap[posj] = i
+        pos_i = self.mItems[i].item()  # Поточна позиція елемента i у масиві
+        pos_j = self.mItems[j].item()  # Поточна позиція елемента j у масиві
+        self.mElementsMap[pos_i] = j
+        self.mElementsMap[pos_j] = i
 
         super().swap(i, j)
 
