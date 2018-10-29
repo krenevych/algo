@@ -9,18 +9,19 @@ class BinaryTree:
 
     """
 
-    def __init__(self, item=None, left=None, right=None):
+    def __init__(self, key=None, left=None, right=None):
         """ Конструктор
 
         Створює новий вузол дерева - корінь та ініціалізує його заданими даними
 
-        :param item: Навантаження вузла
+        :param key: Навантаження вузла
         :param left: ліве піддерево
         :param right: праве піддерево
         """
-        self.mItem = item            # навантаження кореня дерева
-        self.mLeftChild  = None      # створюємо поле для лівого сина
-        self.mRightChild = None      # створюємо поле для правого сина
+        self.mKey = key           # ключ кореня дерева
+        self.mLeftChild = None    # поле для лівого сина
+        self.mRightChild = None   # поле для правого сина
+        self.mParent = None       # поле для батька поточного вузла
 
         if left is not None:
             self.setLeft(left)    # встановлюємо лівого сина
@@ -30,9 +31,9 @@ class BinaryTree:
     def empty(self):
         """ Перевіряє чи дерево порожнє, тобто чи має воно навантаження та дітей
 
-        :return: True, якщо дерево немає навантаження та дітей
+        :return: True, якщо дерево немає ключа та дітей
         """
-        return (self.mItem is None
+        return (self.mKey is None
                 and self.mLeftChild is None
                 and self.mRightChild is None)
 
@@ -43,23 +44,7 @@ class BinaryTree:
         """
         if self.empty():
             raise Exception('BinaryTree: Дерево порожнє')
-        return self.mItem
-
-    def leftItem(self):
-        """ Повертає навантаження лівого сина
-
-        :return: Навантаження лівого сина
-        """
-        if self.hasLeft():
-            return self.mLeftChild.item()
-
-    def rightItem(self):
-        """ Повертає навантаження правого сина
-
-        :return: Навантаження правого сина
-        """
-        if self.hasRight():
-            return self.mRightChild.item()
+        return self.mKey
 
     def hasLeft(self):
         """ Чи містить дерево лівого сина
@@ -82,29 +67,18 @@ class BinaryTree:
         """
         return self.mLeftChild is None and self.mRightChild is None
 
-    def leftChild(self):
-        """ Повертає ліве піддерево поточного вузла
-
-        :return: Ліве піддерево поточного вузла
-        """
-        return self.mLeftChild
-
-    def rightChild(self):
-        """Отримати праве піддерево."""
-        return self.mRightChild
-
     def setNode(self, item):
         """ Змінює поточний вузол
 
-        :param item: Нове піддерево або значення навантаження
+        :param item: Нове піддерево або ключ
         :return: None
         """
-        if isinstance(item, BinaryTree):          # якщо item є деревом
-            self.mItem = item.item()              # змінюємо дані
-            self.mLeftChild = item.leftChild()    # змінюємо ліве піддерево
-            self.mRightChild = item.rightChild()  # змінюємо праве піддерево
+        if isinstance(item, BinaryTree):         # якщо item є деревом
+            self.mKey = item.mKey                # змінюємо ключ
+            self.mLeftChild = item.mLeftChild    # змінюємо ліве піддерево
+            self.mRightChild = item.mRightChild  # змінюємо праве піддерево
         else:
-            self.mItem = item
+            self.mKey = item
 
     def setLeft(self, item):
         """ Змінює лівого сина.
@@ -119,6 +93,8 @@ class BinaryTree:
         else:                                   # якщо дерево немає лівого сина
             self.mLeftChild = BinaryTree(item)  # створюємо дерево з вузлом item та робимо його лівим сином
 
+        self.mLeftChild.mParent = self
+
     def setRight(self, item):
         """ Змінює правого сина
 
@@ -132,13 +108,7 @@ class BinaryTree:
         else:                                    # якщо дерево немає правого сина
             self.mRightChild = BinaryTree(item)  # створюємо дерево з вузлом item та робимо його правим сином
 
-    def removeLeft(self):
-        """ Видаляє лівого сина """
-        self.mLeftChild = None
-
-    def removeRight(self):
-        """ Видаляє лівого сина """
-        self.mRightChild = None
+        self.mRightChild.mParent = self
 
     def __str__(self):
         """ Зображення дерева у виляді рядка
@@ -147,12 +117,12 @@ class BinaryTree:
         """
         S = "               "
         if self.hasLeft():
-            S += str(self.leftItem())
+            S += str(self.mLeftChild.mKey)
 
-        S += " <- " + str(self.item()) + " -> "
+        S += " <- " + str(self.mKey) + " -> "
 
         if self.hasRight():
-            S += str(self.rightItem())
+            S += str(self.mRightChild.mKey)
         return S
 
 

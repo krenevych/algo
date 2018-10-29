@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
-from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree
+from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree, createSampleTree
 
 
 def BFS(tree: BinaryTree):
@@ -13,20 +13,15 @@ def BFS(tree: BinaryTree):
 
     while not q.empty():
         current = q.dequeue()    # Беремо перший елемент з черги
-        print(current.item())    # Опрацьовуємо взятий елемент
+        print(current.mKey)    # Опрацьовуємо взятий елемент
 
         # Додаємо в чергу лівий і правий сини поточного вузла
         if current.hasLeft():                # якщо поточний вузол має лівого сина
-            q.enqueue(current.leftChild())   # додаємо у чергу лівого сина
+            q.enqueue(current.mLeftChild)   # додаємо у чергу лівого сина
         if current.hasRight():               # якщо поточний вузол має правого сина
-            q.enqueue(current.rightChild())  # додаємо у чергу правого сина
-
+            q.enqueue(current.mRightChild)  # додаємо у чергу правого сина
 
 
 if __name__ == "__main__":
-    B1 = BinaryTree(1, 11, 111)
-    B3 = BinaryTree(3, 33, 333)
-    B2 = BinaryTree(2, 22, B3)
-    B = BinaryTree(item=0, left=B1, right=B2)
-
+    B = createSampleTree()
     BFS(B)

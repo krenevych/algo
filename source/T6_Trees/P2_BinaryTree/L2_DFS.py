@@ -8,17 +8,15 @@ def DFS(tree: BinaryTree):
     :return: None
     """
 
-    print(tree.item())            # Опрацьовуємо корінь елемент
+    print(tree.mKey)            # Опрацьовуємо корінь елемент
 
     if tree.hasLeft():            # якщо дерево має лівого сина
-        DFS(tree.leftChild())     # запускаємо DFS для лівого сина
+        DFS(tree.mLeftChild)     # запускаємо DFS для лівого сина
 
     if tree.hasRight():           # якщо дерево має правого сина
-        DFS(tree.rightChild())    # запускаємо DFS для правого сина
+        DFS(tree.mRightChild)    # запускаємо DFS для правого сина
 
 
 if __name__ == "__main__":
     B = createSampleTree()
-    print(B)
-
     DFS(B)
