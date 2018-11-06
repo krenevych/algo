@@ -1,6 +1,6 @@
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
-from source.T7_Graphs.P1.Graph import Graph
-from source.T7_Graphs.P1.VertexForAlgorithms import VertexForAlgorithms, INF
+from source.T7_Graphs.P1_Definitions.L5_Graph import Graph
+from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import VertexForAlgorithms, INF
 
 
 class GraphForAlgorithms(Graph):
@@ -8,7 +8,7 @@ class GraphForAlgorithms(Graph):
      Використовується у алгоритмах Дейкстри, Белмана-Форда...
      Міститть додаткову технічну інформацію, що необхідна для цих алгоритмів """
 
-    def add_vertex(self, vertex) -> bool:
+    def addVertex(self, vertex) -> bool:
         """ Додає вершину у граф, якщо така вершина не міститься у ньому
 
         :param vertex: ключ (тобто ім'я) нової вершини
@@ -23,7 +23,7 @@ class GraphForAlgorithms(Graph):
         self.mVertexNumber += 1                   # Збільшуємо лічильник вершин у графі
         return True
 
-    def construct_way(self, start, end):
+    def constructWay(self, start, end):
         """ Домопіжний метод, що будує шлях, між двома вершинами у графі
         Може бути застосовами лише після дії алгоритмів пошуку шляху
         (Хвильового, Дейкстри, Беллмана-Форда, тощо) які записують

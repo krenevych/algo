@@ -1,5 +1,5 @@
-from source.T7_Graphs.P1.Graph import Graph
-from source.T7_Graphs.P2.DFS import DFS
+from source.T7_Graphs.P1_Definitions.L5_Graph import Graph
+from source.T7_Graphs.P2_Nonweighted.L1_DFS import DFS
 
 
 def __check_connected_helper(graph: Graph):

@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
-from source.T7_Graphs.P1.GraphForAlgorithms import GraphForAlgorithms
+
 
 def wave(graph, start):
     """ Хвильовий алгоритм
@@ -72,37 +72,3 @@ def wave1(graph, start):
 
     return distances
 
-
-def wave2(graph: GraphForAlgorithms, start: int):
-
-    """ Функція, що запускає хвильовий алгоритм.
-        Використовує граф класу GraphForAlgorithms, вершини якого містять допоміжну інформацію.
-        Функція модифікує вхідний граф, так, що в результаті його всі вершини
-        містять інформацію про найкоротшу відстань від заданої стартової вершини.
-
-    :param graph: Граф, вершини якого містять відстань від початкової вершини
-    :param start: Стартова вершина, тобто з якої починається робота хвильового алгоритму
-    :return: None
-    """
-
-    # Ініціалізуємо додаткову інформацію у графі для роботи алгоритму.
-    for vertex in graph:
-        vertex.set_unvisited()   # вершина ще не була відвідана
-
-    # Відстань у старотовій вершині (тобто від стартової вершини до себе) визначається як 0
-    graph[start].set_distance(0)
-
-    q = Queue()       # Створюємо чергу
-    q.enqueue(start)  # Додаємо у чергу початкову вершину
-
-    while not q.empty():
-        vertex_key = q.dequeue()   # Беремо перший елемент з черги
-        vertex = graph[vertex_key]  # Беремо вершину за індексом
-
-        # Для всіх сусідів (за ключами) поточної вершини
-        for neighbor_key in vertex.neighbors():
-            neighbour = graph[neighbor_key]   # Беремо вершину-сусіда за ключем
-            if not neighbour.visited():       # Якщо сусід не був відвіданий
-                q.enqueue(neighbor_key)       # додаємо його до черги
-                neighbour.set_distance(vertex.distance() + 1)  # Встановлюємо значення відстані у вершині-сусіді
-                                                               # значенням на 1 більшии ніж у поточній вершині

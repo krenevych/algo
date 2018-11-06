@@ -1,5 +1,5 @@
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
-from source.T7_Graphs.P1.ColorGraph import ColorGraph, BLACK, GRAY
+from source.T7_Graphs.P2_Nonweighted.L5_ColorGraph import ColorGraph, BLACK, GRAY
 
 def __helper(graph, vertex, stack):
     """ Рекурсивний допоміжний метод, що реалізує топологічне сотрування
@@ -53,15 +53,15 @@ def topological_sorting(graph):
 if __name__ == "__main__":
     gr = ColorGraph(True)  # Створюємо орієнтований граф
 
-    gr.add_edge(1, 4)
-    gr.add_edge(1, 5)
-    gr.add_edge(2, 4)
-    gr.add_edge(3, 5)
-    gr.add_edge(3, 8)
-    gr.add_edge(4, 6)
-    gr.add_edge(4, 7)
-    gr.add_edge(4, 8)
-    gr.add_edge(5, 7)
+    gr.addEdge(1, 4)
+    gr.addEdge(1, 5)
+    gr.addEdge(2, 4)
+    gr.addEdge(3, 5)
+    gr.addEdge(3, 8)
+    gr.addEdge(4, 6)
+    gr.addEdge(4, 7)
+    gr.addEdge(4, 8)
+    gr.addEdge(5, 7)
     # gr.add_edge(7, 6)
 
     a = "a"

@@ -21,7 +21,7 @@ class VertexBase:
         """
         return self.mKey
 
-    def set_data(self, data):
+    def setData(self, data):
         """ Встановлює навантаження на вершину
 
         :param data: Навантаження

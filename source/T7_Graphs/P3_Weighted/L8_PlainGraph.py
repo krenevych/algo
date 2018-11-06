@@ -1,9 +1,9 @@
 from random import Random
 
-from source.T7_Graphs.P1.GraphForAlgorithms import GraphForAlgorithms
-from source.T7_Graphs.P1.VertexWithHeuristic import VertexWithHeuristic
-from source.T7_Graphs.P3.BelmanFord import BelmanFord
-from source.T7_Graphs.P3.Dijkstra import Dijkstra
+from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
+from source.T7_Graphs.P3_Weighted.L7_VertexWithHeuristic import VertexWithHeuristic
+from source.T7_Graphs.P3_Weighted.L3_BelmanFord import BelmanFord
+from source.T7_Graphs.P3_Weighted.L6_Dijkstra import Dijkstra
 
 
 class PlainGraph(GraphForAlgorithms):
@@ -13,7 +13,7 @@ class PlainGraph(GraphForAlgorithms):
         Використовується для тестування алгоритму А*
         """
 
-    def add_edge(self, source, destination, weight=1):
+    def addEdge(self, source, destination, weight=1):
         """ Додавання ребра з кінцями в точках source та destination
         з вагою, що дорівнює геометричній відстані між цими вернинами
 
@@ -24,9 +24,9 @@ class PlainGraph(GraphForAlgorithms):
         """
 
         weight = self.distance(source, destination)
-        super().add_edge(source, destination, weight)
+        super().addEdge(source, destination, weight)
 
-    def add_vertex(self, vertex) -> bool:
+    def addVertex(self, vertex) -> bool:
         """ Додає вершину у граф, якщо така вершина не міститься у ньому
 
         :param vertex: ключ (тобто ім'я) нової вершини
@@ -48,8 +48,8 @@ class PlainGraph(GraphForAlgorithms):
         :param destination: Друга вершина
         :return: Геометрична відстань між вершинами source та destination
         """
-        source_position = self.get_data(source)
-        destination_position = self.get_data(destination)
+        source_position = self.getData(source)
+        destination_position = self.getData(destination)
         assert source_position is not None and destination_position is not None
 
         return (((destination_position[0] - source_position[0]) ** 2) + ((destination_position[1] - source_position[1]) ** 2)) ** 0.5
@@ -67,20 +67,20 @@ def inputGraphWithRandomVertexPositions(graph, vertices, edges):
     """
 
     for v in range(vertices + 1):
-        graph.add_vertex(v)
+        graph.addVertex(v)
 
         rnd = Random()
         x = rnd.randint(-10, 10)
         y = rnd.randint(-10, 10)
         pos = (x, y)
-        graph.set_data(v, pos)
+        graph.setData(v, pos)
 
     for e in range(edges):
         rnd = Random()
         frm = rnd.randint(0, vertices)
         to = rnd.randint(0, vertices)
         if frm != to:
-            graph.add_edge(frm, to)
+            graph.addEdge(frm, to)
 
 
 if __name__ == "__main__":

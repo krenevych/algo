@@ -51,7 +51,7 @@ class SegmentTree:
         res = 0
 
         while left <= right:
-            if left % 2 == 1:   # якщо left - правий син свого батька
+            if left % 2 == 1:   # якщо  left - правий син свого батька
                 res += self.mItems[left]
             if right % 2 == 0:  # якщо right - лівий син свого батька
                 res += self.mItems[right]

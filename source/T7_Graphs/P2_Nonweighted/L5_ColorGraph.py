@@ -1,9 +1,10 @@
-from source.T7_Graphs.P1.Graph import Graph
-from source.T7_Graphs.P1.Vertex import Vertex
+from source.T7_Graphs.P1_Definitions.L5_Graph import Graph
+from source.T7_Graphs.P1_Definitions.L4_Vertex import Vertex
 
 WHITE = 0  # Вершина білого кольору - вершина ще не відвідана
 GRAY = 1   # Вершина сірого кольору - під час DFS ввійшли у вершину
 BLACK = 2  # Вершина чорного кольору - під час DFS вийшли з вершини
+
 
 class ColorVertex(Vertex):
     """ Допоміжний клас, (нащадок класу Vertex)
@@ -25,7 +26,7 @@ class ColorVertex(Vertex):
 class ColorGraph(Graph):
     """ Граф, що містить вершини ColorVertex"""
 
-    def add_vertex(self, vertex):
+    def addVertex(self, vertex):
         """ Додає вершину у граф, якщо така вершина не міститься у ньому
 
         :param vertex: ключ (тобто ім'я) нової вершини

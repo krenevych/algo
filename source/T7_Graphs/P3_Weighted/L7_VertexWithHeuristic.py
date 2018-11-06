@@ -1,5 +1,5 @@
-from source.T7_Graphs.P1.Vertex import Vertex
-from source.T7_Graphs.P1.VertexForAlgorithms import VertexForAlgorithms
+from source.T7_Graphs.P1_Definitions.L4_Vertex import Vertex
+from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import VertexForAlgorithms
 
 
 class VertexWithHeuristic(VertexForAlgorithms):
@@ -23,7 +23,7 @@ class VertexWithHeuristic(VertexForAlgorithms):
         """
         return self.mHeuristicValue
 
-    def calculate_heuristic(self, other):
+    def calculateHeuristic(self, other):
         """ Допоміжний метод, що встанолює значення евристичної функції у вершині.
 
         Вибирається спеціальним чином з аналізу властивостей графу (наприклад в залежності від топології графу).

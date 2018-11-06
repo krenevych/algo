@@ -1,8 +1,9 @@
 import sys
 
-from source.T7_Graphs.P1.Vertex import Vertex
+from source.T7_Graphs.P1_Definitions.L4_Vertex import Vertex
 
 INF = sys.maxsize  # Умовна нескінченність
+
 
 class VertexForAlgorithms(Vertex):
     """ Клас, що є розширенням класу для вершини графа
@@ -28,7 +29,7 @@ class VertexForAlgorithms(Vertex):
             у поточну вернишу на деякому кроці алгоритму """
         self.mSource = None   # До початку роботи алгортиму вважаємо, що вона є невизначеною
 
-    def set_distance(self, distance):
+    def setDistance(self, distance):
         """ Встановлює відстань для поточної вершини
 
         :param distance: Нова відстань
@@ -43,7 +44,7 @@ class VertexForAlgorithms(Vertex):
         """
         return self.mDistance
 
-    def set_source(self, source):
+    def setSource(self, source):
         """ Встанолює джерело для поточної вершини
 
         :param source: Нове джерело вершини
@@ -66,7 +67,7 @@ class VertexForAlgorithms(Vertex):
         """
         return self.mDistance != INF
 
-    def set_unvisited(self):
+    def setUnvisited(self):
         """ Встановлює відстань у поточній вершині як нескінченність
 
         :return: None

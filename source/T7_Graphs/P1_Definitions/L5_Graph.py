@@ -1,6 +1,6 @@
 from random import Random
 
-from source.T7_Graphs.P1.Vertex import Vertex
+from source.T7_Graphs.P1_Definitions.L4_Vertex import Vertex
 
 
 class Graph:
@@ -15,7 +15,7 @@ class Graph:
         self.mVertexNumber = 0         # Лічильник вершин у графі
         self.mVertices = {}            # Список (словник) вершин у графі у вигляді пар (ключ: вершина)
 
-    def add_vertex(self, vertex):
+    def addVertex(self, vertex):
         """ Додає вершину у граф, якщо така вершина не міститься у ньому
 
         :param vertex: ключ (тобто ім'я) нової вершини
@@ -30,7 +30,7 @@ class Graph:
         self.mVertexNumber += 1                  # Збільшуємо лічильник вершин у графі
         return True
 
-    def get_vertex(self, vertex):
+    def getVertex(self, vertex):
         """ Повертає вершину графу, якщо така вершина міститься у графі
 
         :param vertex: ключ (тобто ім'я) вершини
@@ -46,7 +46,7 @@ class Graph:
         """ Повертає список всіх вершин у графі"""
         return self.mVertices
 
-    def add_edge(self, source, destination, weight=1):
+    def addEdge(self, source, destination, weight=1):
         """ Додавання ребра з кінцями в точках source та destination з вагою weight
 
         :param source: Перша вернина
@@ -55,17 +55,17 @@ class Graph:
         :return: None
         """
         if source not in self:            # Якщо вершина source ще не міститься у графі
-            self.add_vertex(source)       # додаємо вершину source
+            self.addVertex(source)       # додаємо вершину source
         if destination not in self:       # Якщо вершина destination ще не міститься у графі
-            self.add_vertex(destination)  # додаємо вершину destination
+            self.addVertex(destination)  # додаємо вершину destination
 
         # Встановлюємо зв'язок (тобто ребро) між вершинами source та destination
-        self[source].add_neighbor(destination, weight)
+        self[source].addNeighbor(destination, weight)
 
         if not self.mIsOriented:  # Якщо граф не орієнтований, то треба додати зворотній зв'язок
-            self.mVertices[destination].add_neighbor(source, weight)
+            self.mVertices[destination].addNeighbor(source, weight)
 
-    def set_data(self, vertex, data):
+    def setData(self, vertex, data):
         """ Встановлення навантаження вершини
 
         :param vertex: ключ вершини або вершина графа
@@ -73,9 +73,9 @@ class Graph:
         :return: None
         """
         assert vertex in self # Перевірка чи міститься вершина в графі
-        self[vertex].set_data(data)
+        self[vertex].setData(data)
 
-    def get_data(self, vertex):
+    def getData(self, vertex):
         """ Повертає навантаження вершини
 
         :param vertex: Вершина або її ключ
@@ -93,7 +93,7 @@ class Graph:
         g_inv = Graph(self.mIsOriented)
         for vertex in self:
             for neighbor_key in vertex.neighbors():    # Для всіх сусідів (за ключами) поточної вершини
-                g_inv.add_edge(neighbor_key, vertex.key())
+                g_inv.addEdge(neighbor_key, vertex.key())
 
         return g_inv
 
@@ -127,7 +127,7 @@ class Graph:
         return s
 
     def __getitem__(self, vertex):
-        return self.get_vertex(vertex)
+        return self.getVertex(vertex)
 
 
 def inputRandomGraph(graph, vertices, edges):
@@ -139,7 +139,7 @@ def inputRandomGraph(graph, vertices, edges):
     :return: None
     """
 
-    graph.add_vertex(0)
+    graph.addVertex(0)
 
     for e in range(edges):
         rnd = Random()
@@ -147,7 +147,7 @@ def inputRandomGraph(graph, vertices, edges):
         to = rnd.randint(0, vertices)
         if frm != to:
             weight = rnd.randint(1, 15)
-            graph.add_edge(frm, to, weight)
+            graph.addEdge(frm, to, weight)
 
             # FOR DEBUG
             # print("gr.addEdge(%d, %d, %d)" % (frm, to, weight))
@@ -160,15 +160,15 @@ def inputConcreteGraph(g):
     :param g: Порожній граф
     :return: None
     """
-    g.add_edge(0, 1, 5)
-    g.add_edge(0, 5, 2)
-    g.add_edge(1, 2, 4)
-    g.add_edge(2, 3, 9)
-    g.add_edge(3, 4, 7)
-    g.add_edge(3, 5, 3)
-    g.add_edge(4, 0, 1)
-    g.add_edge(5, 4, 8)
-    g.add_edge(5, 2, 1)
+    g.addEdge(0, 1, 5)
+    g.addEdge(0, 5, 2)
+    g.addEdge(1, 2, 4)
+    g.addEdge(2, 3, 9)
+    g.addEdge(3, 4, 7)
+    g.addEdge(3, 5, 3)
+    g.addEdge(4, 0, 1)
+    g.addEdge(5, 4, 8)
+    g.addEdge(5, 2, 1)
 
 def inputConcreteGraph1(gr):
     """ Ініціалізація графу
@@ -176,51 +176,51 @@ def inputConcreteGraph1(gr):
     :param gr: Порожній граф
     :return: None
     """
-    gr.add_edge(0, 2, 14)
-    gr.add_edge(0, 3, 13)
-    gr.add_edge(0, 5, 2)
-    gr.add_edge(0, 7, 3)
+    gr.addEdge(0, 2, 14)
+    gr.addEdge(0, 3, 13)
+    gr.addEdge(0, 5, 2)
+    gr.addEdge(0, 7, 3)
 
-    gr.add_edge(1, 2, 12)
-    gr.add_edge(1, 7, 11)
+    gr.addEdge(1, 2, 12)
+    gr.addEdge(1, 7, 11)
 
-    gr.add_edge(2, 0, 1)
-    gr.add_edge(2, 3, 3)
-    gr.add_edge(2, 4, 10)
-    gr.add_edge(2, 7, 2)
-    gr.add_edge(2, 8, 10)
-    gr.add_edge(2, 10, 13)
+    gr.addEdge(2, 0, 1)
+    gr.addEdge(2, 3, 3)
+    gr.addEdge(2, 4, 10)
+    gr.addEdge(2, 7, 2)
+    gr.addEdge(2, 8, 10)
+    gr.addEdge(2, 10, 13)
 
-    gr.add_edge(3, 0, 13)
-    gr.add_edge(3, 2, 10)
+    gr.addEdge(3, 0, 13)
+    gr.addEdge(3, 2, 10)
 
-    gr.add_edge(4, 5, 2)
-    gr.add_edge(4, 6, 15)
-    gr.add_edge(4, 9, 7)
+    gr.addEdge(4, 5, 2)
+    gr.addEdge(4, 6, 15)
+    gr.addEdge(4, 9, 7)
 
-    gr.add_edge(5, 0, 13)
-    gr.add_edge(5, 8, 7)
-    gr.add_edge(5, 9, 4)
+    gr.addEdge(5, 0, 13)
+    gr.addEdge(5, 8, 7)
+    gr.addEdge(5, 9, 4)
 
-    gr.add_edge(6, 7, 8)
-    gr.add_edge(6, 10, 2)
+    gr.addEdge(6, 7, 8)
+    gr.addEdge(6, 10, 2)
 
-    gr.add_edge(7, 1, 1)
-    gr.add_edge(7, 2, 8)
-    gr.add_edge(7, 3, 7)
-    gr.add_edge(7, 5, 1)
-    gr.add_edge(7, 6, 13)
+    gr.addEdge(7, 1, 1)
+    gr.addEdge(7, 2, 8)
+    gr.addEdge(7, 3, 7)
+    gr.addEdge(7, 5, 1)
+    gr.addEdge(7, 6, 13)
 
-    gr.add_edge(8, 3, 14)
-    gr.add_edge(8, 4, 15)
-    gr.add_edge(8, 9, 15)
+    gr.addEdge(8, 3, 14)
+    gr.addEdge(8, 4, 15)
+    gr.addEdge(8, 9, 15)
 
-    gr.add_edge(9, 2, 8)
-    gr.add_edge(9, 5, 6)
+    gr.addEdge(9, 2, 8)
+    gr.addEdge(9, 5, 6)
 
-    gr.add_edge(10, 1, 14)
-    gr.add_edge(10, 4, 10)
-    gr.add_edge(10, 5, 11)
+    gr.addEdge(10, 1, 14)
+    gr.addEdge(10, 4, 10)
+    gr.addEdge(10, 5, 11)
 
     print("=========================")
 
@@ -230,39 +230,39 @@ def inputConcreteGraph2(gr):
     :param gr: Порожній граф
     :return: None
     """
-    gr.add_edge(0, 2, 3)
-    gr.add_edge(0, 3, 14)
-    gr.add_edge(0, 5, 7)
-    gr.add_edge(0, 6, 2)
+    gr.addEdge(0, 2, 3)
+    gr.addEdge(0, 3, 14)
+    gr.addEdge(0, 5, 7)
+    gr.addEdge(0, 6, 2)
 
-    gr.add_edge(1, 4, 13)
-    gr.add_edge(1, 6, 3)
-    gr.add_edge(1, 7, 8)
+    gr.addEdge(1, 4, 13)
+    gr.addEdge(1, 6, 3)
+    gr.addEdge(1, 7, 8)
 
-    gr.add_edge(2, 0, 2)
-    gr.add_edge(2, 4, 9)
-    gr.add_edge(2, 6, 10)
-    gr.add_edge(2, 7, 15)
+    gr.addEdge(2, 0, 2)
+    gr.addEdge(2, 4, 9)
+    gr.addEdge(2, 6, 10)
+    gr.addEdge(2, 7, 15)
 
-    gr.add_edge(3, 0, 4)
-    gr.add_edge(3, 1, 6)
-    gr.add_edge(3, 4, 3)
-    gr.add_edge(3, 5, 11)
-    gr.add_edge(3, 6, 9)
-    gr.add_edge(3, 7, 3)
+    gr.addEdge(3, 0, 4)
+    gr.addEdge(3, 1, 6)
+    gr.addEdge(3, 4, 3)
+    gr.addEdge(3, 5, 11)
+    gr.addEdge(3, 6, 9)
+    gr.addEdge(3, 7, 3)
 
-    gr.add_edge(4, 5, 12)
-    gr.add_edge(4, 7, 11)
+    gr.addEdge(4, 5, 12)
+    gr.addEdge(4, 7, 11)
 
-    gr.add_edge(5, 1, 5)
-    gr.add_edge(5, 4, 9)
+    gr.addEdge(5, 1, 5)
+    gr.addEdge(5, 4, 9)
 
-    gr.add_edge(6, 1, 3)
-    gr.add_edge(6, 0, 1)
-    gr.add_edge(6, 7, 14)
+    gr.addEdge(6, 1, 3)
+    gr.addEdge(6, 0, 1)
+    gr.addEdge(6, 7, 14)
 
-    gr.add_edge(7, 1, 14)
-    gr.add_edge(7, 2, 14)
+    gr.addEdge(7, 1, 14)
+    gr.addEdge(7, 2, 14)
 
 def inputConcreteGraph3(gr):
     """ Ініціалізація графу
@@ -270,14 +270,14 @@ def inputConcreteGraph3(gr):
     :param gr: Порожній граф
     :return: None
     """
-    gr.add_edge(0, 1)
-    gr.add_edge(1, 2)
-    gr.add_edge(2, 3)
-    gr.add_edge(3, 0)
+    gr.addEdge(0, 1)
+    gr.addEdge(1, 2)
+    gr.addEdge(2, 3)
+    gr.addEdge(3, 0)
     # g_0.add_edge(0, 3)
-    gr.add_edge(4, 1)
+    gr.addEdge(4, 1)
     # g_0.add_edge(2, 4)
-    gr.add_edge(4, 2)
+    gr.addEdge(4, 2)
 
 def inputConcreteGraph4(gr):
     """ Ініціалізація графу
@@ -285,30 +285,30 @@ def inputConcreteGraph4(gr):
     :param gr: Порожній граф
     :return: None
     """
-    gr.add_edge(0, 2)
-    gr.add_edge(0, 4)
+    gr.addEdge(0, 2)
+    gr.addEdge(0, 4)
 
     # gr.add_edge(1, 3)
 
-    gr.add_edge(2, 3)
-    gr.add_edge(2, 5)
-    gr.add_edge(2, 6)
+    gr.addEdge(2, 3)
+    gr.addEdge(2, 5)
+    gr.addEdge(2, 6)
 
-    gr.add_edge(3, 0)
-    gr.add_edge(3, 4)
-    gr.add_edge(3, 5)
+    gr.addEdge(3, 0)
+    gr.addEdge(3, 4)
+    gr.addEdge(3, 5)
 
-    gr.add_edge(4, 2)
-    gr.add_edge(4, 5)
+    gr.addEdge(4, 2)
+    gr.addEdge(4, 5)
 
-    gr.add_edge(5, 0)
-    gr.add_edge(5, 2)
-    gr.add_edge(5, 3)
-    gr.add_edge(5, 4)
+    gr.addEdge(5, 0)
+    gr.addEdge(5, 2)
+    gr.addEdge(5, 3)
+    gr.addEdge(5, 4)
 
-    gr.add_edge(6, 1)
-    gr.add_edge(6, 2)
-    gr.add_edge(6, 4)
+    gr.addEdge(6, 1)
+    gr.addEdge(6, 2)
+    gr.addEdge(6, 4)
 
     # 0: {2, 4}
     # 1: {3}
@@ -324,51 +324,51 @@ def inputGraphNet(gr):
     :param gr: Порожній граф
     :return: None
     """
-    gr.add_edge(0, 1)
-    gr.add_edge(0, 2)
-    gr.add_edge(0, 3)
+    gr.addEdge(0, 1)
+    gr.addEdge(0, 2)
+    gr.addEdge(0, 3)
 
-    gr.add_edge(1, 4)
-    gr.add_edge(1, 5)
-    gr.add_edge(2, 5)
-    gr.add_edge(3, 5)
-    gr.add_edge(3, 6)
+    gr.addEdge(1, 4)
+    gr.addEdge(1, 5)
+    gr.addEdge(2, 5)
+    gr.addEdge(3, 5)
+    gr.addEdge(3, 6)
 
-    gr.add_edge(4, 7)
-    gr.add_edge(4, 8)
-    gr.add_edge(5, 7)
-    gr.add_edge(5, 8)
-    gr.add_edge(5, 9)
-    gr.add_edge(6, 8)
-    gr.add_edge(6, 9)
+    gr.addEdge(4, 7)
+    gr.addEdge(4, 8)
+    gr.addEdge(5, 7)
+    gr.addEdge(5, 8)
+    gr.addEdge(5, 9)
+    gr.addEdge(6, 8)
+    gr.addEdge(6, 9)
 
-    gr.add_edge(7, 10)
-    gr.add_edge(8, 10)
-    gr.add_edge(9, 10)
+    gr.addEdge(7, 10)
+    gr.addEdge(8, 10)
+    gr.addEdge(9, 10)
 
-    gr.add_edge(10, 0)
+    gr.addEdge(10, 0)
 
     # gr.add_edge(1, 3)
 
-    gr.add_edge(2, 3)
-    gr.add_edge(2, 5)
-    gr.add_edge(2, 6)
+    gr.addEdge(2, 3)
+    gr.addEdge(2, 5)
+    gr.addEdge(2, 6)
 
-    gr.add_edge(3, 0)
-    gr.add_edge(3, 4)
-    gr.add_edge(3, 5)
+    gr.addEdge(3, 0)
+    gr.addEdge(3, 4)
+    gr.addEdge(3, 5)
 
-    gr.add_edge(4, 2)
-    gr.add_edge(4, 5)
+    gr.addEdge(4, 2)
+    gr.addEdge(4, 5)
 
-    gr.add_edge(5, 0)
-    gr.add_edge(5, 2)
-    gr.add_edge(5, 3)
-    gr.add_edge(5, 4)
+    gr.addEdge(5, 0)
+    gr.addEdge(5, 2)
+    gr.addEdge(5, 3)
+    gr.addEdge(5, 4)
 
-    gr.add_edge(6, 1)
-    gr.add_edge(6, 2)
-    gr.add_edge(6, 4)
+    gr.addEdge(6, 1)
+    gr.addEdge(6, 2)
+    gr.addEdge(6, 4)
 
 
 if __name__ == "__main__":  # Для тестування

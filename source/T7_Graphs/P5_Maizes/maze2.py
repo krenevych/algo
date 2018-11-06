@@ -1,4 +1,4 @@
-from source.T7_Graphs.P4.maze import showMaze, wave, drawWayInMatrix
+from source.T7_Graphs.P5_Maizes.maze import showMaze, wave, drawWayInMatrix
 
 WALL_CELL = "."  # Не прохідна клітина
 

@@ -1,4 +1,4 @@
-from source.T7_Graphs.P1.VertexBase import VertexBase
+from source.T7_Graphs.P1_Definitions.L3_VertexBase import VertexBase
 
 
 class Vertex(VertexBase):
@@ -11,7 +11,7 @@ class Vertex(VertexBase):
         super().__init__(key)  # Викликаємо конструктор батьківського класу
         self.mNeighbors = {}   # Список сусідів вершини у вигляді пар (ім'я_сусіда: вага_ребра)
 
-    def add_neighbor(self, vertex, weight=1):
+    def addNeighbor(self, vertex, weight=1):
         """ Додати сусіда
 
         Додає ребро, що сполучає поточну вершину з вершиною Vertex з вагою weight
@@ -55,9 +55,9 @@ if __name__ == "__main__":
     v2 = Vertex(2)
     v3 = Vertex(3)
 
-    v1.add_neighbor(v1, 11)
-    v1.add_neighbor(v2, 22)
-    v1.add_neighbor(v3, 33)
+    v1.addNeighbor(v1, 11)
+    v1.addNeighbor(v2, 22)
+    v1.addNeighbor(v3, 33)
 
     print(v1)
     print(v2)

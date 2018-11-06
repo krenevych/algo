@@ -13,7 +13,7 @@ class Graph:
         for i in range(self.mVertexNumber):
             self.mAdjacentMatrix.append([0] * self.mVertexNumber)
 
-    def add_edge(self, source, destination, weight=1):
+    def addEdge(self, source, destination, weight=1):
         """ Додавання ребра з кінцями в точках source та destination з вагою weight
 
         :param source: Перша вернина
@@ -41,14 +41,14 @@ if __name__ == "__main__":  # Для тестування
 
     g = Graph(True, 6)  # Створюємо орієнтований граф
 
-    g.add_edge(0, 1, 5)
-    g.add_edge(0, 5, 2)
-    g.add_edge(1, 2, 4)
-    g.add_edge(2, 3, 9)
-    g.add_edge(3, 4, 7)
-    g.add_edge(3, 5, 3)
-    g.add_edge(4, 0, 1)
-    g.add_edge(5, 4, 8)
-    g.add_edge(5, 2, 1)
+    g.addEdge(0, 1, 5)
+    g.addEdge(0, 5, 2)
+    g.addEdge(1, 2, 4)
+    g.addEdge(2, 3, 9)
+    g.addEdge(3, 4, 7)
+    g.addEdge(3, 5, 3)
+    g.addEdge(4, 0, 1)
+    g.addEdge(5, 4, 8)
+    g.addEdge(5, 2, 1)
 
     print(g)

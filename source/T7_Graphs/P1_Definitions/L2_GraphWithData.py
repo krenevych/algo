@@ -1,7 +1,7 @@
-from source.T7_Graphs.P1 import Graph
+from source.T7_Graphs.P1_Definitions import L5_Graph
 
 
-class GraphWithData(Graph):
+class GraphWithData(L5_Graph):
     """ Клас нащадок класу Graph
         Містить поле навантаження вершини
     """
@@ -19,7 +19,7 @@ class GraphWithData(Graph):
         # визначаємо список де зберігається навантаження на кожну вершину
         self.mData = [self.DEFAULT_VERTEX_DATA] * self.mVertexNumber
 
-    def set_data(self, vertex, data):
+    def setData(self, vertex, data):
         """ Встановлення навантаження на вершину
 
         :param vertex: Вершина графа

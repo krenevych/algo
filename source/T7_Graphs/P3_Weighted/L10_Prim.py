@@ -8,9 +8,9 @@
 https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%D0%9F%D1%80%D0%B8%D0%BC%D0%B0
 
 """
-from source.T7_Graphs.P1.GraphForAlgorithms import GraphForAlgorithms
-from source.T7_Graphs.P1.VertexForAlgorithms import INF
-from source.T7_Graphs.P2.Connectivity import checkConnected
+from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
+from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import INF
+from source.T7_Graphs.P4_Conectivity.Connectivity import checkConnected
 from source.T6_Trees.P2_BinaryTree.L7_PriorityQueue import PriorityQueue
 from source.utils.benchmark import benchmark
 
@@ -32,11 +32,11 @@ def Prim(graph: GraphForAlgorithms):
     # У алгоритмі Прима, як і у алгоритмі Дейкстри ця додаткова інформація визначається у кожній вершині
     # як відстань від точки, до вже побудованого дерева вершини до неї.
     for vertex in graph:
-        vertex.set_distance(INF)  # Відстань для кожної вершини ініціалізується як нескінченність
-        vertex.set_source(None)   # Вершина з якої прийшли по найкорошому шляху невизначена
+        vertex.setDistance(INF)  # Відстань для кожної вершини ініціалізується як нескінченність
+        vertex.setSource(None)   # Вершина з якої прийшли по найкорошому шляху невизначена
 
     # Відстань у старотовій вершині (тобто від стартової вершини до себе) визначається як 0
-    graph[start].set_distance(0)
+    graph[start].setDistance(0)
 
     pq = PriorityQueue()  # Створюємо пріоритетну чергу
 
@@ -54,8 +54,8 @@ def Prim(graph: GraphForAlgorithms):
             newDist = vertex.weight(neighbor_key)      # Визначаємо вагу ребра між вершиною та вершиною-сусідом
             if neighbor_key in pq and newDist < neighbour.distance():   # Якщо вершина-сусід ще не додана до каркасного дерева і
                                                              # потенційна відстань у вершині-сусіді менша за її поточне значення
-                neighbour.set_distance(newDist)              # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
-                neighbour.set_source(vertex_key)             # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
+                neighbour.setDistance(newDist)              # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
+                neighbour.setSource(vertex_key)             # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
                 pq.decreasePriority(neighbor_key, newDist)  # перераховуємо її пріоритет в черзі
 
     # Будуємо граф, що є каркасним деревом
@@ -66,7 +66,7 @@ def Prim(graph: GraphForAlgorithms):
         if source is None:
             continue
         weight = vertex.weight(source)
-        spanning_tree.add_edge(source, destination, weight)
+        spanning_tree.addEdge(source, destination, weight)
 
     return spanning_tree
 
@@ -104,19 +104,19 @@ if __name__ == "__main__":   # Для тестування
 
     g = GraphForAlgorithms()
 
-    g.add_edge(0, 1, 7)
-    g.add_edge(0, 5, 1)
-    g.add_edge(1, 2, 2)
-    g.add_edge(2, 3, 2)
-    g.add_edge(3, 4, 3)
-    g.add_edge(3, 5, 1)
-    g.add_edge(4, 0, 5)
-    g.add_edge(5, 4, 2)
-    g.add_edge(5, 2, 3)
-    g.add_edge(6, 3, 1)
-    g.add_edge(6, 2, 1)
-    g.add_edge(6, 7, 12)
-    g.add_edge(7, 4, 2)
+    g.addEdge(0, 1, 7)
+    g.addEdge(0, 5, 1)
+    g.addEdge(1, 2, 2)
+    g.addEdge(2, 3, 2)
+    g.addEdge(3, 4, 3)
+    g.addEdge(3, 5, 1)
+    g.addEdge(4, 0, 5)
+    g.addEdge(5, 4, 2)
+    g.addEdge(5, 2, 3)
+    g.addEdge(6, 3, 1)
+    g.addEdge(6, 2, 1)
+    g.addEdge(6, 7, 12)
+    g.addEdge(7, 4, 2)
 
     # t = GraphForAlgorithms()
     t = Prim(g)
