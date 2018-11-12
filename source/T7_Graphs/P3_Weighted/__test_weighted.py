@@ -1,7 +1,8 @@
+from source.T7_Graphs.P3_Weighted.L5_BelmanFordOptimized import BelmanFordOptimized
 from source.T7_Graphs.P3_Weighted.L8_PlainGraph import PlainGraph, inputGraphWithRandomVertexPositions
-from source.T7_Graphs.P2_Nonweighted.L4_Ways import waySearch, waySearchByWave
+from source.T7_Graphs.P2_Nonweighted.L4_Ways import waySearch
 from source.T7_Graphs.P3_Weighted.L9_AStar import AStar
-from source.T7_Graphs.P3_Weighted.L3_BelmanFord import BelmanFord, BelmanFordOptimized
+from source.T7_Graphs.P3_Weighted.L3_BelmanFord import BelmanFord
 from source.T7_Graphs.P3_Weighted.L6_Dijkstra import Dijkstra
 
 
@@ -26,10 +27,8 @@ if __name__ == "__main__":  # Для тестування
 
     startV = 2
 
-    way, way_weight = waySearch(g, startV, points)
-    show_way(way, way_weight, "Wave algorithm                        ")
-    way, way_weight = waySearchByWave(g, startV, points)
-    show_way(way, way_weight, "Wave algorithm                        ")
+    way = waySearch(g, startV, points)
+    show_way(way, len(way)-1, "Wave algorithm                        ")
     print("===================")
     way, way_weight = BelmanFord(g, startV, points)
     show_way(way, way_weight, "Bellman-Ford algorithm                ")

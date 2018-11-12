@@ -1,7 +1,10 @@
-from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
-from source.T7_Graphs.P2_Nonweighted.L2_BFS import BFS
-from source.T7_Graphs.P2_Nonweighted.L1_DFS import DFS
+from random import Random
+
 from source.T7_Graphs.P2_Nonweighted.L4_Ways import waySearch
+from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
+from source.T7_Graphs.P3_Weighted.L5_BelmanFordOptimized import BelmanFordOptimized
+from source.T7_Graphs.P3_Weighted.L6_Dijkstra import Dijkstra
+from source.T7_Graphs.P3_Weighted.__test_weighted import show_way
 
 
 def showWay(vertices: list, weight, tag):
@@ -17,24 +20,56 @@ def showWay(vertices: list, weight, tag):
     print(vertices[-1])
 
 
+
+def inputGraphRandom(vertices, edges):
+    """ Ініціалізація графу випадковим чином.
+
+    Заповнює граф вершинами з випадковими позиціями та ребрами з випадковою вагою
+
+    :param graph:    Порожній граф
+    :param vertices: Кількість вершин
+    :param edges:    Кількість ребер
+    :return: None
+    """
+
+    graph = GraphForAlgorithms()
+
+    for v in range(vertices + 1):
+        graph.addVertex(v)
+
+    for e in range(edges):
+        rnd = Random()
+        frm = rnd.randint(1, vertices)
+        to = rnd.randint(1, vertices)
+        if frm != to:
+            graph.addEdge(frm, to)
+    return graph
+
+
 if __name__ == "__main__":
-    g = GraphForAlgorithms(False)  # Створюємо орієнтований граф
+    points = 40
+    edges = 50
 
-    g.addEdge(0, 1)
-    g.addEdge(0, 5)
-    g.addEdge(1, 2)
-    g.addEdge(2, 3)
-    g.addEdge(3, 4)
-    g.addEdge(3, 5)
-    g.addEdge(4, 0)
-    g.addEdge(5, 4)
-    g.addEdge(5, 2)
-    g.addEdge(6, 7)
+    startV = 1
 
-    BFS(g, 0)
+    g = inputGraphRandom(points, edges)  # Створюємо неорієнтований граф
 
-    DFS(g, 0)  # запускаємо DFS з вершини 0
+    # BFS(g, 0)
+    #
+    # DFS(g, 0)  # запускаємо DFS з вершини 0
 
-    way, way_weight = waySearch(g, 0, 5)
-    showWay(way, way_weight, "Wave algorithm1                        ")
+    way = waySearch(g, startV, points)
+    lenth = 0 if way is None else len(way) - 1
+    showWay(way, lenth, "Wave algorithm1                        ")
+    #
+    # dist = wave(g, 1)
+    # print(dist[points])
 
+    print("===================")
+    way, way_weight = Dijkstra(g, startV, points)
+    show_way(way, way_weight, "Dijkstra algorithm                    ")
+    print("===================")
+    print("===================")
+    way, way_weight = BelmanFordOptimized(g, startV, points)
+    show_way(way, way_weight, "Optimization of Bellman-Ford algorithm")
+    print("===================")

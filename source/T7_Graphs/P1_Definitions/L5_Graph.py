@@ -1,7 +1,5 @@
 from random import Random
-
 from source.T7_Graphs.P1_Definitions.L4_Vertex import Vertex
-
 
 class Graph:
     """ Граф, що задається списком суміжних вершин """
@@ -27,7 +25,7 @@ class Graph:
 
         new_vertex = Vertex(vertex)  # створюємо нову вершину з іменем Vertex
         self.mVertices[vertex] = new_vertex  # додаємо цю вершину до списку вершин графу
-        self.mVertexNumber += 1                  # Збільшуємо лічильник вершин у графі
+        self.mVertexNumber += 1      # Збільшуємо лічильник вершин у графі
         return True
 
     def getVertex(self, vertex):
@@ -49,14 +47,13 @@ class Graph:
     def addEdge(self, source, destination, weight=1):
         """ Додавання ребра з кінцями в точках source та destination з вагою weight
 
-        :param source: Перша вернина
+        :param source:      Перша вернина
         :param destination: Друга вершина
-        :param weight: Вага ребра
-        :return: None
+        :param weight:      Вага ребра
         """
-        if source not in self:            # Якщо вершина source ще не міститься у графі
+        if source not in self:           # Якщо вершина source ще не міститься у графі
             self.addVertex(source)       # додаємо вершину source
-        if destination not in self:       # Якщо вершина destination ще не міститься у графі
+        if destination not in self:      # Якщо вершина destination ще не міститься у графі
             self.addVertex(destination)  # додаємо вершину destination
 
         # Встановлюємо зв'язок (тобто ребро) між вершинами source та destination
@@ -69,10 +66,10 @@ class Graph:
         """ Встановлення навантаження вершини
 
         :param vertex: ключ вершини або вершина графа
-        :param data: навантаження
+        :param data:   навантаження
         :return: None
         """
-        assert vertex in self # Перевірка чи міститься вершина в графі
+        assert vertex in self  # Перевірка чи міститься вершина в графі
         self[vertex].setData(data)
 
     def getData(self, vertex):
@@ -371,14 +368,25 @@ def inputGraphNet(gr):
     gr.addEdge(6, 4)
 
 
+
+def exampleNonorientedHandBook():
+    g = Graph()  # Створюємо неорієнтований граф
+
+    g.addEdge(1, 2)  # ребра (1, 2) та (2, 1)
+    g.addEdge(1, 3)  # ребра (1, 3) та (1, 3)
+    g.addEdge(1, 4)  # ребра (1, 4) та (4, 1)
+    g.addEdge(2, 3)  # ребра (2, 3) та (3, 2)
+    g.addEdge(2, 4)  # ребра (2, 4) та (4, 2)
+    g.addEdge(2, 5)  # ребра (2, 5) та (5, 2)
+    g.addEdge(3, 4)  # ребра (3, 4) та (4, 3)
+    g.addEdge(3, 5)  # ребра (3, 5) та (5, 3)
+    g.addEdge(3, 6)  # ребра (3, 6) та (6, 3)
+    g.addEdge(4, 5)  # ребра (4, 5) та (5, 4)
+    g.addEdge(4, 6)  # ребра (4, 6) та (6, 4)
+    g.addEdge(5, 6)  # ребра (5, 6) та (6, 6)
+
+    return g
+
+
 if __name__ == "__main__":  # Для тестування
-
-    g = Graph(True)  # Створюємо орієнтований граф
-
-    # inputConcreteGraph2(g)
-
-    points = 10
-    edges = 20
-    inputRandomGraph(g, points, edges)
-
-    print(g)
+    exampleNonorientedHandBook()

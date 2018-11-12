@@ -2,6 +2,8 @@ import sys
 
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
+from source.T7_Graphs.P1_Definitions.L5_Graph import exampleNonorientedHandBook
+from source.T7_Graphs.P3_Weighted.L8_PlainGraph import PlainGraph, inputGraphWithRandomVertexPositions
 from source.utils.benchmark import benchmark
 
 
@@ -14,46 +16,51 @@ def waySearch(graph, start, end):
 
     :param graph: Граф
     :param start: Початкова вершина
-    :param end: Кінцева вершина
-    :return: Кортеж, що містить список вершин - найкоротший шлях, що сполучає вершини start та end та його вагу
+    :param end:   Кінцева вершина
+    :return: список вершин найкоротшого шляху, що сполучає вершини start та end
     """
 
     assert start != end
 
-    distances = [-1] * len(graph)   # Масив відстаней
-    sources = [None] * len(graph)     # Масив вершин звідки прийшли
+    # Словник, що для кожної вершини (ключ) містить ключ вершини з якої прийшли у поточну
+    sources = {start: None}  # Для стартової вершини не визначено звідки в неї прийшли.
 
     q = Queue()           # Створюємо чергу
     q.enqueue(start)      # Додаємо у чергу стартову вершину
-    distances[start] = 0  # Відстань від стартової точки до себе нуль.
 
     while not q.empty():
-
         current = q.dequeue()  # Беремо перший елемент з черги
-
         # Додаємо в чергу всіх сусідів поточного елементу
         for neighbour in graph[current].neighbors():
-            if distances[neighbour] == -1:  # які ще не були відвідані
+            if neighbour not in sources:  # які ще не були відвідані
                 q.enqueue(neighbour)
-                distances[neighbour] = distances[current] + 1
-                sources[neighbour] = current  # Вказуємо для сусіда neighbour,
-                                              # що ми прийшли з вершини current
+                # при цьому для кожної вершини запам'ятовуємо вершину з якої прийшли
+                sources[neighbour] = current
 
-    if sources[end] is None:  # шляху не існує
-        return None, INF
+
+    if end not in sources:  # шляху не існує
+        return None
 
     # будуємо шлях за допомогою стеку
     stack = Stack()
     current = end
-    while True:
+    while current != start:
         stack.push(current)
-        if current == start:
-            break
         current = sources[current]
+    stack.push(current)
+
 
     way = []  # Послідовність вершин шляху
     while not stack.empty():
         way.append(stack.pop())
 
-    # Повертаємо шлях та його довжину
-    return way, distances[end]
+    # Повертаємо шлях
+    return way
+
+
+if __name__ == "__main__":  # Для тестування
+
+    g = exampleNonorientedHandBook()  # Створюємо неорієнтований граф
+    way = waySearch(g, 1, 5)
+    print(way)
+
