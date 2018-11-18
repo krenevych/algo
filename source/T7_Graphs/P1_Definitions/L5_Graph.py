@@ -81,8 +81,8 @@ class Graph:
         assert vertex in self  # Перевірка чи міститься вершина в графі
         return self[vertex].data()
 
-    def inverse(self):
-        """ Будує граф інвертований до заданого
+    def transpose(self):
+        """ Будує граф транспонований до заданого
 
         :return: Новий граф, що є інвертованим до заданого
         """

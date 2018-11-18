@@ -21,7 +21,7 @@ def __dfs_helper(graph, visited, start):
     :param visited: Відвідані вершин
     :param start:   Вершина з якої відбувається запуск обходу в глибину
     """
-    print(start, end=" ")    # Опрацьовуємо елемент на вході
+    # print(start, end=" ")    # Опрацьовуємо елемент на вході
     visited.add(start)       # Помічаємо стартовий елемент як відвіданий
     # для всіх сусідів стартового елементу
     for neighbour in graph[start].neighbors():
@@ -51,7 +51,7 @@ def exampleNonorientedHandBook2():
     g.addEdge(9, 12)
     return g
 
-def example():
+def exampleOrientedHandBook():
     g = Graph(True)  # Створюємо орієнтований граф
 
     g.addEdge(1, 2)  # ребро (1, 2)
@@ -69,13 +69,12 @@ def example():
 
 if __name__ == "__main__":  # Для тестування
 
-
-    g = exampleNonorientedHandBook2()
+    g = exampleOrientedHandBook()
 
     DFS(g, 1)
-    # print()
-    # DFS(g, 5)
-    # print()
-    # DFS(g, 4)
-    # print()
-    # DFS(g, 2)
+    print()
+    DFS(g, 5)
+    print()
+    DFS(g, 4)
+    print()
+    DFS(g, 2)
