@@ -1,51 +1,16 @@
 from source.T5_LinearStructure.P2_Queue.Queue import Queue
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
-
-WALL_CELL = 0  # Не прохідна клітина лабіринту або його стіна
-
-def readMazeFromFile(aFileName, M):
-    # Функція зчитуванння лабіринту з файлу
-    maze = []  # Створення порожньої матриці для задавання лабіринту
-
-    global WALL_CELL
-
-    row0 = [WALL_CELL] * (M + 2)  # перший рядок матриці, що визначає верхіню стіну
-    maze.append(row0)
-
-    # Зчитуванння лабіринту з файлу
-    with open(aFileName) as f:
-        for str_row in f:
-            row = list(map(int, str_row.split()))    # Перетворення рядка у список цілих чисел
-
-            if len(row) == 0:  # Захист від зайвих рядків у кінці файлу
-                break
-
-            # додавання лівої та правої "стіни" лабіринту
-            row.insert(0, WALL_CELL)
-            row.append(WALL_CELL)
-
-            maze.append(row) # додавання рядка до лабіринту
-
-    rowLast = [WALL_CELL] * (M + 2)  # останній рядок матриці, що визначає нижню стіну
-    maze.append(rowLast)
-
-    return maze # Повертаємо створений лабіринт
-
-def showMaze(maze):
-    # функція форматованого виведення матриці лабіринту
-    for row in maze:
-        for el in row:
-            print("%7s" % (el,), end="")
-        print()
+from source.T7_Graphs.P4_Maizes.L1_Read import readMazeFromFile, showMaze, WALL_CELL
 
 
 def wave(maze, start, wall_cell):
-    """ функція побудови хвильової матриці для лібіринту
-        P4_Maizes зі стартовою точкою start
-        wall_cell - символ, що позначає стіну лабіринта або непрохідну його клітину"""
+    """ функція побудови хвильової матриці для лібіринту зі стартовою точкою start
 
-    # P4_Maizes - матриця лабіринту
-    # start - початкова позиція у лабіринті у вигляді кортежу (рядкок, стовпчик)
+    :param maze: Матриця лабіринту
+    :param start: Початкова точка лабіринту
+    :param wall_cell: символ, що позначає стіну лабіринта або непрохідну його клітину
+    :return: хвильову матрицю та sources-матрицю
+    """
 
     dx = [-1, 0, 1, 0]
     dy = [0, -1, 0, 1]
@@ -53,8 +18,8 @@ def wave(maze, start, wall_cell):
     # dx = [-1, -1, 0, 1, 1, 1, 0, -1]
     # dy = [0, -1, -1, -1, 0, 1, 1, 1]
 
-    n = len(maze)     # кількість рядків у матриці P4_Maizes
-    m = len(maze[0])  # кількість стовпчиків у матриці P4_Maizes
+    n = len(maze)     # кількість рядків у матриці maze
+    m = len(maze[0])  # кількість стовпчиків у матриці maze
 
     # створення та ініціалізація хвильової матриці
     # такої ж розмірності, що і матриця лабіринту
@@ -70,7 +35,7 @@ def wave(maze, start, wall_cell):
         row = [None] * m
         sources.append(row)
 
-    q = Queue()        # Створюємо чергу
+    q = Queue()       # Створюємо чергу
     q.enqueue(start)  # Додаємо у чергу координати стартової клітини
     waveMatrix[start[0]][start[1]] = 0  # Відстань від стартової клітини до себе нуль
 
@@ -166,8 +131,6 @@ def drawWayInMatrix(source, start, end, TAG):
 
 if __name__ == "__main__":
     maze = readMazeFromFile("maze1.txt", 7)
-    showMaze(maze)
-    print()
 
     mazeM, source = wave(maze, (3, 3), WALL_CELL)
 
