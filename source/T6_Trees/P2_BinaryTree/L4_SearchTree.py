@@ -7,6 +7,18 @@ class SearchTree(BinaryTree):
      Реалізує структуру даних, у якій вставка та пошук елементів здійснюється
      (в середньому) за логарифмічний час. """
 
+    def find(self, key):
+        node = self
+        while node != 0:
+            if node.mKey == key:
+                return node
+            elif node.mKey > key:
+                node = node.mLeftChild
+            else:
+                node = node.mRightChild
+
+        return None
+
     def search(self, key):
         """ Метод, що реалізує пошук елемента item у бінарному дереві
 
@@ -40,6 +52,27 @@ class SearchTree(BinaryTree):
         """
         self._insert_helper(self, key)  # запускаємо вставку елемента key у дерево, починаючи з кореня
 
+    def insert2(self, key):
+        if self.empty():                # якщо піддерево з коренем startNode порожнє
+            self.setNode(key)           # вставляємо елемент item
+        else:
+            node = self
+            while True:
+                if node.mKey == key:
+                    break
+                elif node.mKey > key:
+                    if node.hasLeft():
+                        node = node.mLeftChild
+                    else:
+                        node.setLeft(key)
+                        break
+                elif node.mKey < key:
+                    if node.hasRight():
+                        node = node.mRightChild
+                    else:
+                        node.setRight(key)
+                        break
+
     def _insert_helper(self, root, key):
         """ Допоміжний рекурсиввий метод, для вставки заданого елемента у задане піддерево.
 
@@ -47,18 +80,16 @@ class SearchTree(BinaryTree):
         :param key: Елемент для вставки
         """
 
-        if root.empty():                # якщо піддерево з коренем startNode порожнє
-            root.setNode(key)           # вставляємо елемент item
+        if root.empty():                 # якщо піддерево з коренем startNode порожнє
+            root.setNode(key)            # вставляємо елемент item
         else:
-
-            if key < root.mKey:         # якщо елемент для вставки має міститися у лівому піддереві
-                if root.hasLeft():      # якщо дерево має лівого нащадка
+            if root.mKey > key:          # якщо елемент для вставки має міститися у лівому піддереві
+                if root.hasLeft():       # якщо дерево має лівого нащадка
                     #  запускаємо рекурсивно вставку item у ліве піддерево
                     self._insert_helper(root.mLeftChild, key)
-                else:                   # якщо дерево не має лівого нащадка
-                    root.setLeft(key)   # додаємо item у ролі лівого нащадка
-
-            elif key > root.mKey:        # якщо елемент для вставки має міститися у правому піддереві
+                else:                    # якщо дерево не має лівого нащадка
+                    root.setLeft(key)    # додаємо item у ролі лівого нащадка
+            elif root.mKey < key:        # якщо елемент для вставки має міститися у правому піддереві
                 if root.hasRight():      # якщо дерево має правого нащадка
                     #  запускаємо рекурсивно вставку item у праве піддерево
                     self._insert_helper(root.mRightChild, key)
@@ -73,6 +104,15 @@ class SearchTree(BinaryTree):
         """
         for item in items:
             self.insert(item)
+
+    def addItems2(self, *items):
+        """ Додає послідовність елементів у дерево пошуку
+
+        :param items: Послідовність елементів, що додаються у дерево пошуку
+        :return: None
+        """
+        for item in items:
+            self.insert2(item)
 
 
 if __name__ == "__main__":
