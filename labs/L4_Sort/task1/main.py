@@ -1,7 +1,7 @@
 import time
 
 import numpy
-import sort
+import user
 
 N = 1000000  # Кількість елементів масиву
 
@@ -22,7 +22,7 @@ def testSort():
 
     s = numpy.random.randint(0, 100000, N)
     t = time.process_time()
-    sort.sort(s)
+    user.sort(s)
     dt = time.process_time() - t
     print('Sorting time: ', dt)
     checkResult(s)
