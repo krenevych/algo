@@ -5,7 +5,7 @@ def merge_sort(array):
     :param array: Масив (список однотипових елементів)
     :return: None
     """
-    print("Splitting ", array)
+    # print("Splitting ", array)
     if len(array) > 1:
         # Розбиття списку навпіл
         mid = len(array) // 2
