@@ -14,15 +14,14 @@ def binary_continuous(f, c, a, b):
     left = a                  # лівий кінець відрізка
     right = b                 # правий кінець відрізка
 
-    while True:
-        m = (left + right) / 2.0  # середина відрізка [left,right]
-        if left != m and m != right:
-            break
-
+    m = (left + right) / 2.0  # середина відрізка [left,right]
+    while left != m and m != right:
         if f(m) < c:
-            left = m   # [left,right] = [x,right]
+            left = m  # [left,right] = [x,right]
         else:
             right = m  # [left,right] = [left,x]
+
+        m = (left + right) / 2.0  # середина відрізка [left,right]
 
     return left
 

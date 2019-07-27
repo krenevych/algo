@@ -1,120 +1,56 @@
-import time
-from random import randint
+import math
 
 import user
+eps = 0.0000000001
 
-dictionary = {}
-eng_lst = []
-
-
-def readData(fname):
-    global dictionary, eng_lst
-    dictionary = {}
-    eng_lst = []
-    eng, translation = "", ""
-    with open(fname, encoding='utf-8') as f_in:
-        for line in f_in:
-            word = line.strip()
-            if eng == "":
-                eng = word
-            else:
-                translation = word
-                dictionary[eng] = translation
-                eng_lst.append(eng)
-                eng, translation = "", ""
-
-    # eng_lst.sort()
-    for eng in eng_lst:
-        user.addTranslation(eng, dictionary[eng])
+def case1():
+    f = lambda x: math.tan(x) - 2.0 * x
+    a = 0.5
+    b = 1.5
+    c = 0
+    r = user.solve(f, c, a, b)
+    print("Case 1: ", abs(c - f(r)) <= eps)
 
 
-invalid_eng = []
+def case2():
+    f = math.sin
+    a = 0
+    b = 1.5
+    c = 0.5
+    r = user.solve(f, c, a, b)
+    print("Case 2: ", abs(c - f(r)) <= eps)
 
 
-def read_invalid_data(fname):
-    global dictionary, invalid_eng
-    invalid_eng = []
-    with open(fname, encoding='utf-8') as f_in:
-        for line in f_in:
-            word = line.strip()
-            if word in dictionary:
-                continue
-
-            invalid_eng.append(word)
+def case3():
+    f = math.cos
+    a = 0
+    b = 1.5
+    c = 0.5
+    r = user.solve_decreasing(f, c, a, b)
+    print("Case 3: ", abs(c - f(r)) <= eps)
 
 
-def check(test_cases_num):
-    global dictionary, eng_lst
-
-    size = len(eng_lst)
-    errors = 0
-    for i in range(test_cases_num):
-        num = randint(0, size - 1)
-        eng = eng_lst[num]
-
-        t = time.time()
-        user_search = user.find(eng)
-        t1 = time.time()
-        dt = t1 - t
-        dt *= 100000
-        # print('eng = %s, user_search = %s,  find time: %d ms' % (eng, user_search, dt))
-        # print('find time: %d ms' % dt)
-        if user_search != dictionary[eng] or dt > 100:
-            errors += 1
-
-    return errors
+def case4():
+    f = lambda x: 4 - x ** 2
+    a = 0.4
+    b = 1.9
+    c = 2.7
+    r = user.solve_decreasing(f, c, a, b)
+    print("Case 4: ", abs(c - f(r)) <= eps)
 
 
-def checkInvalid(test_cases_num):
-    global dictionary, eng_lst, invalid_eng
-
-    size = len(invalid_eng)
-    errors = 0
-    for i in range(test_cases_num):
-        num = randint(0, size - 1)
-        eng = invalid_eng[num]
-        if eng in dictionary:
-            continue
-
-        t = time.time()
-        user_search = user.find(eng)
-        t1 = time.time()
-        dt = t1 - t
-        dt *= 100000
-        # print('eng = %s, user_search = %s,  find time: %d ms' % (eng, user_search, dt))
-        # print('find time: %d ms' % dt)
-        if user_search != "" or dt > 100:
-            errors += 1
-
-    return errors
-
-
-def generate_invalid(fname, N):
-    f_out = open(fname, "w", encoding='utf-8')
-    for i in range(N):
-        chars = randint(3, 20)
-        word = ""
-        for j in range(chars):
-            ch = randint(0, 25)
-            word += chr(ord('a') + ch)
-        print(word, file=f_out, end="\n")
-    f_out.close()
-
-
-def main():
-    readData("dictionary.txt")
-    # generate_invalid("invalid_words.txt", 1000)
-    read_invalid_data("invalid_words.txt")
-    valid_test_num = 100
-    inval_test_num = 100
-    valid_score = valid_test_num - check(valid_test_num)
-    inval_score = inval_test_num - checkInvalid(inval_test_num)
-
-    score = 100 * (valid_score + inval_score) / (valid_test_num + inval_score)
-
-    print("Score: %d%%" % score)
+def case5():
+    f = lambda x: x ** 3
+    a = 0.4
+    b = 9.9
+    c = 7.345
+    r = user.solve(f, c, a, b)
+    print("Case 5: ", abs(c - f(r)) <= eps)
 
 
 if __name__ == "__main__":
-    main()
-
+    case1()
+    case2()
+    case3()
+    case4()
+    case5()

@@ -1,26 +1,21 @@
-array = []
+"""
+Реалізуйте інтерфейс для роботи з англійсько-українським словником та швидким пошуком перекладу.
+"""
 
 
 def addTranslation(eng, translation):
-    global array
-    array.append((eng, translation))
+    """ Додає до словника англійське слово та його переклад.
+    Пари приходяться у порядку, що відповідає лексикографічному порядку.
+
+    :param eng: англійське слово
+    :param translation: переклад
+    """
+    pass
 
 
 def find(eng):
-
-    # for w in array:
-    #     if eng == w[0]:
-    #         return w[1]
-
-    # left = 0  # Індекс лівого елементу
-    # right = len(array) - 1  # Індекс правого елементу
-    # while left <= right:
-    #     m = left + (right - left) // 2  # Середина відрізка
-    #     if eng > array[m][0]:
-    #         left = m + 1
-    #     elif eng < array[m][0]:
-    #         right = m - 1
-    #     else:
-    #         return array[m][1]
-
+    """ Повертає переклад слова зі словника.
+    :param eng: англійське слово
+    :return: переклад слова, якщо воно міститься у словнику, або порожній рядок у іншому разі.
+    """
     return ""

@@ -1,4 +1,7 @@
-from source.T3_Find_Search.P2_Sort.L5_quick_1 import qsort
+
+"""
+Реалізуйте підпрограму сортування масиву.
+"""
 
 
 def sort(array):
@@ -6,5 +9,4 @@ def sort(array):
     :param array: Вхідний масив даних, що треба відсортувати.
     """
     pass  # TODO: implement
-    qsort(array, 0, len(array)-1)
 

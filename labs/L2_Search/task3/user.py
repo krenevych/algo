@@ -1,26 +1,30 @@
-array = []
+"""
+Для монотонної на відрізку [a, b] функції f розв'яжіть рівняння
+                     f(x) = c
+"""
 
 
-def addTranslation(eng, translation):
-    global array
-    array.append((eng, translation))
+def solve(f, c, a, b):
+    """ Для неспадної на відрізку [a, b] функції f розв'язує рівняння
+                     f(x) = c
+
+    :param f: Монотонна функція
+    :param c: Шукане значення
+    :param a: Ліва межа проміжку на якому здійснюється пошук
+    :param b: Права межа проміжку на якому здійснюється пошук
+    :return: Розв'язок рівняння
+    """
+    return a
 
 
-def find(eng):
+def solve_decreasing(f, c, a, b):
+    """ Для незростаючої на відрізку [a, b] функції f розв'язує рівняння
+                     f(x) = c
 
-    # for w in array:
-    #     if eng == w[0]:
-    #         return w[1]
-
-    left = 0  # Індекс лівого елементу
-    right = len(array) - 1  # Індекс правого елементу
-    while left <= right:
-        m = left + (right - left) // 2  # Середина відрізка
-        if eng > array[m][0]:
-            left = m + 1
-        elif eng < array[m][0]:
-            right = m - 1
-        else:
-            return array[m][1]
-
-    return ""
+    :param f: Монотонна функція
+    :param c: Шукане значення
+    :param a: Ліва межа проміжку на якому здійснюється пошук
+    :param b: Права межа проміжку на якому здійснюється пошук
+    :return: Розв'язок рівняння
+    """
+    return a
