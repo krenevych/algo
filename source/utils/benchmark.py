@@ -13,4 +13,4 @@ def benchmark(f):
         print('{0} time elapsed {1:.8f}'.format(f.__name__, t))
         return rez
     return _benchmark
-        
+

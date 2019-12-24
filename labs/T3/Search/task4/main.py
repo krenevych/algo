@@ -1,6 +1,5 @@
 from random import randint
 from time import process_time
-
 import numpy
 import user
 
@@ -9,15 +8,21 @@ def test(TestName, N, M):
     arr = numpy.random.randint(0, M, N)
     arr.sort()
 
-    errors = 0
+    unique, counts = numpy.unique(arr, return_counts=True)
+    d = dict(zip(unique, counts))
 
+    errors = 0
     dt = process_time()
     for i in range(N):
         v = randint(0, M)
-        r = user.bsearch_leftmost(arr, v)
 
-        if (r != 0 and arr[r - 1] >= v) or (r != N and arr[r] < v):
+        r = user.counter(arr, v)
+
+        if v not in d and r > 0:
             errors += 1
+        elif v in d and r != d[v]:
+            errors += 1
+
     dt = process_time() - dt
     print(TestName, " Errors: %6d" % errors, " Running time: %2.5f" % dt)
 

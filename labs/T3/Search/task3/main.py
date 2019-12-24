@@ -1,56 +1,27 @@
-import math
-
+from random import randint
+from time import process_time
+import numpy
 import user
-eps = 0.0000000001
-
-def case1():
-    f = lambda x: math.tan(x) - 2.0 * x
-    a = 0.5
-    b = 1.5
-    c = 0
-    r = user.solve(f, c, a, b)
-    print("Case 1: ", abs(c - f(r)) <= eps)
 
 
-def case2():
-    f = math.sin
-    a = 0
-    b = 1.5
-    c = 0.5
-    r = user.solve(f, c, a, b)
-    print("Case 2: ", abs(c - f(r)) <= eps)
+def test(TestName, N, M):
+    arr = numpy.random.randint(0, M, N)
+    arr.sort()
 
+    errors = 0
+    dt = process_time()
+    for i in range(N):
+        v = randint(0, M)
+        r = user.bsearch_rightmost(arr, v)
 
-def case3():
-    f = math.cos
-    a = 0
-    b = 1.5
-    c = 0.5
-    r = user.solve_decreasing(f, c, a, b)
-    print("Case 3: ", abs(c - f(r)) <= eps)
+        if (r != -1 and arr[r] > v) or (r < N - 1 and arr[r + 1] <= v):
+            errors += 1
 
-
-def case4():
-    f = lambda x: 4 - x ** 2
-    a = 0.4
-    b = 1.9
-    c = 2.7
-    r = user.solve_decreasing(f, c, a, b)
-    print("Case 4: ", abs(c - f(r)) <= eps)
-
-
-def case5():
-    f = lambda x: x ** 3
-    a = 0.4
-    b = 9.9
-    c = 7.345
-    r = user.solve(f, c, a, b)
-    print("Case 5: ", abs(c - f(r)) <= eps)
+    dt = process_time() - dt
+    print(TestName, " Errors: %6d" % errors, " Running time: %2.5f" % dt)
 
 
 if __name__ == "__main__":
-    case1()
-    case2()
-    case3()
-    case4()
-    case5()
+    test("TEST #1", 100000, 100000)
+    test("TEST #2", 100, 100000)
+    test("TEST #3", 100000, 100)
