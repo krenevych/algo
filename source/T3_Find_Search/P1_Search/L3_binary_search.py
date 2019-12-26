@@ -3,19 +3,21 @@ def binary_search(array, x):
 
     :param array: Список елементів
     :param x: Шуканий елемент
-    :return: True, якщо шуканий елемент знайдено
+    :return: Індекс шуканого елементу
     """
     left = 0                # Індекс лівого елементу
     right = len(array) - 1  # Індекс правого елементу
 
-    while left < right:
-        m = left + (right - left) // 2  # Індекс середнього елементу
+    while left <= right:
+        m = left + (right - left) // 2  # Середина відрізка
         if x > array[m]:
             left = m + 1
+        elif x < array[m]:
+            right = m - 1
         else:
-            right = m
+            return m
 
-    return array[right] == x
+    return None
 
 
 if __name__ == "__main__":
