@@ -12,13 +12,5 @@ def bsearch_leftmost(array, x):
     :param x:     Шукане число
     :return:      Номер шуканого елемента у масиві
     """
-    left = 0  # Індекс лівого елементу
-    right = len(array)  # Індекс правого елементу
-    while left < right:
-        m = left + (right - left) // 2  # Середина відрізка
-        if array[m] < x:
-            left = m + 1
-        else:
-            right = m
-
-    return left
+    # TODO: реалізуйте алгоритм тут
+    return 0
