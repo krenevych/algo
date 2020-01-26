@@ -1,10 +1,4 @@
-class Node:
-    """ Допоміжний клас - вузол списку. """
-
-    def __init__(self, item):
-        """ Конструктор """
-        self.mItem = item   # навантаження вузла
-        self.mNext = None   # посилання на наступний вузол списку
+from source.T5_LinearStructure.P3_List.L1_Node import Node
 
 
 class ListWithCurrent:

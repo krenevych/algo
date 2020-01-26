@@ -1,10 +1,4 @@
-class Node:
-    """ Допоміжний клас - вузол списку. """
-
-    def __init__(self, item):
-        """ Конструктор """
-        self.mItem = item   # навантаження вузла
-        self.mNext = None   # посилання на наступний вузол списку
+from source.T5_LinearStructure.P3_List.L1_Node import Node
 
 
 class ListWithCurrent:
@@ -30,7 +24,7 @@ class ListWithCurrent:
         """
         if self.mCurr is not None:
             self.mPrev = self.mCurr
-            self.mCurr = self.mCurr.next
+            self.mCurr = self.mCurr.mNext
         else:
             raise StopIteration
 
@@ -40,7 +34,7 @@ class ListWithCurrent:
         :return: Навантаження поточного елементу
         """
         if self.mCurr is not None:
-            return self.mCurr.item
+            return self.mCurr.mItem
         else:
             return None
 
