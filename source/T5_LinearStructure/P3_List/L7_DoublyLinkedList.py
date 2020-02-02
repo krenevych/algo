@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P3_List.L5_Node import Node
+from source.T5_LinearStructure.P3_List.L6_Node import Node
 
 
 class DoublyLinkedList:

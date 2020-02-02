@@ -1,4 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from source.T5_LinearStructure.P3_List.L1_Node import Node
+from source.T5_LinearStructure.P3_List.L4_ListIterator import ListIterator
 
 
 class ListWithCurrent:
@@ -18,8 +22,7 @@ class ListWithCurrent:
         return self.mHead is None
 
     def reset(self):
-        """ Зробити поточний елемент першим.
-        """
+        """ Зробити поточний елемент першим."""
         self.mCurr = self.mHead
         self.mPrev = None
 
@@ -73,16 +76,11 @@ class ListWithCurrent:
         return str(self.current())
 
     def __iter__(self):
-        self.mIterator = self.mHead
-        return self
+        """ Спеціальний метод, що повертає ітератор для колекції
+        :return: Ітератор колекції
+        """
+        return ListIterator(self)
 
-    def __next__(self):
-        if self.mIterator is not None:
-            cur = self.mIterator.mItem
-            self.mIterator = self.mIterator.mNext
-            return cur
-        else:
-            raise StopIteration
 
 
 l = ListWithCurrent()
@@ -93,16 +91,16 @@ l.insert(14)
 l.insert(15)
 l.insert(16)
 
-l.reset()
-l.next()
-print(l)
+# l.reset()
+# l.next()
+# print(l)
 
-it = iter(l)
-while True:
-    try:
-        print(next(l))
-    except StopIteration:
-        break
+# it = iter(l)
+# while True:
+#     try:
+#         print(next(l))
+#     except StopIteration:
+#         break
 
 
 # l.reset()
@@ -116,5 +114,6 @@ while True:
 #
 # l.insert(555)
 # #
-# for el in l:
-#     print(el)
+for el in l:
+    print(el)
+

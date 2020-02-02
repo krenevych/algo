@@ -1,6 +1,6 @@
 #Лічилка з використанням деку
-from source.T5_LinearStructure.P2_Queue.counter_game import Player
-from source.T5_LinearStructure.P2_Queue.Deque import Deque
+from source.T5_LinearStructure.P2_Queue.examples.counter_game import Player
+from source.T5_LinearStructure.P2_Queue.L4_Deque import Deque
 
 
 def count_counter():

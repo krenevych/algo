@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P2_Queue.Queue import Queue
+from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
 from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree, createSampleTree
 
 

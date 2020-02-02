@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P2_Queue.Queue import Queue
+from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
 from source.T7_Graphs.P1_Definitions.L5_Graph import exampleNonorientedHandBook
 
 

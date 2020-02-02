@@ -1,4 +1,4 @@
-from source.T5_LinearStructure.P2_Queue.Queue import Queue
+from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
 from source.T7_Graphs.P4_Maizes.L1_Read import readMazeFromFile, showMaze, WALL_CELL
 

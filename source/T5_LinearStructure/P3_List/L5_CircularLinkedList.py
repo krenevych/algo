@@ -1,7 +1,7 @@
 from source.T5_LinearStructure.P3_List.L1_Node import Node
 
 
-class ListWithCurrent:
+class CircularLinkedList:
 
     def __init__(self):
         """ Конструктор - створює новий порожній список.
@@ -55,25 +55,20 @@ class ListWithCurrent:
 
         self.mPrev = node
 
+    def remove(self):
+        """ Видалити поточний елемент у списку """
+        pass  # TODO: Implement by yourself
+
     def __str__(self):
         return str(self.current())
 
 
-l = ListWithCurrent()
+l = CircularLinkedList()
 l.insert(1)
 l.insert(2)
 l.insert(3)
 l.insert(4)
 
-# print(l)
-# l.next()
-# print(l)
-#
-# l.next()
-#
-# print("===========")
-#
-# l.insert(777)
 
 print(l)
 l.next()
