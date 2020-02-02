@@ -1,4 +1,4 @@
-from source.T6_Trees.P2_BinaryTree.DFS_height import DFS_height
+from source.T6_Trees.P2_BinaryTree.examples.DFS_height import DFS_height
 from source.T6_Trees.P2_BinaryTree.L4_SearchTree import SearchTree
 
 
