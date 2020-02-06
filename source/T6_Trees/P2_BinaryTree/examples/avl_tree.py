@@ -77,26 +77,22 @@ class AVLTree(SearchTree):
                 AVLTree.rotateRight(node)
 
     @staticmethod
-    def __rotateLeft(node):
-        pivot = node.mRightChild
-        node.mRightChild = pivot.mLeftChild
+    def __rotateLeft(root):
+        pivot = root.mRightChild
+        root.mRightChild = pivot.mLeftChild
 
         if pivot.mLeftChild:
-            pivot.mLeftChild.mParent = node
+            pivot.mLeftChild.mParent = root
 
-        pivot.mLeftChild = node
+        pivot.mLeftChild = root
 
-        node_parent = node.mParent
-        node.mParent = pivot
+        node_parent = root.mParent
+        root.mParent = pivot
         pivot.mParent = node_parent
 
         # Оновлення фактору збалансованості
-        if pivot.mBalanceFactor == 0:
-            node.mBalanceFactor = -1
-            pivot.mBalanceFactor = 1
-        else:
-            node.mBalanceFactor = 0
-            pivot.mBalanceFactor = 0
+        root.mBalanceFactor = root.mBalanceFactor + 1 - min(pivot.mBalanceFactor, 0)
+        pivot.mBalanceFactor = pivot.mBalanceFactor + 1 + max(root.mBalanceFactor, 0)
 
         return pivot
 
@@ -109,26 +105,22 @@ class AVLTree(SearchTree):
             node_parent.mRightChild = AVLTree.__rotateLeft(node)
 
     @staticmethod
-    def __rotateRight(node):
-        pivot = node.mLeftChild
-        node.mLeftChild = pivot.mRightChild
+    def __rotateRight(root):
+        pivot = root.mLeftChild
+        root.mLeftChild = pivot.mRightChild
 
         if pivot.mRightChild:
-            pivot.mRightChild.mParent = node
+            pivot.mRightChild.mParent = root
 
-        pivot.mRightChild = node
+        pivot.mRightChild = root
 
-        node_parent = node.mParent
-        node.mParent = pivot
+        node_parent = root.mParent
+        root.mParent = pivot
         pivot.mParent = node_parent
 
         # Оновлення фактору збалансованості
-        if pivot.mBalanceFactor == 0:
-            node.mBalanceFactor = 1
-            pivot.mBalanceFactor = -1
-        else:
-            pivot.mBalanceFactor = 0
-            node.mBalanceFactor = 0
+        root.mBalanceFactor = root.mBalanceFactor - 1 - max(pivot.mBalanceFactor, 0)
+        pivot.mBalanceFactor = pivot.mBalanceFactor - 1 + min(root.mBalanceFactor, 0)
 
         return pivot
 
