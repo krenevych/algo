@@ -1,5 +1,5 @@
+from source.T6_Trees.P2_BinaryTree.L5_SearchTreeNoneRecurseImplementation import SearchTree
 from source.T6_Trees.P2_BinaryTree.examples.DFS_height import DFS_height
-from source.T6_Trees.P2_BinaryTree.L4_SearchTree import SearchTree
 
 
 class AVLTree(SearchTree):
@@ -77,6 +77,14 @@ class AVLTree(SearchTree):
                 AVLTree.rotateRight(node)
 
     @staticmethod
+    def rotateLeft(node):
+        node_parent = node.mParent
+        if node.isLeftChild():
+            node_parent.mLeftChild = AVLTree.__rotateLeft(node)
+        elif node.isRightChild():
+            node_parent.mRightChild = AVLTree.__rotateLeft(node)
+
+    @staticmethod
     def __rotateLeft(root):
         pivot = root.mRightChild
         root.mRightChild = pivot.mLeftChild
@@ -97,12 +105,12 @@ class AVLTree(SearchTree):
         return pivot
 
     @staticmethod
-    def rotateLeft(node):
+    def rotateRight(node):
         node_parent = node.mParent
         if node.isLeftChild():
-            node_parent.mLeftChild = AVLTree.__rotateLeft(node)
+            node_parent.mLeftChild = AVLTree.__rotateRight(node)
         elif node.isRightChild():
-            node_parent.mRightChild = AVLTree.__rotateLeft(node)
+            node_parent.mRightChild = AVLTree.__rotateRight(node)
 
     @staticmethod
     def __rotateRight(root):
@@ -123,14 +131,6 @@ class AVLTree(SearchTree):
         pivot.mBalanceFactor = pivot.mBalanceFactor - 1 + min(root.mBalanceFactor, 0)
 
         return pivot
-
-    @staticmethod
-    def rotateRight(node):
-        node_parent = node.mParent
-        if node.isLeftChild():
-            node_parent.mLeftChild = AVLTree.__rotateRight(node)
-        elif node.isRightChild():
-            node_parent.mRightChild = AVLTree.__rotateRight(node)
 
 
 ###########################################################
@@ -848,43 +848,25 @@ if __name__ == "__main__":
      119173, 126004, 883820, 993921, 867944, 190724, 536803, 817839, 741987, 637351, 61791, 330113, 766758, 19218,
      595641, 329405, 571452, 311887]
 
+    # s.sort()
+
     avl_tree = AVLTree()
     avl_tree.mIsRoot = True
     avl_tree.mKey = 9999999999999
+    avl_tree.addItems(*s)
 
     bin_tree = SearchTree()
-
-    avl_tree2 = AVLTree()
-    avl_tree2.mIsRoot = True
-    avl_tree2.mKey = 9999999999999
-
-    bin_tree2 = SearchTree()
-
-    # s = []
-    # for i in range(10000):
-    #     s.append(randint(0, 1000000))
-    #     # s.append(i)
-
-    avl_tree.addItems(*s)
     bin_tree.addItems(*s)
-    avl_tree2.addItems2(*s)
-    bin_tree2.addItems2(*s)
 
     h = DFS_height(avl_tree)
-    print(h)
+    print("AVL tree height =", h)
 
     h = DFS_height(bin_tree)
-    print(h)
-
-    h = DFS_height(avl_tree2)
-    print(h)
-
-    h = DFS_height(bin_tree2)
-    print(h)
+    print("Search tree height =", h)
 
     error = 0
     for i in s:
-        res = avl_tree.find(i)
+        res = avl_tree.search(i)
         if res is None:
             error += 1
 
@@ -892,7 +874,7 @@ if __name__ == "__main__":
 
     error = 0
     for i in s:
-        res = avl_tree.find(i)
+        res = avl_tree.search(i)
         if res is None:
             error += 1
 
