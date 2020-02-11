@@ -10,12 +10,6 @@ class AVLTree(SearchTree):
         self.mBalanceFactor = 0
         self.mIsRoot = False
 
-    def isLeftChild(self):
-        return self.mParent and self.mParent.mLeftChild == self
-
-    def isRightChild(self):
-        return self.mParent and self.mParent.mRightChild == self
-
     def setLeft(self, item):
         """ Змінює лівого сина.
 
@@ -29,7 +23,7 @@ class AVLTree(SearchTree):
         else:                                   # якщо дерево немає лівого сина
             self.mLeftChild = AVLTree(item)     # створюємо дерево з вузлом item та робимо його лівим сином
         self.mLeftChild.mParent = self
-        self.updateBalance(self.mLeftChild)
+        self.updateBalance(self.mLeftChild)     # оновлення балансу для предків вставленого вузла
 
     def setRight(self, item):
         """ Змінює правого сина
@@ -44,7 +38,13 @@ class AVLTree(SearchTree):
         else:                                    # якщо дерево немає правого сина
             self.mRightChild = AVLTree(item)     # створюємо дерево з вузлом item та робимо його правим сином
         self.mRightChild.mParent = self
-        self.updateBalance(self.mRightChild)
+        self.updateBalance(self.mRightChild)     # оновлення балансу для предків вставленого вузла
+
+    def isLeftChild(self):
+        return self.mParent and self.mParent.mLeftChild == self
+
+    def isRightChild(self):
+        return self.mParent and self.mParent.mRightChild == self
 
     @staticmethod
     def updateBalance(node):
