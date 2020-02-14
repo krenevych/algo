@@ -11,7 +11,7 @@ def init():
 
 
 def addBook(author, title):
-    """ Додати книгу до бібліотеки.
+    """ Додає книгу до бібліотеки.
     :param author: Автор книги
     :param title: Назва книги
     """
