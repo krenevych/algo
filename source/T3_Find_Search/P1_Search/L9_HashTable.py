@@ -1,4 +1,4 @@
-class HashTable1:
+class HashTable:
     """Хеш-таблиця у якій колізії розв'язуються методом лінійного зондування."""
 
     def __init__(self):
@@ -118,7 +118,7 @@ class HashTable1:
         return str(self.slots) + '\n' + str(self.data) + '\n'
 
 
-M = HashTable1()  # Створюємо таблицю
+M = HashTable()  # Створюємо таблицю
 M.put(55, "zz")   # додаємо пару (56, "zz")
 M.put(66, "AA")   # додаємо пару (66, "AA")
 M.put(66, "66")   # змінюємо значення за ключем 66
