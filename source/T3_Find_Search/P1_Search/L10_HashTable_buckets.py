@@ -33,15 +33,15 @@ class HashTable:
         :param value: значення
         :return: None
         """
-        hash_key: int = HashTable.hash(key)  # хеш ключа
-        slot: Node = self.slots[hash_key]    # поточний слот таблиці
+        hash_key = HashTable.hash(key)  # хеш ключа
+        slot = self.slots[hash_key]     # поточний слот таблиці
         while slot != None:
-            if slot.key == key:
-                slot.value = value
+            if slot.key == key:      # якщо ключ у таблиці знайдений
+                slot.value = value   # змінюємо значення
                 slot.valid = True
-                return
+                return  # припиняємо роботу методу
 
-            slot = slot.next
+            slot = slot.next  # переходмо до наступного елементу у ланцюжку
 
         # якщо ключ у таблиці не знайдений, додаємо новий вузол
         # з ключем та значенням у початок ланцюжка
@@ -55,12 +55,12 @@ class HashTable:
         :param key: ключ
         :return: значення
         """
-        hhh = HashTable.hash(key)  # Поточний слот таблиці
-        slot = self.slots[hhh]
+        hash_key = HashTable.hash(key)   # хеш ключа
+        slot = self.slots[hash_key]      # поточний слот таблиці
         while slot != None:
-            if slot.key == key:
-                return slot.value
-            slot = slot.next
+            if slot.key == key:    # якщо ключ у таблиці знайдений
+                return slot.value  # повертаємо значення, що відповідає ключу
+            slot = slot.next       # переходмо до наступного елементу у ланцюжку
 
         # якщо ключ у таблиці не знайдений
         return None
