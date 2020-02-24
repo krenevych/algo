@@ -1,66 +1,42 @@
-def quick_sort(array):
-    """ Реалізує алгоритм швидкого сортування
+# -*- coding: utf-8 -*-
 
-    :param array: Масив (список однотипових елементів)
-    :return: None
+def qsort(array, a, b):
+    """ Швидке сортування масиву
+
+    :param array: масив
+    :param a: ліва межа сортування
+    :param b: права межа сортування
     """
-    quick_sort_helper(array, 0, len(array) - 1)
 
-def quick_sort_helper(array, first, last):
-    """ Допоміжний рекурсивний метод,
-        що реалізує сортування фрагменту списку обмеженого заданими позиціями
+    if a >= b:
+        return
 
-    :param array: Масив (список однотипових елементів)
-    :param first: Ліва межа списку
-    :param last: Права межа списку
-    :return: None
-    """
-    if first < last:
-        # Визанчення точки розбиття спику
-        splitpoint = partition(array, first, last)
-        # Рекурсивний виклик функції швидкого сортування
-        # для отриманих частин списку
-        quick_sort_helper(array, first, splitpoint - 1)
-        quick_sort_helper(array, splitpoint + 1, last)
-
-def partition(array, first, last):
-    """ Визначає точку розбиття списку
-
-    :param array: Масив (список однотипових елементів)
-    :param first: Ліва межа списку
-    :param last: Права межа списку
-    :return: Позицію розбиття списку
-    """
-    pivot = array[first]
-    left = first + 1
-    right = last
-    done = False
-    while not done:
-        # Рухаємося зліва на право,
-        # поки не знайдемо елемент, що більший за опорний
-        while left <= right and array[left] <= pivot:
+    pivot = array[a + (b - a) // 2]  # опорний елемент
+    left = a                         # лівий маркер
+    right = b                        # правий маркер
+    while True:
+        while array[left] < pivot:   # Рухаємося зліва на право, поки не знайдемо
+                                     # елемент, що більший або рівний за опорний
             left += 1
 
-        # Рухаємося справа на ліво,
-        # поки не знайдемо елемент, що менший за опорний
-        while array[right] >= pivot and right >= left:
+        while pivot < array[right]:  # Рухаємося справа на ліво, поки не знайдемо
+                                     # елемент,що менший або рівний за опорний
             right -= 1
 
-        # Якщо індекс правого елемента менший за індекс лівого
-        if right < left:
-            # то розбиття списку завершено
-            done = True
-        else:
-            # міняємо знайдений елементи місцями
-            array[left], array[right] = array[right], array[left]
+        if left >= right:  # маркери вказують на один і той де елемент або
+                           # лівий маркер займає позицію праворуч від правого
+            break
 
-        # print(array)
-    # ставимо опорний елемент на його позицію
-    array[first], array[right] = array[right], array[first]
-    return right
+        array[left], array[right] = array[right], array[left]  # міняємо місцями елементи
+        left += 1          #  зміщуємо лівий маркер вправо
+        right -= 1         #  зміщуємо правий маркер вліво
+
+    #  рекурсивно повторюємо процедуру для лівого та правого підсписків
+    qsort(array, a, right)
+    qsort(array, right + 1, b)
 
 
 if __name__ == "__main__":
     a = [56, 12, 66, 20, 33, 95, 32, 13, 10]
-    quick_sort(a)
+    qsort(a, 0, len(a) - 1)
     print(a)
