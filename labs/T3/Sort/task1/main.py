@@ -3,9 +3,6 @@ import time
 import numpy
 import user
 
-N = 1000000  # Кількість елементів масиву
-
-
 def checkResult(array):
     """ Перевіряє впорядкованість масиву даних за зростанням
     :param array: масив
@@ -20,7 +17,7 @@ def checkResult(array):
 
 def testSort():
 
-    s = numpy.random.randint(0, 100000, N)
+    s = numpy.random.randint(0, 100000, user.N)
     t = time.process_time()
     user.sort(s)
     dt = time.process_time() - t
