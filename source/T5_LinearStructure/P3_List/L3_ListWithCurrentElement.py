@@ -11,7 +11,6 @@ class ListWithCurrent:
         """ Конструктор - створює новий порожній список.
         """
         self.mHead = None  # Перший вузол списку
-        self.mPrev = None  # Вузол, що передує поточному елементу списку
         self.mCurr = None  # Поточний вузол списку
 
     def empty(self):
@@ -24,7 +23,6 @@ class ListWithCurrent:
     def reset(self):
         """ Зробити поточний елемент першим."""
         self.mCurr = self.mHead
-        self.mPrev = None
 
     def next(self):
         """ Перейти до наступного елемента.
@@ -32,45 +30,34 @@ class ListWithCurrent:
         Породжує виключення StopIteration, якщо наступний елемент порожній
         :return: None
         """
-        if self.mCurr is not None:
-            self.mPrev = self.mCurr
-            self.mCurr = self.mCurr.mNext
-        else:
+        if self.empty() or self.mCurr.mNext is None:
             raise StopIteration
+        else:
+            self.mCurr = self.mCurr.mNext
 
     def current(self):
         """ Отримати поточний елемент
 
         :return: Навантаження поточного елементу
         """
-        if self.mCurr is not None:
-            return self.mCurr.mItem
-        else:
+        if self.empty():
             return None
+        else:
+            return self.mCurr.mItem
 
     def insert(self, item):
-        """ Вставити новий елемент у список перед поточним
+        """ Вставити новий елемент у список після поточного
 
         :param item: елемент, що вставляється у спиоск
         :return: None
         """
         node = Node(item)
-        node.mNext = self.mCurr
-
-        if self.mCurr == self.mHead:
+        if self.empty():
             self.mHead = node
-
-        if self.mPrev is not None:
-            self.mPrev.mNext = node
-
-        self.mPrev = node
-
-    def remove(self):
-        """ Видалити поточний елемент у списку
-
-        Видалення переставляє вказівник на поточний елемент на наступний
-        """
-        pass  # TODO: Implement by yourself
+            self.mCurr = node
+        else:
+            node.mNext = self.mCurr.mNext
+            self.mCurr.mNext = node
 
     def __str__(self):
         return str(self.current())
@@ -114,6 +101,34 @@ l.insert(16)
 #
 # l.insert(555)
 # #
+
+# for el in l:
+#     print(el)
+
+l.reset()
+print(l)
+l.next()
+print(l)
+l.next()
+print(l)
+l.next()
+print(l)
+l.next()
+print(l)
+l.next()
+
+
+#
+# print(l)
+# l.next()
+
+l.reset()
+l.insert(3333)
+
+l.insert(3333234)
+
+print()
+
 for el in l:
     print(el)
 
