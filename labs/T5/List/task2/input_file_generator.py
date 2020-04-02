@@ -12,6 +12,8 @@ commands = [
     "delete",
     "damp",
     "len",
+    "swap_prev",
+    "swap_next",
 ]
 
 def generate(fname, commands_number):

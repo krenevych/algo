@@ -148,8 +148,24 @@ def main(input_file):
                             error += 1
                             break
 
+            elif key == "swap_prev":
+                if len(_lst) == 0 or _cur == 0:
+                    continue
+
+                _lst[_cur - 1], _lst[_cur] = _lst[_cur], _lst[_cur - 1]
+                _cur -= 1
+                user.swap_prev()
+
+            elif key == "swap_next":
+                if len(_lst) == 0 or _cur == len(_lst) - 1:
+                    continue
+
+                _lst[_cur], _lst[_cur + 1] = _lst[_cur + 1], _lst[_cur]
+                _cur += 1
+                user.swap_next()
+
         score = 100 * (test_num - error) / test_num
-        return score
+        return score if score > 35 else 0
 
 
 if __name__ == "__main__":

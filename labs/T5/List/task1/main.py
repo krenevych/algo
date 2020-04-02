@@ -110,8 +110,7 @@ def main(input_file):
 
         score = 100 * (test_num - error) / test_num
 
-        return score
-
+        return score if score > 35 else 0
 
 if __name__ == "__main__":
     res1 = main("input01.txt")
