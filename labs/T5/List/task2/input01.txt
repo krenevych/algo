@@ -1,0 +1,117 @@
+next
+next
+next
+next
+next
+current
+current
+current
+current
+current
+current
+prev
+prev
+prev
+prev
+prev
+prev
+insert_before  78104
+insert_before  54895
+damp
+current
+current
+insert_after  84069
+insert_after  48277
+insert_before  77462
+next
+insert_after  98044
+empty
+len
+next
+next
+prev
+len
+set_last
+set_first
+insert_before  23124
+len
+insert_after  94680
+next
+set_last
+empty
+damp
+empty
+damp
+current
+prev
+empty
+damp
+current
+set_first
+delete
+len
+len
+current
+delete
+set_last
+prev
+insert_after  70248
+empty
+empty
+current
+set_last
+len
+delete
+prev
+set_first
+empty
+set_first
+next
+len
+next
+len
+damp
+damp
+prev
+damp
+set_first
+set_last
+current
+next
+insert_after  51459
+current
+len
+len
+next
+set_first
+set_last
+empty
+damp
+len
+insert_after  8901
+next
+prev
+prev
+set_last
+insert_after  23193
+set_first
+set_first
+insert_before  54972
+damp
+insert_before  96769
+prev
+insert_after  80595
+empty
+set_first
+empty
+damp
+delete
+delete
+prev
+damp
+len
+insert_before  74510
+len
+set_last
+delete
+insert_after  50066
