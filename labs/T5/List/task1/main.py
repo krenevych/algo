@@ -1,15 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time
-
-import user
-
-input_file = "input2.txt"
+import user1 as user
 
 
-def main():
-
+def main(input_file):
     _lst = []
     error = 0
     test_num = 0
@@ -44,12 +39,30 @@ def main():
                 user.reset()
 
             elif key == "next":
+                test_num += 1
+
                 if len(_lst) == 0:
+                    try:
+                        user.next()
+                    except StopIteration:
+                        pass
+                    else:
+                        error += 1
                     continue
 
-                if _cur < len(_lst) - 1:
-                    _cur += 1
+                if _cur == len(_lst) - 1:
+                    try:
+                        user.next()
+                        error += 1
+                    except StopIteration:
+                        pass
+                    continue
+
+                _cur += 1
+                try:
                     user.next()
+                except StopIteration:
+                    error += 1
 
             elif key == "current":
                 if len(_lst) == 0:
@@ -87,7 +100,7 @@ def main():
             elif key == "damp":
                 test_num += 1
                 out = user.damp()
-                if len(_lst) !=len(out):
+                if len(_lst) != len(out):
                     error += 1
                 else:
                     for i in range(len(_lst)):
@@ -96,8 +109,18 @@ def main():
                             break
 
         score = 100 * (test_num - error) / test_num
-        print("Score: %d%%" % score)
+
+        return score
 
 
 if __name__ == "__main__":
-    main()
+    res1 = main("input01.txt")
+    print("Score 1: %d%%" % res1)
+    res2 = main("input02.txt")
+    print("Score 2: %d%%" % res2)
+    res3 = main("input03.txt")
+    print("Score 3: %d%%" % res3)
+    res4 = main("input04.txt")
+    print("Score 4: %d%%" % res4)
+    res5 = main("input05.txt")
+    print("Score 5: %d%%" % res5)

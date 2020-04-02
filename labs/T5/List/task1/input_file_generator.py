@@ -27,4 +27,8 @@ def generate(fname, commands_number):
 
 
 if __name__ == "__main__":
-    generate("input.txt", 5000)
+    generate("input01.txt", 100)
+    generate("input02.txt", 500)
+    generate("input04.txt", 1000)
+    generate("input03.txt", 10000)
+    generate("input05.txt", 100000)
