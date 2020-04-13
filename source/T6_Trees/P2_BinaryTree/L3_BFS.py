@@ -1,8 +1,8 @@
 from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
-from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree, createSampleTree
+from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import createSampleTree
 
 
-def BFS(root: BinaryTree):
+def BFS(root):
     """ Обхід бінарного дерева в ширину
 
     :param root: Корінь бінарного дерева

@@ -2,35 +2,23 @@ from source.T6_Trees.P1.L2_Node import Node
 
 
 class Tree(Node):
-    """
-    Клас, що реалізує структуру даних дерево
-    """
+    """ Клас, що реалізує структуру даних дерево """
 
-    def __init__(self, key=None):
-        """
-        Конструктор - створює вузол дерева
+    def __init__(self, key):
+        """ Конструктор - створює вузол дерева
         :param key: ключ вузла, що створюється
         """
         super().__init__(key)
         self.mChildren = []
 
-    def empty(self):
-        """
-        Перевіряє чи дерево порожнє
-        :return: True, якщо дерево порожнє
-        """
-        return super().empty() and len(self.mChildren) == 0
-
     def addChild(self, child):
-        """
-        Додає до поточного вузла заданий вузол (разом з відповідним піддеревом)
+        """ Додає до поточного вузла заданий вузол (разом з відповідним піддеревом)
         :param child: вузол (піддерево), що додається
         """
         self.mChildren.append(child)
 
     def removeChild(self, key):
-        """
-         Видаляє у поточному вузлі вузол-дитину
+        """ Видаляє у поточному вузлі вузол-дитину
         :param key: ключ вузла, що видаляється
         :return: False, якщо вузол не містить дитину заданим ключем
         """
@@ -41,8 +29,7 @@ class Tree(Node):
         return False
 
     def getChild(self, key):
-        """
-        За заданим ключем, повертає вузол зі списку дітей
+        """ За заданим ключем, повертає вузол зі списку дітей
         :param key: ключ вузла
         :return: знайдений вузол якщо його знайдено, None у іншому випадку
         """
@@ -59,8 +46,7 @@ class Tree(Node):
         return self.mChildren
 
     def __str__(self):
-        """
-        Повертає ключ вузла і список ключів дітей.
+        """ Повертає ключ вузла і список ключів дітей.
         :return: рядок, у вигляді "key1 : [child1, child2, child13,...]"
         """
         return super().__str__() + " : " + str([el.key() for el in self.mChildren])

@@ -12,17 +12,18 @@ class SearchTree(BinaryTree):
             Не рекурсивна реалізація
 
         :param key: Шуканий елемент
-        :return: Вузол з ключем key якщо такий елемент міститься у дереві та None - якщо елемент не знайдений.
+        :return: Вузол з ключем key якщо такий елемент міститься у дереві
+        та None - якщо елемент не знайдений.
         """
-        current_node = self   # починаємо з кореня
-        while current_node is not None:
-            if current_node.mKey == key:
-                return current_node
-            elif current_node.mKey > key:
-                current_node = current_node.mLeftChild
-            else:
-                current_node = current_node.mRightChild
-
+        node = self   # починаємо з кореня
+        while node is not None:
+            if node.mKey == key:   # якщо ключ поточного вузла збігається з шуканим,
+                return node        # повертаємо знайдений вузол
+            elif node.mKey > key:  # випадок: шуканий елемент може міститися у лівому піддереві
+                node = node.mLeftChild  # рухаємося вниз до лівого нащадка
+            else:                  # випадок: шуканий елемент може міститися у правому піддереві
+                node = node.mRightChild # рухаємося вниз до правого нащадка
+        # якщо опустилися по дереву до листка, то дерево не містить шуканого елемента
         return None
 
     def insert(self, key):
@@ -31,25 +32,23 @@ class SearchTree(BinaryTree):
 
         :param key: ключ, що необхідно вставити
         """
-        if self.empty():                # якщо піддерево з коренем startNode порожнє
-            self.setNode(key)           # вставляємо елемент item
-        else:
-            current_node = self         # починаємо з кореня
-            while True:
-                if current_node.mKey == key:
+
+        node = self         # починаємо з кореня
+        while True:
+            if node.mKey == key:       # якщо ключ поточного вузла збігається з шуканим,
+                break                  # вставка не потрібна
+            elif node.mKey > key:      # якщо елемент для вставки має міститися у лівому піддереві
+                if node.hasLeft():     # якщо дерево має лівого нащадка
+                    node = node.mLeftChild  # рухаємося вниз до лівого нащадка
+                else:                  # якщо дерево не має лівого нащадка
+                    node.setLeft(key)  # додаємо key у ролі лівого нащадка
                     break
-                elif current_node.mKey > key:
-                    if current_node.hasLeft():
-                        current_node = current_node.mLeftChild
-                    else:
-                        current_node.setLeft(key)
-                        break
-                elif current_node.mKey < key:
-                    if current_node.hasRight():
-                        current_node = current_node.mRightChild
-                    else:
-                        current_node.setRight(key)
-                        break
+            elif node.mKey < key:      # якщо елемент для вставки має міститися у правому піддереві
+                if node.hasRight():    # якщо дерево має правого нащадка
+                    node = node.mRightChild # рухаємося вниз до правого нащадка
+                else:                  # якщо дерево не має правого нащадка
+                    node.setRight(key) # додаємо key у ролі правого нащадка
+                    break
 
     def addItems(self, *items):
         """ Додає послідовність елементів у дерево пошуку
@@ -62,7 +61,7 @@ class SearchTree(BinaryTree):
 
 
 if __name__ == "__main__":
-    t = SearchTree()
+    t = SearchTree(9999999999999)
     t.addItems(12, 19, 8, 4, 10, 5, 21, 11, 15, 9, 1, 14, 16, 16)
 
     print(t)

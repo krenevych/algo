@@ -11,7 +11,8 @@ class SearchTreeWithDelete(SearchTree):
         """
         self._delete_helper(self, key)
 
-    def _search_max(self, root: SearchTree) -> SearchTree:
+    @staticmethod
+    def _search_max(root):
         """ Допоміжний рекурсивний метод пошуку найбільшого вузла у заданому піддереві.
 
             Згідно з властивостями бінарного дерева пошука, максимальний елемент може бути
@@ -20,9 +21,10 @@ class SearchTreeWithDelete(SearchTree):
         :return: знайдений вузол.
         """
 
-        return self._search_max(root.mRightChild) if root.hasRight() else root
+        return SearchTreeWithDelete._search_max(root.mRightChild) if root.hasRight() else root
 
-    def _delete_helper(self, root: SearchTree, key):
+    @staticmethod
+    def _delete_helper(root, key):
         """ Допоміжний рекурсиввий метод, що видаляє заданий елемент з дерева у заданому піддереві
             якщо такий елемент міситься у деремі. Пошук розпочинається з піддерева,
         що має коренем вершину startNode. Для технічних цілей передаємо у підпрограму
@@ -32,7 +34,7 @@ class SearchTreeWithDelete(SearchTree):
         :param key: Елемент, який потрібно видалити
         """
 
-        node = self._search_helper(root, key)  # Знаходимо вузол, який треба видалити
+        node = SearchTreeWithDelete._search_helper(root, key)  # Знаходимо вузол, який треба видалити
 
         if node is None:  # Якщо шуканий елемент не міститься у дереві, то припиняємо роботу підпрограми
             return
@@ -52,18 +54,18 @@ class SearchTreeWithDelete(SearchTree):
         elif node.hasLeft() and not node.hasRight():  # Якщо знайдений вузол має лише одну ліву гілку
             node.setNode(node.mLeftChild)             # Замінюємо знайдений вузол його лівим піддіревом
 
-        else:                                             # Якщо знайдений вузол має обидві гілки
-            left_max = self._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
+        else:                                         # Якщо знайдений вузол має обидві гілки
+            left_max = SearchTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
             left_max_key = left_max.mKey
-            node.setNode(left_max_key)                    # Замінюємо значення елемета node знайденим максимальним
-            self._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева, найбільшого елементу
+            node.setNode(left_max_key)                # Замінюємо значення елемета node знайденим максимальним
+            SearchTreeWithDelete._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева найбільшого елементу
 
 
 if __name__ == "__main__":
-    t = SearchTreeWithDelete()
+    t = SearchTreeWithDelete(9999999999)
     t.addItems(12, 19, 8, 4, 10, 5, 21, 11, 15, 9, 1, 14, 16, 16)
     t.delete(9)
     t.delete(10)
     t.delete(8)
 
-    print()
+    print("Finished")

@@ -1,15 +1,15 @@
-from source.T6_Trees.P1.L3_Tree import Tree, createSampleTree
+from source.T6_Trees.P1.L3_Tree import createSampleTree
 
 
-def DFS(tree):
+def DFS(root):
     """ Обхід дерева в глибину
-    :param tree: дерево
+    :param root: корінь дерева з якого починається обхід
     """
 
-    print(tree.key(), end=" -> ")  # Опрацьовуємо корінь
+    print(root.key(), end=" -> ")  # Опрацьовуємо корінь
 
     # запускаємо DFS для всіх дітей кореня
-    for child in tree.getChildren():
+    for child in root.getChildren():
         DFS(child)
 
 

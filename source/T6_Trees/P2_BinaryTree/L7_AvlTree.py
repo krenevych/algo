@@ -3,8 +3,8 @@ from source.T6_Trees.P2_BinaryTree.L5_SearchTreeNoneRecurseImplementation import
 
 class AVLTree(SearchTree):
 
-    def __init__(self, key=None, left=None, right=None):
-        super().__init__(key, left, right)
+    def __init__(self, key):
+        super().__init__(key)
 
         self.mBalanceFactor = 0
         self.mIsRoot = False

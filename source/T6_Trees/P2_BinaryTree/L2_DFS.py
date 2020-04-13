@@ -1,11 +1,10 @@
-from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree, createSampleTree
+from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import createSampleTree
 
 
-def DFS(root: BinaryTree):
+def DFS(root):
     """ Обхід бінарного дерева в глибину
 
     :param root: Корінь бінарного дерева
-    :return: None
     """
 
     print(root.mKey)            # Опрацьовуємо корінь елемент
