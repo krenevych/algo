@@ -34,7 +34,7 @@ class SearchTreeWithDelete(SearchTree):
             node.setNode(node.mLeftChild)             # Замінюємо знайдений вузол його лівим піддіревом
 
         elif node.hasRight() and not node.hasLeft():  # Якщо знайдений вузол має лише одну праву гілку
-            node.setNode(node.mRightChild)            # Замінюємо знайдений вузол його правим піддіревом
+            node.setNode(node.mRightChild)            # Замінюємо знайдений вузол його правим піддеревом
 
         else:                                         # Якщо знайдений вузол має обидві гілки
             left_max = SearchTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
@@ -43,11 +43,3 @@ class SearchTreeWithDelete(SearchTree):
             SearchTreeWithDelete._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева найбільшого елементу
 
 
-if __name__ == "__main__":
-    t = SearchTreeWithDelete(9999999999)
-    t.addItems(12, 19, 8, 4, 10, 5, 21, 11, 15, 9, 1, 14, 16, 16)
-    t.delete(9)
-    t.delete(10)
-    t.delete(8)
-
-    print("Finished")

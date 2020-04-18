@@ -50,6 +50,11 @@ class BinaryTree:
             self.mKey = item.mKey                # змінюємо ключ
             self.mLeftChild = item.mLeftChild    # змінюємо ліве піддерево
             self.mRightChild = item.mRightChild  # змінюємо праве піддерево
+
+            if self.mLeftChild != None:
+                self.mLeftChild.mParent = self  # змінюємо предка для лівого піддерева
+            if self.mRightChild != None:
+                self.mRightChild.mParent = self  # змінюємо предка для правого піддерева
         else:
             self.mKey = item
 

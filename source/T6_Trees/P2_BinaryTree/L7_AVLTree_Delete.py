@@ -84,17 +84,3 @@ class AVLTreeWithDelete(AVLTree):
                                                                        # що ми прийшли від правого сина
 
 
-if __name__ == "__main__":
-    t = AVLTreeWithDelete(9999999999)
-    t.mIsRoot = True
-
-    t.addItems(12, 19, 8, 4, 10, 5, 21, 11, 15, 9, 1, 14, 16, 16)
-    t.delete(9)
-    t.delete(10)
-    t.delete(8)
-
-    print(t.search(9))
-    print(t.search(10))
-    print(t.search(8))
-
-    print("Finished")

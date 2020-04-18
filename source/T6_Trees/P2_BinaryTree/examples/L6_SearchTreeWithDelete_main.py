@@ -788,4 +788,15 @@ if __name__ == "__main__":
         if res != None:
             error += 1
 
-    print("Search after delete error =", error)
+    print("Search after partial delete error =", error)
+
+    for elem in s:
+        search_tree.delete(elem)
+
+    error = 0
+    for i in s:
+        res = search_tree.search(i)
+        if res != None:
+            error += 1
+
+    print("Search after full delete. error =", error)
