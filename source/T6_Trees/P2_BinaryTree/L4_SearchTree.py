@@ -63,6 +63,31 @@ class SearchTree(BinaryTree):
         else:  # випадок: шуканий елемент може міститися у правому піддереві
             return SearchTree._search_helper(root.mRightChild, key) if root.hasRight() else None
 
+
+    @staticmethod
+    def _search_max(root):
+        """ Допоміжний рекурсивний метод пошуку найбільшого вузла у заданому піддереві.
+
+            Згідно з властивостями бінарного дерева пошука, максимальний елемент може бути
+            знайдений при проходженні дерева в глиб рухаючись лише по правих нащадках
+        :param root: корінь піддерева у якому небхідно знайти найбільший вузол
+        :return: знайдений вузол.
+        """
+
+        return SearchTree._search_max(root.mRightChild) if root.hasRight() else root
+
+    @staticmethod
+    def _search_min(root):
+        """ Допоміжний рекурсивний метод пошуку найменшого вузла у заданому піддереві.
+
+            Згідно з властивостями бінарного дерева пошука, мінімальний елемент може бути
+            знайдений при проходженні дерева в глиб рухаючись лише по лівих нащадках
+        :param root: корінь піддерева у якому небхідно знайти найменший вузол
+        :return: знайдений вузол.
+        """
+
+        return SearchTree._search_min(root.mLeftChild) if root.hasLeft() else root
+
     def addItems(self, *items):
         """ Додає послідовність елементів у дерево пошуку
 

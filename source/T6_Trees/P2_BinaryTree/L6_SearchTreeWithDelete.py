@@ -12,18 +12,6 @@ class SearchTreeWithDelete(SearchTree):
         self._delete_helper(self, key)
 
     @staticmethod
-    def _search_max(root):
-        """ Допоміжний рекурсивний метод пошуку найбільшого вузла у заданому піддереві.
-
-            Згідно з властивостями бінарного дерева пошука, максимальний елемент може бути
-            знайдений при проходженні дерева в глиб рухаючись лише по правих нащадках
-        :param root: корінь піддерева у якому небхідно знайти найбільший вузол
-        :return: знайдений вузол.
-        """
-
-        return SearchTreeWithDelete._search_max(root.mRightChild) if root.hasRight() else root
-
-    @staticmethod
     def _delete_helper(root, key):
         """ Допоміжний рекурсиввий метод, що видаляє заданий елемент з дерева у заданому піддереві
             якщо такий елемент міситься у деремі. Пошук розпочинається з піддерева,
@@ -40,19 +28,13 @@ class SearchTreeWithDelete(SearchTree):
             return
 
         if node.hasNoChildren():      # Якщо знайдений вузол - листок (немає нащадків)
-            if node.mParent is None:  # Якщо предок - корінь всього дерева
-                node.mKey = None      # Робимо дерево порожнім
-            else:
-                if node.mParent.mLeftChild == node:
-                    node.mParent.mLeftChild = None  # Видаляєм знайдений елемент
-                else:
-                    node.mParent.mRightChild = None  # Видаляєм знайдений елемент
-
-        elif node.hasRight() and not node.hasLeft():  # Якщо знайдений вузол має лише одну праву гілку
-            node.setNode(node.mRightChild)            # Замінюємо знайдений вузол його правим піддіревом
+            node.removeSelfFromParent()
 
         elif node.hasLeft() and not node.hasRight():  # Якщо знайдений вузол має лише одну ліву гілку
             node.setNode(node.mLeftChild)             # Замінюємо знайдений вузол його лівим піддіревом
+
+        elif node.hasRight() and not node.hasLeft():  # Якщо знайдений вузол має лише одну праву гілку
+            node.setNode(node.mRightChild)            # Замінюємо знайдений вузол його правим піддіревом
 
         else:                                         # Якщо знайдений вузол має обидві гілки
             left_max = SearchTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві

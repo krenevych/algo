@@ -1,0 +1,100 @@
+from source.T6_Trees.P2_BinaryTree.L7_AvlTree import AVLTree
+
+
+class AVLTreeWithDelete(AVLTree):
+    """ Розширення класу бінарного дерева можливістю видаляти елементи """
+
+    def delete(self, key):
+        """ Видаляє заданий елемент у бінарному дереві
+
+        :param key: Елемент, який потрібно видалити з бінарного дерева
+        """
+        self._delete_helper(self, key)
+
+    @staticmethod
+    def _delete_helper(root, key):
+        """ Допоміжний рекурсиввий метод, що видаляє заданий елемент з дерева у заданому піддереві
+            якщо такий елемент міситься у деремі. Пошук розпочинається з піддерева,
+        що має коренем вершину startNode. Для технічних цілей передаємо у підпрограму
+        предка вузла startNode - parent
+
+        :param root: корінь піддерева у якому потрібно видалити заданий елемент
+        :param key: Елемент, який потрібно видалити
+        """
+
+        node = root.search(key)  # Знаходимо вузол, який треба видалити
+
+        if node is None or node.mIsRoot:  # Якщо шуканий елемент не міститься у дереві, то припиняємо роботу підпрограми
+            return
+
+        if node.hasNoChildren():          # Якщо знайдений вузол - листок (немає нащадків)
+            node.removeSelfFromParent()
+
+        elif node.hasLeft() and not node.hasRight():  # Якщо знайдений вузол має лише одну ліву гілку
+            node.setNode(node.mLeftChild)             # Замінюємо знайдений вузол його лівим піддіревом
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, True)
+
+        elif node.hasRight() and not node.hasLeft():  # Якщо знайдений вузол має лише одну праву гілку
+            node.setNode(node.mRightChild)            # Замінюємо знайдений вузол його правим піддіревом
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, False)
+
+        else:                                         # Якщо знайдений вузол має обидві гілки
+            left_max = AVLTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
+            left_max_key = left_max.mKey
+            node.setNode(left_max_key)                # Замінюємо значення елемета node знайденим максимальним
+            AVLTreeWithDelete._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева найбільшого елементу
+
+    @staticmethod
+    def updateBalanceOnDelete(node, came_from_left):
+        """ Оновлює баланс для поточно вузла при операції видалення
+
+        :param node: вузол у якому потрібно оновити баланс
+        :param came_from_left: від якого, лівого чи правого сина ми піднялися у вузол
+        """
+
+        if node.mIsRoot:
+            return
+
+        # оновлюємо баланс вузла залежно від того з якого нащадка ми прийшли
+        if came_from_left:            # якщо ми прийшли з лівого сина,
+            node.mBalanceFactor -= 1  # то баланс у вузлі зменшується на 1
+        else:                         # якщо ми прийшли з правого сина,
+            node.mBalanceFactor += 1  # то баланс у вузлі збільшується на 1
+
+        # Якщо після оновлення балансу, вузол розбалансувався
+        if node.mBalanceFactor > 1 or node.mBalanceFactor < -1:
+            AVLTree.rebalance(node)  # Проводимо балансування вузла
+
+        if node.mBalanceFactor == 0:
+            # Якщо фактор балансу скорегувався до нуля,
+            # це значить, що дерево зменшило свою висоту і необхідно провести
+            # оновлення балансу для предка поточної вершини
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, node.isLeftChild())
+
+    def removeSelfFromParent(self):
+        if self.mParent is not None:   # Якщо вершина не є коренем дерева
+            parent = self.mParent
+            if self.isLeftChild():              # Якщо вершина є лівим сином
+                self.mParent.mLeftChild = None  # Видаляєм себе у предку, як лівого сина
+                AVLTreeWithDelete.updateBalanceOnDelete(parent, True) # Оновлюємо баланс у предку з заначенням,
+                                                                       # що ми прийшли від правого сина
+            else:                                # Якщо вершина є правим сином
+                self.mParent.mRightChild = None  # Видаляєм себе у предку, як лівого сина
+                AVLTreeWithDelete.updateBalanceOnDelete(parent, False) # Оновлюємо баланс у предку з заначенням,
+                                                                       # що ми прийшли від правого сина
+
+
+if __name__ == "__main__":
+    t = AVLTreeWithDelete(9999999999)
+    t.mIsRoot = True
+
+    t.addItems(12, 19, 8, 4, 10, 5, 21, 11, 15, 9, 1, 14, 16, 16)
+    t.delete(9)
+    t.delete(10)
+    t.delete(8)
+
+    print(t.search(9))
+    print(t.search(10))
+    print(t.search(8))
+
+    print("Finished")

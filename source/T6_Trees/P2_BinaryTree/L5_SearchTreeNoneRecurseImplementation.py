@@ -1,7 +1,7 @@
-from source.T6_Trees.P2_BinaryTree.L1_BinaryTree import BinaryTree
+from source.T6_Trees.P2_BinaryTree.L4_SearchTree import SearchTree as Base
 
 
-class SearchTree(BinaryTree):
+class SearchTree(Base):
     """ Клас - Бінарне дерево пошуку.
 
      Реалізує структуру даних, у якій вставка та пошук елементів здійснюється
@@ -50,14 +50,6 @@ class SearchTree(BinaryTree):
                     node.setRight(key) # додаємо key у ролі правого нащадка
                     break
 
-    def addItems(self, *items):
-        """ Додає послідовність елементів у дерево пошуку
-
-        :param items: Послідовність елементів, що додаються у дерево пошуку
-        :return: None
-        """
-        for item in items:
-            self.insert(item)
 
 
 if __name__ == "__main__":

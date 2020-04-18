@@ -96,6 +96,27 @@ class BinaryTree:
         """
         return str(self.mKey)
 
+    def isLeftChild(self):
+        """ Визначає чи є дерево лівим сином (лівим піддеревом) деякого дерева
+
+        :return: True, якщо дерево є лівим сином
+        """
+        return self.mParent and self.mParent.mLeftChild == self
+
+    def isRightChild(self):
+        """ Визначає чи є дерево правим сином (правим піддеревом) деякого дерева
+
+        :return: True, якщо дерево є лівим сином
+        """
+        return self.mParent and self.mParent.mRightChild == self
+
+    def removeSelfFromParent(self):
+        """ Видаляє себе як сина з батьківського вузла дерева """
+        if self.mParent is not None:  # Якщо вершина не є коренем дерева
+            if self.isLeftChild():    # Якщо вершина є лівим сином
+                self.mParent.mLeftChild = None   # Видаляєм себе у предку, як лівого сина
+            else:                                # Якщо вершина є правим сином
+                self.mParent.mRightChild = None # Видаляєм себе у предку, як лівого сина
 
 def createSampleTree():
     """

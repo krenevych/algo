@@ -39,11 +39,6 @@ class AVLTree(SearchTree):
         self.mRightChild.mParent = self
         self.updateBalance(self.mRightChild)     # оновлення балансу для предків вставленого вузла
 
-    def isLeftChild(self):
-        return self.mParent and self.mParent.mLeftChild == self
-
-    def isRightChild(self):
-        return self.mParent and self.mParent.mRightChild == self
 
     @staticmethod
     def updateBalance(node):
