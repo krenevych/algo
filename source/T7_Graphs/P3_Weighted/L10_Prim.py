@@ -11,7 +11,7 @@ https://ru.wikipedia.org/wiki/%D0%90%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC_%
 from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
 from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import INF
 from source.T7_Graphs.P2_Nonweighted.L8_Connectivity import checkConnected
-from source.T6_Trees.P2_BinaryTree.L17_PriorityQueue import PriorityQueue
+from source.T6_Trees.P2_BinaryTree.L10_PriorityQueue import PriorityQueue
 from source.utils.benchmark import benchmark
 
 

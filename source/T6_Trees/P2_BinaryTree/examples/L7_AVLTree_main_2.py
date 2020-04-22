@@ -2,10 +2,10 @@ from source.T6_Trees.P2_BinaryTree.L7_AVLTree_Delete import AVLTreeWithDelete
 from source.T6_Trees.P2_BinaryTree.examples.DFS_height import DFS_height
 
 
-s = [i for i in range(1, 1000)]
+s = [i for i in range(1, 100000)]
 
 s_excluded = []
-s_delete = [*s]
+s_delete = s[::2]
 
 search_tree = AVLTreeWithDelete(9999999999999)
 search_tree.mIsRoot = True

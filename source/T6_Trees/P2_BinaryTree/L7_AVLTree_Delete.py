@@ -41,8 +41,8 @@ class AVLTreeWithDelete(AVLTree):
         else:                                         # Якщо знайдений вузол має обидві гілки
             left_max = AVLTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
             left_max_key = left_max.mKey
-            node.setNode(left_max_key)                # Замінюємо значення елемета node знайденим максимальним
             AVLTreeWithDelete._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева найбільшого елементу
+            node.setNode(left_max_key)                # Замінюємо значення елемета node знайденим максимальним
 
     @staticmethod
     def updateBalanceOnDelete(node, came_from_left):

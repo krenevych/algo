@@ -789,13 +789,13 @@ if __name__ == "__main__":
 
     print("Search errors =", error)
 
-    # for elem in s_delete:
-    #      search_tree.delete(elem)
-    # 
-    # error = 0
-    # for i in s_delete:
-    #      res = search_tree.search(i)
-    #      if res != None:
-    #           error += 1
-    #
-    # print("Search after delete error =", error)
+    for elem in s_delete:
+         search_tree.delete(elem)
+
+    error = 0
+    for i in s_delete:
+         res = search_tree.search(i)
+         if res != None:
+              error += 1
+
+    print("Search after delete error =", error)
