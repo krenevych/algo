@@ -1,9 +1,9 @@
-from source.T7_Graphs.P3_Weighted.L5_BelmanFordOptimized import BelmanFordOptimized
-from source.T7_Graphs.P3_Weighted.L8_PlainGraph import PlainGraph, inputGraphWithRandomVertexPositions
+from source.T7_Graphs.P4_Weighted.L5_BelmanFordOptimized import BelmanFordOptimized
+from source.T7_Graphs.P4_Weighted.L8_PlainGraph import PlainGraph, inputGraphWithRandomVertexPositions
 from source.T7_Graphs.P2_Nonweighted.L4_Ways import waySearch
-from source.T7_Graphs.P3_Weighted.L9_AStar import AStar
-from source.T7_Graphs.P3_Weighted.L3_BelmanFord import BelmanFord
-from source.T7_Graphs.P3_Weighted.L6_Dijkstra import Dijkstra
+from source.T7_Graphs.P4_Weighted.L9_AStar import AStar
+from source.T7_Graphs.P4_Weighted.L3_BelmanFord import BelmanFord
+from source.T7_Graphs.P4_Weighted.L6_Dijkstra import Dijkstra
 
 
 def show_way(vertices, weight, tag):

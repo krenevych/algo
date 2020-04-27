@@ -1,9 +1,9 @@
 from random import Random
 
-from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
-from source.T7_Graphs.P3_Weighted.L7_VertexWithHeuristic import VertexWithHeuristic
-from source.T7_Graphs.P3_Weighted.L3_BelmanFord import BelmanFord
-from source.T7_Graphs.P3_Weighted.L6_Dijkstra import Dijkstra
+from source.T7_Graphs.P4_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
+from source.T7_Graphs.P4_Weighted.L7_VertexWithHeuristic import VertexWithHeuristic
+from source.T7_Graphs.P4_Weighted.L3_BelmanFord import BelmanFord
+from source.T7_Graphs.P4_Weighted.L6_Dijkstra import Dijkstra
 
 
 class PlainGraph(GraphForAlgorithms):

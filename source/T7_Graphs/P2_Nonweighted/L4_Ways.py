@@ -1,11 +1,9 @@
 import sys
 
-from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
+from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
 from source.T7_Graphs.P1_Definitions.L5_Graph import exampleNonorientedHandBook
-from source.T7_Graphs.P3_Weighted.L8_PlainGraph import PlainGraph, inputGraphWithRandomVertexPositions
 from source.utils.benchmark import benchmark
-
 
 INF = sys.maxsize  # Умовна нескінченність
 

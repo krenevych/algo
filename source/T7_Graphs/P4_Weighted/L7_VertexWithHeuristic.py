@@ -1,5 +1,5 @@
 from source.T7_Graphs.P1_Definitions.L4_Vertex import Vertex
-from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import VertexForAlgorithms
+from source.T7_Graphs.P4_Weighted.L1_VertexForAlgorithms import VertexForAlgorithms
 
 
 class VertexWithHeuristic(VertexForAlgorithms):

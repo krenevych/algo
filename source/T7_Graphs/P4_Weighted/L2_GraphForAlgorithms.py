@@ -1,6 +1,6 @@
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
 from source.T7_Graphs.P1_Definitions.L5_Graph import Graph
-from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import VertexForAlgorithms, INF
+from source.T7_Graphs.P4_Weighted.L1_VertexForAlgorithms import VertexForAlgorithms, INF
 
 
 class GraphForAlgorithms(Graph):

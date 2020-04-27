@@ -1,4 +1,4 @@
-from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import INF
+from source.T7_Graphs.P4_Weighted.L1_VertexForAlgorithms import INF
 
 
 def BelmanFordClasical(graph, start):

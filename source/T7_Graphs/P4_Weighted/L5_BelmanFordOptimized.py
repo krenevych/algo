@@ -1,5 +1,5 @@
-from source.T7_Graphs.P3_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
-from source.T7_Graphs.P3_Weighted.L1_VertexForAlgorithms import INF
+from source.T7_Graphs.P4_Weighted.L2_GraphForAlgorithms import GraphForAlgorithms
+from source.T7_Graphs.P4_Weighted.L1_VertexForAlgorithms import INF
 from source.utils.benchmark import benchmark
 
 
