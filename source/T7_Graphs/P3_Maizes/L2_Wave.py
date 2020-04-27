@@ -1,6 +1,6 @@
 from source.T5_LinearStructure.P2_Queue.L1_Queue import Queue
 from source.T5_LinearStructure.P1_Stack.L_1_Stack import Stack
-from source.T7_Graphs.P4_Maizes.L1_Read import readMazeFromFile, showMaze, WALL_CELL
+from source.T7_Graphs.P3_Maizes.L1_Read import readMazeFromFile, showMaze, WALL_CELL
 
 
 def wave(maze, start, wall_cell):
@@ -103,8 +103,8 @@ def drawWayInMatrix(source, start, end, TAG):
             print(TAG, ": The way doesn't exist")
             return
 
-    n = len(source)  # кількість рядків у матриці P4_Maizes
-    m = len(source[0])  # кількість стовпчиків у матриці P4_Maizes
+    n = len(source)  # кількість рядків у матриці maze
+    m = len(source[0])  # кількість стовпчиків у матриці maze
     # створення та ініціалізація хвильової матриці
     # такої ж розмірності, що і матриця лабіринту
 
