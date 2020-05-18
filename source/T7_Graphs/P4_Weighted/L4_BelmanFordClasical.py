@@ -13,7 +13,6 @@ def BelmanFordClasical(graph, start):
     # Ініціалізуємо додаткову інформацію у графі для роботи алгоритму
     for vertex in graph:
         vertex.setDistance(INF)  # Відстань для кожної вершини від стартової ставиться як нескінченність
-        vertex.setSource(None)   # Вершина з якої прийшли по найкорошому шляху невизначена
 
     # Відстань від першої вершини до неї ж визначається як 0
     graph[start].setDistance(0)
@@ -24,7 +23,6 @@ def BelmanFordClasical(graph, start):
                 newDist = vertex.distance() + vertex.weight(neighbor_key)  # Обчислюємо потенційну відстань у вершині-сусіді
                 if newDist < neighbour.distance():       # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
                     neighbour.setDistance(newDist)      # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
-                    neighbour.setSource(vertex.key())   # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
 
     # Перевірка на наявність циклів з від'ємною вагою
     # Тут фактично здійсюється ще одна ітерація циклу і якщо у одній з вершин знайдена відстань зменшиться,
@@ -36,4 +34,4 @@ def BelmanFordClasical(graph, start):
             if newDist < neighbour.distance():       # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
                 return True                          # Знайдено цикл від'ємної ваги.
 
-    return False
+    return False  # Граф не місіить циклів від'ємної ваги.

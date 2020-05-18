@@ -25,17 +25,23 @@ def BelmanFordOptimized(graph: GraphForAlgorithms, start: int, end: int):
     graph[start].setDistance(0)
 
     for i in range(len(graph) - 1):
-        isRelaxed = True        # Мітка, що алгоритм ще не закінчив роботу і необхідна принаймні ще одна його ітерація
+        isRelaxed = True   # Мітка, що алгоритм ще не закінчив роботу і необхідна принаймні ще одна його ітерація
         for vertex in graph:                            # Для всіх вершин графу
             for neighbor_key in vertex.neighbors():     # Для всіх сусідів (за ключами) поточної вершини
                 neighbour = graph[neighbor_key]         # Беремо вершину-сусіда за ключем
-                newDist = vertex.distance() + vertex.weight(neighbor_key)    # Обчислюємо потенційну відстань у вершині-сусіді
-                if newDist < neighbour.distance():      # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
-                    neighbour.setDistance(newDist)     # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
-                    neighbour.setSource(vertex.key())  # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
-                    isRelaxed = False                   # Встановлюємо ознаку, що алгоритм потребує ще принаймні одного проходу
+                # Обчислюємо потенційну відстань у вершині-сусіді
+                newDist = vertex.distance() + vertex.weight(neighbor_key)
+                # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
+                if newDist < neighbour.distance():
+                    # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
+                    neighbour.setDistance(newDist)
+                    # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
+                    neighbour.setSource(vertex.key())
+                    # Встановлюємо ознаку, що алгоритм потребує ще принаймні одного проходу
+                    isRelaxed = False
 
-        if isRelaxed:  # Якщо на поточному кроці роботи алгоритму у знайдених раніше дістанціях у графі не відбулося жодних змін
+        if isRelaxed:  # Якщо на поточному кроці роботи алгоритму у знайдених раніше дистанціях у графі
+                       # не відбулося жодних змін
             break      # припиняємо ітерації алгоритму, оскільки всі відстані знайдено
 
     return graph.constructWay(start, end)

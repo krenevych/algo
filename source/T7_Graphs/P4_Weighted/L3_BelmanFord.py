@@ -26,7 +26,7 @@ def BelmanFord(graph: GraphForAlgorithms, start, end):
             for neighbor_key in vertex.neighbors():    # Для всіх сусідів (за ключами) поточної вершини
                 neighbor = graph[neighbor_key]         # Беремо вершину-сусіда за індексом
                 newDist = vertex.distance() + vertex.weight(neighbor_key)    # Обчислюємо потенційну відстань у вершині-сусіді
-                if newDist < neighbor.distance():       # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
+                if newDist < neighbor.distance():      # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
                     neighbor.setDistance(newDist)      # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
                     neighbor.setSource(vertex.key())   # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
 
