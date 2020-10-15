@@ -1,17 +1,83 @@
-from source.T5_LinearStructure.P2_Queue.examples.PriorityQueue import PQElement
-from source.T6_Trees.P2_BinaryTree.L8_Heap import Heap
+from source.T6_Trees.P2_BinaryTree.L10_PQElement import PQElement
 
 
-class PriorityQueue(Heap):
+class PriorityQueue:
     """ Клас пріоритетна черга на базі структури даних Купа """
 
     def __init__(self):
         """ Конструктор """
-        super().__init__()
+
+        self.mItems = [PQElement(0, 0)]
+        self.mSize = 0
         self.mElementsMap = {}  # Карта індексів (у масиві, що моделює чергу) елеменітів черги.
                                 # Є словник з елементів (елемент, індекс)
                                 # Використовується для визначення чи міститься елемент у черзі
                                 # а також для швидкої зміни пріорітеру елемента у черзі
+
+    def empty(self):
+        """ Перевіряє чи купа порожня
+
+        :return: True, якщо купа порожня
+        """
+        return len(self.mItems) == 1
+
+    def insert(self, key, priority):
+        """ вставки пари: (елемент, пріоритет)
+        :param key:      елемент
+        :param priority: пріоритет
+        :return:
+        """
+        el = PQElement(key, priority)
+
+        self.mSize += 1
+        self.mItems.append(el)                  # Вставляємо на останню позицію,
+        self.mElementsMap[key] = self.mSize    # S
+
+        self.siftUp()          # просіюємо елемент вгору
+
+    def extractMinimum(self):
+        """ Повертає елемент черги з мінімальним пріоритетом
+            Перевизначає метод батькывського класу Heap для випадку пари - (елемент, пріоритет)
+
+        :return: Елемент черги з найвищим пріоритетом
+        """
+
+        root = self.mItems[1].item()        # Запам'ятовуємо значення кореня дерева
+        self.mItems[1] = self.mItems[-1]    # Переставляємо на першу позицію останній елемент (за номером) у купі
+
+        pos_last = self.mItems[-1].item()   # Поточна позиція останнього елемента у масиві
+        self.mElementsMap[pos_last] = 1     # Переставляємо на першу позицію
+
+        self.mItems.pop()                   # Видаляємо останній (за позицією у масиві) елемент купи
+        if root in self:                    # Якщо елемент міститься у черзі
+            del self.mElementsMap[root]     # Видаляємо елемент з мапи елементів
+
+        self.mSize -= 1
+
+        self.siftDown()   # Здійснюємо операцію просіювання вниз, для того,
+                          # щоб опустити переставлений елемент на відповідну позицію у купі
+
+        return root
+
+    def siftDown(self):
+        """ Просіювання вниз """
+        i = 1
+        while (2 * i) <= self.mSize:
+            left = 2 * i
+            right = 2 * i + 1
+            min_child = self.minChild(left, right)
+            if self.mItems[i] > self.mItems[min_child]:
+                self.swap(min_child, i)
+            i = min_child
+
+    def siftUp(self):
+        """ Дпопоміжний метод просіювання вгору """
+        i = len(self.mItems) - 1
+        while i > 1:
+            parent = i // 2
+            if self.mItems[i] < self.mItems[parent]:
+                self.swap(parent, i)
+            i = parent
 
     def swap(self, i, j):
         """ Перевизначення методу батьківського класу обміну місцями елементів
@@ -26,7 +92,22 @@ class PriorityQueue(Heap):
         self.mElementsMap[pos_i] = j
         self.mElementsMap[pos_j] = i
 
-        super().swap(i, j)
+        self.mItems[i], self.mItems[j] = self.mItems[j], self.mItems[i]
+
+    def minChild(self, left_child, right_child):
+        """ Допоміжна функція знаходження меншого (за значенням) вузла серед нащадків поточного
+
+        :param left_child: лівий син
+        :param right_child: правий син
+        :return: менший з двох синів
+        """
+        if right_child > self.mSize:
+            return left_child
+        else:
+            if self.mItems[left_child] < self.mItems[right_child]:
+                return left_child
+            else:
+                return right_child
 
     def __contains__(self, item):
         """ Перевизначає оператор 'in'
@@ -36,36 +117,19 @@ class PriorityQueue(Heap):
         """
         return item in self.mElementsMap
 
-    def insert(self, *k):
-        """ Перевизначення методу батьківського класу Heap для випадку вставки пари: k = (елемент, пріоритет)
-
-        :param k: Кортеж (елемент, пріоритет)
-        :return: None
-        """
-
-        assert len(k) == 2
-
-        el = PQElement(k[0], k[1])
-
-        self.mSize += 1
-        self.mItems.append(el)                  # Вставляємо на останню позицію,
-        self.mElementsMap[k[0]] = self.mSize    # S
-
-        self.siftUp()          # просіюємо елемент вгору
-
-    def decreasePriority(self, item, priority):
+    def updatePriority(self, key, priority):
         """ Метод перерахунку пріоритету елемента.
 
         Працює лише у випадку підвищення пріоритету у черзі, тобто якщо
         значення параметру priority є меншим ніж поточне значення пріоритету
         Працює по принципу, замінюємо пріоритет елемента у черзі та здійснюємо просіювання вгору.
         
-        :param item: Ключ
+        :param key: Ключ
         :param priority: Новий пріоритет
         :return: True
         """
 
-        i = self.mElementsMap[item]
+        i = self.mElementsMap[key]
         self.mItems[i].setPriority(priority)
 
         # просіювання вгору для елемента зі зміненим пріоритетом
@@ -76,31 +140,6 @@ class PriorityQueue(Heap):
             i = parent
 
         return True
-
-    def extractMinimum(self):
-        """ Повертає елемент черги з мінімальним пріоритетом
-            Перевизначає метод батькывського класу Heap для випадку пари - (елемент, пріоритет)
-
-        :return: Елемент черги з мінімальним пріоритетом
-        """
-
-        min_el = self.mItems[1][0]          # Запам'ятовуємо значення кореня дерева
-
-        self.mItems[1] = self.mItems[-1]     # Переставляємо на першу позицію останній елемент (за номером) у купі
-
-        pos_last = self.mItems[-1].item()   # Поточна позиція останнього елемента у масиві
-        self.mElementsMap[pos_last] = 1    # Переставляємо на першу позицію
-
-        self.mItems.pop()                   # Видаляємо останній (за позицією у масиві) елемент купи
-        if min_el in self:                 # Якщо елемент міститься у черзі
-            del self.mElementsMap[min_el]  # Видаляємо елемент з мапи елементів
-
-        self.mSize -= 1
-
-        self.siftDown()  # Здійснюємо операцію просіювання вниз, для того,
-                          # щоб опустити переставлений елемент на відповідну позицію у купі
-
-        return min_el
 
     def __str__(self):
         """ Перевизначає оператор "str()"
@@ -116,11 +155,11 @@ class PriorityQueue(Heap):
 if __name__ == "__main__":
     h = PriorityQueue()
 
-    # h.insert(17, 11)
-    # h.insert(14, 10)
-    # h.insert(33, 9)
-    # h.insert(21, 8)
-    # h.insert(27, 7)
+    h.insert(17, 11)
+    h.insert(14, 10)
+    h.insert(33, 9)
+    h.insert(21, 8)
+    h.insert(27, 7)
     h.insert(11, 6)
     h.insert(19, 5)
     h.insert(18, 4)
@@ -130,15 +169,15 @@ if __name__ == "__main__":
 
     print(h)
 
-    h.decreasePriority(11, 1)
+    # h.decreasePriority(11, 1)
 
-    print()
+    # print()
     #
-    print(h.extractMinimum())
+    # print(h.extractMinimum())
 
     # print("==========")
 
-    h.decreasePriority(11, 5)
+    h.updatePriority(11, 5)
     # print(h)
 
     while not h.empty():

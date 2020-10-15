@@ -56,7 +56,7 @@ def Prim(graph: GraphForAlgorithms):
                                                              # потенційна відстань у вершині-сусіді менша за її поточне значення
                 neighbour.setDistance(newDist)              # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
                 neighbour.setSource(vertex_key)             # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
-                pq.decreasePriority(neighbor_key, newDist)  # перераховуємо її пріоритет в черзі
+                pq.updatePriority(neighbor_key, newDist)    # перераховуємо її пріоритет в черзі
 
     # Будуємо граф, що є каркасним деревом
     spanning_tree = GraphForAlgorithms()

@@ -25,7 +25,7 @@ def Dijkstra(graph, start, end):
     pq.insert(start, 0)                   # Додаємо у чергу початкову вершину з нульовим пріоритетом
 
     while not pq.empty():
-        vertex_key = pq.extractMinimum()  # Беремо індекс вершини з черги з найнижчим пріоритетом
+        vertex_key = pq.extractMinimum()   # Беремо індекс вершини з черги з найнижчим пріоритетом
         vertex = graph[vertex_key]         # Беремо вершину за індексом
 
         for neighbor_key in vertex.neighbors():             # Для всіх сусідів (за ключами) поточної вершини
@@ -36,7 +36,7 @@ def Dijkstra(graph, start, end):
                 neighbour.setSource(vertex_key)            # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
 
                 if neighbor_key in pq:                           # Якщо вершина сусід міститься у черзі
-                    pq.decreasePriority(neighbor_key, newDist)   # перераховуємо її пріоритет в черзі
+                    pq.updatePriority(neighbor_key, newDist)     # перераховуємо її пріоритет в черзі
                 else:
                     pq.insert(neighbor_key, newDist)             # або додаємо елемент до черги, якщо його там ще немає.
 

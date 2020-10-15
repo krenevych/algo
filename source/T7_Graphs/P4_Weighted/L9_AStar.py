@@ -63,7 +63,7 @@ def AStar(graph, start, end):
                     f = newDist + h                   # f(x) = g(x) + h(x) - обчилюємо новий пріорітет для вершини-сусіда.
 
                     if neighbor_key in pq:                    # Якщо вершина сусід міститься у черзі
-                        pq.decreasePriority(neighbor_key, f)  # перераховуємо її пріоритет в черзі
+                        pq.updatePriority(neighbor_key, f)    # перераховуємо її пріоритет в черзі
                     else:
                         pq.insert(neighbor_key, f)            # або додаємо елемент до черги, якщо його там ще немає.
 

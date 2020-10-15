@@ -13,13 +13,13 @@ class Heap:
         """
         return len(self.mItems) == 1
 
-    def insert(self, *k):
+    def insert(self, item):
         """ Вставка елемента в купу
 
-        :param k: k[0] - Елемент, що вставляється у купу
+        :param item: - Елемент, що вставляється у купу
         """
         self.mSize += 1
-        self.mItems.append(k[0])  # Вставляємо на останню позицію,
+        self.mItems.append(item)  # Вставляємо на останню позицію,
         self.siftUp()             # просіюємо елемент вгору
 
     def extractMinimum(self):
