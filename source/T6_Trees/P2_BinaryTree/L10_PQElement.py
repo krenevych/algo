@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
 
+INF = sys.maxsize  # Умовна нескінченність
 
 class PQElement:
     """ Клас Елемент пріорітетної черги """
-
-    INF = 100000                   # Умовна нескінченність
 
     def __init__(self, key=None, priority=INF):
         """ Конструктор
@@ -16,7 +16,7 @@ class PQElement:
         self.mKey = key
         self.mPriority = priority
 
-    def setPriority(self, priority):
+    def updatePriority(self, priority):
         """ Встановлює пріоритет для поточного елементу
 
         :param priority: Пріорітет
@@ -24,20 +24,12 @@ class PQElement:
         """
         self.mPriority = priority
 
-    def item(self):
+    def key(self):
         """ Повертає ключ елемента
 
         :return: Ключ елемента
         """
         return self.mKey
-
-
-    def __str__(self):
-        """ Перевизначає оператор "str()" для черги
-
-        :return: None
-        """
-        return "(item: {}, priority: {})".format(self.mKey, self.mPriority)
 
     def __le__(self, other):
         """ Перевизначає оператор '<='
@@ -71,3 +63,9 @@ class PQElement:
         """
         return self.mPriority >= other.mPriority
 
+    def __str__(self):
+        """ Перевизначає оператор "str()" для черги
+
+        :return: None
+        """
+        return "(item: {}, priority: {})".format(self.mKey, self.mPriority)

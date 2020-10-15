@@ -36,21 +36,18 @@ class PriorityQueue:
         self.siftUp()          # просіюємо елемент вгору
 
     def extractMinimum(self):
-        """ Повертає елемент черги з мінімальним пріоритетом
-            Перевизначає метод батькывського класу Heap для випадку пари - (елемент, пріоритет)
-
+        """ Повертає елемент черги з найвищим пріоритетом
+        у цій реалізації пріоритетної черги вважається чим меншим є значення
+        поля пріоритету тим вищим є пріоритет елементу у черзі.
         :return: Елемент черги з найвищим пріоритетом
         """
 
-        root = self.mItems[1].item()        # Запам'ятовуємо значення кореня дерева
-        self.mItems[1] = self.mItems[-1]    # Переставляємо на першу позицію останній елемент (за номером) у купі
+        root = self.mItems[1].key()         # Запам'ятовуємо значення кореня дерева
 
-        pos_last = self.mItems[-1].item()   # Поточна позиція останнього елемента у масиві
-        self.mElementsMap[pos_last] = 1     # Переставляємо на першу позицію
+        self.swap(1, -1)  # Переставляємо на першу позицію останній елемент (за номером) у купі
 
-        self.mItems.pop()                   # Видаляємо останній (за позицією у масиві) елемент купи
-        if root in self:                    # Якщо елемент міститься у черзі
-            del self.mElementsMap[root]     # Видаляємо елемент з мапи елементів
+        self.mItems.pop()               # Видаляємо останній (за позицією у масиві) елемент купи
+        del self.mElementsMap[root]     # Видаляємо елемент з мапи елементів
 
         self.mSize -= 1
 
@@ -58,6 +55,21 @@ class PriorityQueue:
                           # щоб опустити переставлений елемент на відповідну позицію у купі
 
         return root
+
+    def swap(self, i, j):
+        """ Перевизначення методу батьківського класу обміну місцями елементів
+            на позиціях i та j у черзі із простеженням позиції елемента у черзі.
+
+        :param i: перший індекс
+        :param j: другий індекс
+        :return: None
+        """
+        pos_i = self.mItems[i].key()  # Поточна позиція елемента i у масиві
+        pos_j = self.mItems[j].key()  # Поточна позиція елемента j у масиві
+        self.mElementsMap[pos_i] = j
+        self.mElementsMap[pos_j] = i
+
+        self.mItems[i], self.mItems[j] = self.mItems[j], self.mItems[i]
 
     def siftDown(self):
         """ Просіювання вниз """
@@ -78,21 +90,6 @@ class PriorityQueue:
             if self.mItems[i] < self.mItems[parent]:
                 self.swap(parent, i)
             i = parent
-
-    def swap(self, i, j):
-        """ Перевизначення методу батьківського класу обміну місцями елементів
-            на позиціях i та j у черзі із простеженням позиції елемента у черзі.
-
-        :param i: перший індекс
-        :param j: другий індекс
-        :return: None
-        """
-        pos_i = self.mItems[i].item()  # Поточна позиція елемента i у масиві
-        pos_j = self.mItems[j].item()  # Поточна позиція елемента j у масиві
-        self.mElementsMap[pos_i] = j
-        self.mElementsMap[pos_j] = i
-
-        self.mItems[i], self.mItems[j] = self.mItems[j], self.mItems[i]
 
     def minChild(self, left_child, right_child):
         """ Допоміжна функція знаходження меншого (за значенням) вузла серед нащадків поточного
@@ -130,7 +127,7 @@ class PriorityQueue:
         """
 
         i = self.mElementsMap[key]
-        self.mItems[i].setPriority(priority)
+        self.mItems[i].updatePriority(priority)
 
         # просіювання вгору для елемента зі зміненим пріоритетом
         while i > 1:
