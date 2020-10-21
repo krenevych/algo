@@ -2,12 +2,12 @@ from source.T7_Graphs.P4_Weighted.L1_VertexForAlgorithms import INF
 from source.T6_Trees.P2_BinaryTree.L11_PriorityQueue import PriorityQueue
 from source.utils.benchmark import benchmark
 
-# Алготитм А* подібний до алгоритму Дейкстри.
+# Алгоритм А* подібний до алгоритму Дейкстри.
 # У ньому також для визначення порядку обходу вершин використовується черга з пріоритетом.
 # Проте для визначення пріоритет визначається не відстанню від стартової вершини,
 # а використовує допоміжну функцію (евристику), аби скеровувати напрям пошуку.
 
-# Таким чином, пріорітет буде визначатися за допомогою функції
+# Таким чином, пріоритет буде визначатися за допомогою функції
 #                 f(x) = g(x) + h(x)
 # де g(x) - функція, значення якої дорівнюють вартості шляху від початкової вершини до x, (як у алгоритмі Дейкстри)
 #    h(x) - евристична функція, яка оцінює вартість шляху від вершини x до кінцевої.
@@ -25,10 +25,10 @@ def AStar(graph, start, end):
     """
 
     # Ініціалізуємо додаткову інформацію у графі для роботи алгоритму.
-    for vertex in graph:
-        vertex.setDistance(INF)  # Відстань для кожної вершини від стартової ставиться як нескінченність
-        vertex.setSource(None)   # Вершина з якої прийшли по найкорошому шляху невизначена
-        vertex.calculateHeuristic(graph[end])  # Обчислюємо значення еврестичної функції, для кожної вершини
+    for vertex in graph:         # Для кожної вершини графа
+        vertex.setDistance(INF)  # Відстань від стартової - нескінченність
+        vertex.setSource(None)   # Вершина з якої прийшли по найкоротшому шляху невизначена
+        vertex.calculateHeuristic(graph[end])  # Обчислюємо значення евристичної функції
 
     # Відстань від першої вершини до неї ж визначається як 0
     graph[start].setDistance(0)
@@ -36,38 +36,45 @@ def AStar(graph, start, end):
     pq = PriorityQueue()       # Створюємо пріоритетну чергу
     pq.insert(start, 0)        # Додаємо у чергу початкову вершину з нульовим пріоритетом
 
-    # Введемо масив, що буде містити ознаку чи відвідали вже вершину.
-    # Ініціалізуємо масив значеннями False (не відвідали)
-    visited = [False] * len(graph)
+    # Введемо масив, що буде містити ознаку чи фіксована вже вершина.
+    # Ініціалізуємо масив значеннями False (що означає, що вершина не фіксована)
+    fixed = [False] * len(graph)
 
     while not pq.empty():                  # Поки черга не порожня
-        vertex_key = pq.extractMinimum()  # Беремо індекс вершини з черги з найнижчим пріоритетом
-        visited[vertex_key] = True         # та позначаємо її як відвідану
+        vertex_key = pq.extractMinimum()   # Беремо індекс вершини з черги з найвищим пріоритетом
+        fixed[vertex_key] = True           # та позначаємо її як фіксавану
         vertex = graph[vertex_key]         # Беремо поточну вершину за індексом
 
         if vertex_key == end:              # Якщо поточний елемент є шуканим
             break                          # пошук завершено
 
-        for neighbor_key in vertex.neighbors():      # Для всіх сусідів (за ключами) поточної вершини
-            if not visited[neighbor_key]:            # які ще не були відвідані
-                neighbour = graph[neighbor_key]      # Беремо вершину-сусіда за ключем
+        for neighbor_key in vertex.neighbors():  # Для всіх сусідів (за ключами) поточної вершини
+            if fixed[neighbor_key]:              # які ще не були фіксовані
+                continue
 
-                # Обчислюємо потенційну відстань у вершині-сусіді
-                newDist = vertex.distance() + vertex.weight(neighbor_key)   # newDist = g(x) згідно з алгоритмом
+            neighbour = graph[neighbor_key]      # Беремо вершину-сусіда за ключем
+            # Обчислюємо потенційну відстань у вершині-сусіді
+            # newDist = g(x) згідно з алгоритмом
+            newDist = vertex.distance() + vertex.weight(neighbor_key)
+            # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
+            if newDist < neighbour.distance():
+                # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
+                neighbour.setDistance(newDist)
+                # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
+                neighbour.setSource(vertex_key)
+                # Беремо значення евристичної функції у вершині-сусіді.
+                h = neighbour.heuristic()
+                # f(x) = g(x) + h(x) - обчилюємо новий пріорітет для вершини-сусіда.
+                f = newDist + h
 
-                if newDist < neighbour.distance():    # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
-                    neighbour.setDistance(newDist)   # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
-                    neighbour.setSource(vertex_key)  # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
+                if neighbor_key in pq:  # Якщо вершина сусід міститься у черзі
+                    # перераховуємо її пріоритет в черзі
+                    pq.updatePriority(neighbor_key, f)
+                else:
+                    # або додаємо елемент до черги, якщо його там ще немає.
+                    pq.insert(neighbor_key, f)
 
-                    h = neighbour.heuristic()         # Беремо значення евристичної функції у вершині-сусіді.
-                    f = newDist + h                   # f(x) = g(x) + h(x) - обчилюємо новий пріорітет для вершини-сусіда.
-
-                    if neighbor_key in pq:                    # Якщо вершина сусід міститься у черзі
-                        pq.updatePriority(neighbor_key, f)    # перераховуємо її пріоритет в черзі
-                    else:
-                        pq.insert(neighbor_key, f)            # або додаємо елемент до черги, якщо його там ще немає.
-
-    return graph.constructWay(start, end)
+    return graph.constructWay(start, end)   # Повертаємо шлях та його вагу
 
 
 

@@ -15,9 +15,9 @@ class PlainGraph(GraphForAlgorithms):
 
     def addEdge(self, source, destination, weight=1):
         """ Додавання ребра з кінцями в точках source та destination
-        з вагою, що дорівнює геометричній відстані між цими вернинами
+        з вагою, що дорівнює геометричній відстані між цими вершинами
 
-        :param source: Перша вернина
+        :param source: Перша вершина
         :param destination: Друга вершина
         :param weight: Вага ребра - формальний параметер, що необхідний лише для наслідування
         :return: None

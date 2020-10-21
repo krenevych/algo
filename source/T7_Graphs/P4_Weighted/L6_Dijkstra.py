@@ -15,7 +15,7 @@ def Dijkstra(graph, start, end):
 
     # Ініціалізуємо додаткову інформацію у графі для роботи алгоритму.
     for vertex in graph:
-        vertex.setDistance(INF)  # Відстань для кожної вершини від стартової ставиться як нескінченність
+        vertex.setDistance(INF)  # Відстань для кожної вершини від стартової - нескінченність
         vertex.setSource(None)   # Вершина з якої прийшли по найкорошому шляху невизначена
 
     # Відстань у старотовій вершині (тобто від стартової вершини до себе) визначається як 0
@@ -24,20 +24,37 @@ def Dijkstra(graph, start, end):
     pq = PriorityQueue()                  # Створюємо пріоритетну чергу
     pq.insert(start, 0)                   # Додаємо у чергу початкову вершину з нульовим пріоритетом
 
+    # Введемо масив, що буде містити ознаку чи фіксована вже вершина.
+    # Ініціалізуємо масив значеннями False (що означає, що вершина не фіксована)
+    fixed = [False] * len(graph)
+
     while not pq.empty():
-        vertex_key = pq.extractMinimum()   # Беремо індекс вершини з черги з найнижчим пріоритетом
+        vertex_key = pq.extractMinimum()   # Беремо індекс вершини з черги з найвищим пріоритетом
+        fixed[vertex_key] = True           # та позначаємо її як фіксавану
         vertex = graph[vertex_key]         # Беремо вершину за індексом
 
-        for neighbor_key in vertex.neighbors():             # Для всіх сусідів (за ключами) поточної вершини
-            neighbour = graph[neighbor_key]                 # Беремо вершину-сусіда за ключем
-            newDist = vertex.distance() + vertex.weight(neighbor_key)  # Обчислюємо потенційну відстань у вершині-сусіді
-            if newDist < neighbour.distance():              # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
-                neighbour.setDistance(newDist)             # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
-                neighbour.setSource(vertex_key)            # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
+        if vertex_key == end:              # Якщо поточний елемент є шуканим
+            break                          # пошук завершено
 
-                if neighbor_key in pq:                           # Якщо вершина сусід міститься у черзі
-                    pq.updatePriority(neighbor_key, newDist)     # перераховуємо її пріоритет в черзі
+        for neighbor_key in vertex.neighbors():    # Для всіх сусідів (за ключами) поточної вершини
+            if fixed[neighbor_key]:                # які ще не були фіксовані
+                continue
+
+            neighbour = graph[neighbor_key]                 # Беремо вершину-сусіда за ключем
+            # Обчислюємо потенційну відстань у вершині-сусіді
+            newDist = vertex.distance() + vertex.weight(neighbor_key)
+            # Якщо потенційна відстань у вершині-сусіді менша за її поточне значення
+            if newDist < neighbour.distance():
+                # Змінюємо поточне значення відстані у вершині-сусіді обчисленим
+                neighbour.setDistance(newDist)
+                # Встановлюємо для сусідньої вершини ідентифікатор звідки ми прийшли у неї
+                neighbour.setSource(vertex_key)
+
+                if neighbor_key in pq:   # Якщо вершина сусід міститься у черзі
+                    # перераховуємо її пріоритет в черзі
+                    pq.updatePriority(neighbor_key, newDist)
                 else:
-                    pq.insert(neighbor_key, newDist)             # або додаємо елемент до черги, якщо його там ще немає.
+                    # або додаємо елемент до черги, якщо його там ще немає.
+                    pq.insert(neighbor_key, newDist)
 
     return graph.constructWay(start, end)    # Повертаємо шлях та його вагу
