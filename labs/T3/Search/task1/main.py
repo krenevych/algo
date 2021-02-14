@@ -111,7 +111,7 @@ def main():
     inval_score = inval_test_num - checkInvalid(inval_test_num)
 
     score = 100 * (valid_score + inval_score) / (valid_test_num + inval_score)
-
+    score = score if score > 50 else 0
     print("Score: %d%%" % score)
 
 
