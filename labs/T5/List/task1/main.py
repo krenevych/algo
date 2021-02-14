@@ -80,34 +80,6 @@ def main(input_file):
                 if len(_lst) == 1:
                     _cur = 0
 
-            elif key == "insert_before":
-                _lst.insert(_cur, item)
-                user.insert_before(item)
-                if len(_lst) == 1:
-                    _cur = 0
-                else:
-                    _cur += 1
-
-            elif key == "delete":
-                if len(_lst) == 0:
-                    continue
-
-                user.delete()
-                _lst.pop(_cur)
-                if _cur == len(_lst):
-                    _cur = len(_lst) - 1
-
-            elif key == "damp":
-                test_num += 1
-                out = user.damp()
-                if len(_lst) != len(out):
-                    error += 1
-                else:
-                    for i in range(len(_lst)):
-                        if _lst[i] != out[i]:
-                            error += 1
-                            break
-
         score = 100 * (test_num - error) / test_num
 
         return score if score > 35 else 0

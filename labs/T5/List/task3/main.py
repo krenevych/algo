@@ -130,42 +130,8 @@ def main(input_file):
                 if _cur == len(_lst):
                     _cur = len(_lst) - 1
 
-            elif key == "len":
-                test_num += 1
-                out_len = user.len()
-                lst_len = len(_lst)
-                if out_len != lst_len:
-                    error += 1
-
-            elif key == "damp":
-                test_num += 1
-                out = user.damp()
-                if len(_lst) != len(out):
-                    error += 1
-                else:
-                    for i in range(len(_lst)):
-                        if _lst[i] != out[i]:
-                            error += 1
-                            break
-
-            elif key == "swap_prev":
-                if len(_lst) == 0 or _cur == 0:
-                    continue
-
-                _lst[_cur - 1], _lst[_cur] = _lst[_cur], _lst[_cur - 1]
-                _cur -= 1
-                user.swap_prev()
-
-            elif key == "swap_next":
-                if len(_lst) == 0 or _cur == len(_lst) - 1:
-                    continue
-
-                _lst[_cur], _lst[_cur + 1] = _lst[_cur + 1], _lst[_cur]
-                _cur += 1
-                user.swap_next()
-
         score = 100 * (test_num - error) / test_num
-        return score if score > 35 else 0
+        return score if score > 40 else 0
 
 
 if __name__ == "__main__":
