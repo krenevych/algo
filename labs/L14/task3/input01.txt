@@ -1,0 +1,100 @@
+prev
+empty
+current
+insert_before  5545
+next
+current
+current
+insert_before  47205
+set_last
+set_last
+set_last
+set_last
+set_last
+next
+prev
+prev
+prev
+delete
+set_last
+set_first
+insert_after  26874
+prev
+set_first
+next
+next
+current
+insert_after  14926
+set_first
+set_last
+delete
+set_first
+prev
+prev
+delete
+insert_after  59956
+set_first
+prev
+insert_after  58690
+prev
+prev
+insert_after  52857
+empty
+set_last
+current
+set_last
+current
+insert_after  7341
+set_last
+delete
+empty
+insert_after  98028
+delete
+prev
+insert_before  48475
+set_first
+current
+delete
+current
+insert_after  86939
+empty
+prev
+delete
+set_first
+current
+next
+insert_before  34002
+set_last
+set_first
+set_first
+set_first
+next
+next
+set_first
+prev
+insert_after  59052
+empty
+prev
+set_last
+current
+insert_before  54061
+empty
+delete
+set_last
+empty
+set_last
+insert_after  21013
+delete
+next
+next
+set_first
+next
+current
+set_first
+current
+set_first
+prev
+current
+empty
+prev
+set_first
