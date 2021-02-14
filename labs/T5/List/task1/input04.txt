@@ -1,1000 +1,1001 @@
-insert_after  79587
-empty
-insert_after  30901
-reset
-next
-delete
-reset
-empty
-delete
-damp
-current
-insert_before  72793
-insert_before  18774
+insert_after  66980
 next
-delete
-current
 reset
-damp
-insert_before  39786
+insert_after  37634
+insert_after  65395
+insert_after  49600
+insert_after  56105
 empty
-next
-next
-reset
-current
-current
-current
-next
 reset
-insert_after  62565
-empty
 reset
-insert_before  39305
 reset
+insert_after  52897
 empty
-empty
-insert_after  31195
 current
-empty
-empty
-delete
-insert_before  82823
 reset
-empty
-next
-empty
-damp
-damp
+insert_after  98671
 reset
-next
-delete
+current
+current
 next
-damp
-insert_after  15467
+insert_after  46684
 next
-empty
-insert_after  55736
-reset
-reset
-reset
 next
-insert_before  3369
-damp
-insert_after  80326
-empty
-insert_after  88001
-insert_before  81951
-empty
-damp
-reset
 current
-delete
-reset
-damp
-insert_after  8663
-delete
-current
-insert_before  16972
-reset
-empty
-next
-reset
-delete
-insert_after  88941
+insert_after  13158
+current
 next
-delete
-reset
-empty
-empty
 reset
-current
-damp
 reset
-delete
-delete
-damp
+insert_after  36687
 current
-current
-next
+insert_after  31755
+insert_after  45645
 current
-next
-reset
-delete
-next
-next
-insert_after  3519
+insert_after  47368
 current
-insert_after  90169
-reset
 next
-reset
-reset
-insert_before  33196
-insert_after  35998
 reset
-damp
-insert_before  43299
+insert_after  30522
+insert_after  90616
 empty
 reset
+insert_after  66838
 current
-delete
-next
-damp
-damp
-insert_before  47514
+insert_after  35079
 current
-empty
-delete
-insert_after  26912
-next
-insert_before  49824
-delete
-damp
-damp
+insert_after  92902
 current
-next
 current
-empty
-reset
+insert_after  42416
 current
-insert_before  89116
-insert_before  73891
-insert_after  27789
 current
-insert_before  28340
-next
-delete
-next
-next
+insert_after  79569
+insert_after  2236
 current
+insert_after  24908
+insert_after  12059
 current
-insert_after  12137
-reset
-insert_after  45760
-damp
-reset
-delete
-insert_before  21644
-empty
-damp
-insert_after  18211
-damp
-insert_before  15386
-damp
-insert_after  51393
-delete
-delete
-damp
-next
 current
-empty
-reset
-reset
-insert_before  12234
-insert_before  99573
+insert_after  65060
 current
 current
-empty
-insert_after  92104
-insert_after  11410
+insert_after  40505
+insert_after  22175
+insert_after  73882
+current
+insert_after  39250
+current
 reset
-empty
+insert_after  16523
+insert_after  10687
+insert_after  34548
+insert_after  22599
+insert_after  97896
 current
-damp
+current
 reset
 current
-empty
-next
-next
-delete
-damp
 reset
+insert_after  45641
 reset
-insert_before  76787
-empty
-current
-damp
-insert_after  98479
-next
-insert_before  49861
-current
-empty
 next
 current
-insert_after  8660
-damp
-next
-next
-next
-damp
 current
-empty
-reset
-damp
-insert_after  44856
-delete
-insert_after  100001
-damp
-delete
-insert_before  61499
-next
-delete
+insert_after  54068
 current
-insert_before  84104
-empty
-empty
-insert_after  34306
-damp
-damp
-current
-insert_before  93175
-empty
-empty
-empty
-next
-next
-next
-insert_after  79787
-delete
-damp
-delete
-insert_before  66435
 next
 current
-insert_after  48574
-damp
-insert_after  61099
+insert_after  50182
+insert_after  43576
+insert_after  52124
 empty
-damp
-empty
-empty
-insert_before  56226
-damp
-empty
-damp
-delete
-insert_before  13616
-delete
-delete
-next
 current
 empty
+reset
 next
-insert_before  81861
 empty
-insert_after  67957
-damp
-insert_before  87648
-next
-current
+insert_after  40986
+insert_after  25835
 reset
-delete
-insert_after  30689
-delete
-insert_after  56130
-delete
-current
-damp
-insert_after  40120
+insert_after  100016
 current
-empty
-insert_before  38354
-insert_after  35739
-damp
-delete
-insert_before  43048
-next
-delete
+reset
+insert_after  18597
 empty
+insert_after  17658
 current
-delete
-insert_after  9325
-insert_before  97888
-damp
-delete
+insert_after  73246
+insert_after  95952
 current
-next
-damp
-damp
-insert_after  1678
-next
-current
-reset
 current
-next
-empty
-next
-insert_after  79645
-next
 current
-insert_before  8468
-empty
-damp
-insert_after  8246
-insert_after  40885
-empty
+insert_after  77666
 reset
 reset
-next
-next
-current
 reset
+insert_after  6075
+insert_after  37597
+insert_after  44447
+insert_after  98570
+current
 next
-delete
-reset
-damp
+current
+insert_after  73958
+insert_after  4112
+insert_after  1884
 reset
-insert_before  8095
-delete
+current
+insert_after  62114
 next
-empty
-damp
-reset
 current
-delete
-damp
-reset
-delete
 current
-empty
-reset
-reset
+insert_after  78568
+current
+insert_after  8199
+insert_after  37531
 next
+insert_after  90400
 next
-damp
-insert_before  30620
-insert_before  12274
 current
-empty
-insert_after  9888
-delete
-insert_after  15085
-insert_before  12108
-insert_before  79805
-delete
-reset
-delete
-insert_after  15824
-damp
-insert_before  35232
 current
 next
-reset
-insert_before  74475
-insert_after  21583
-delete
-damp
-damp
 empty
-empty
-insert_after  59089
-damp
 current
-insert_after  27370
 current
-delete
-reset
-insert_after  89246
 current
-insert_after  53013
 empty
-next
+insert_after  48592
+insert_after  49686
+current
 empty
-delete
-reset
+empty
+insert_after  47668
 empty
-delete
 current
 current
 next
-insert_before  92709
-insert_before  40215
-delete
-current
-current
-insert_before  53298
-damp
 reset
 reset
-insert_after  19223
-empty
-damp
-damp
-empty
-insert_before  37443
-current
-next
-empty
 current
-insert_before  91042
-reset
 empty
 current
-insert_after  96532
-next
-next
-next
-damp
-delete
-insert_before  82782
-delete
-insert_after  95368
-next
-damp
 current
-empty
-reset
-insert_after  63797
-insert_before  31020
-damp
-next
-reset
+insert_after  6055
 current
-delete
-delete
-delete
-empty
+insert_after  93186
 current
-damp
-damp
-insert_after  99982
-delete
-damp
+insert_after  19327
+insert_after  86555
 reset
-insert_before  71737
-insert_after  77107
 current
-empty
 current
-damp
 current
-delete
-empty
-reset
-next
-delete
 current
 reset
 next
-insert_after  11514
-delete
+insert_after  2364
 current
-empty
-empty
-damp
-insert_before  80336
-insert_before  83146
-next
-insert_after  31549
-delete
-reset
-insert_before  71789
-reset
 current
-next
-next
-next
-delete
-delete
-insert_before  47901
-empty
-empty
-reset
-next
-delete
-damp
-damp
-delete
-damp
-damp
-damp
-current
-insert_after  32825
-delete
-next
-insert_after  46312
-next
-next
+current
 reset
-insert_before  38010
-insert_after  16321
-delete
-next
 current
-delete
-insert_after  11774
-empty
-damp
-insert_after  62687
+current
+insert_after  29358
+insert_after  66694
+insert_after  83141
+insert_after  27311
 next
-empty
-insert_before  46733
 current
 current
-next
-reset
+insert_after  501
 next
-reset
-insert_after  88320
-current
-reset
 current
-empty
-reset
 current
-reset
-delete
-next
-insert_before  88428
-insert_before  1568
-delete
-reset
-insert_after  16689
+insert_after  66485
+insert_after  80970
+insert_after  31825
 current
 reset
+insert_after  100087
 current
-insert_before  38417
-reset
-empty
-delete
-delete
-damp
 reset
-damp
-empty
-empty
 next
-next
-damp
-insert_before  89704
 current
-insert_after  89996
-damp
+insert_after  62578
+insert_after  64553
 current
+insert_after  87360
 current
-delete
-delete
-insert_after  42665
-delete
-next
+insert_after  74057
 current
+insert_after  88010
 reset
+insert_after  98540
+insert_after  39196
+insert_after  82275
 current
-delete
-next
-empty
-insert_after  70072
+insert_after  18903
 current
-delete
 empty
-reset
-damp
-insert_after  6848
-reset
-next
 current
-next
-empty
-reset
-damp
-reset
-next
-delete
-damp
-insert_after  37041
+insert_after  32533
 next
-next
-delete
-delete
-reset
-insert_after  24001
-insert_before  90613
-current
-delete
-delete
-insert_after  28804
-next
-reset
-reset
-delete
-insert_after  29260
 empty
-insert_after  37719
-reset
-insert_after  9750
-insert_after  39247
-next
-insert_before  48437
-insert_before  18407
-delete
-reset
-insert_before  31513
-delete
-delete
-next
 current
-damp
 current
-insert_after  50427
-next
-insert_after  80209
-next
-damp
-insert_before  71098
-next
-damp
-delete
+insert_after  99662
+current
 empty
 reset
-empty
-empty
+insert_after  93053
+insert_after  88834
 current
-next
-damp
-damp
 next
-insert_after  83655
-damp
-delete
-reset
-empty
-current
-empty
-insert_after  3313
-current
 empty
-reset
 reset
-insert_after  73773
-delete
-damp
-insert_after  30220
-insert_before  69257
-empty
-empty
 next
-insert_before  96413
+insert_after  12777
+insert_after  53134
 current
-next
-next
-insert_before  62930
-insert_before  50582
 insert_after  35463
-next
-damp
-delete
-delete
 current
-damp
-reset
-insert_before  10460
-delete
-insert_before  73836
-delete
-empty
-next
-reset
-current
-empty
-reset
-delete
-insert_before  47885
-current
-damp
-damp
-next
-current
-damp
-damp
-damp
-current
-next
-empty
-empty
-insert_before  70211
-reset
-next
-delete
-insert_before  25477
-next
-next
-delete
-insert_after  52471
-next
-insert_before  63590
-reset
-damp
-delete
-insert_after  52241
-insert_after  47652
-next
-insert_after  52817
-next
-insert_before  70927
-insert_before  93312
-damp
-insert_after  81756
-delete
-current
-reset
-insert_after  94805
-next
-damp
-insert_before  61097
-empty
-next
-damp
-empty
-insert_before  79336
-current
-current
-empty
-damp
-reset
-damp
-reset
-reset
-damp
-damp
-empty
-damp
-next
-insert_after  12509
-delete
-next
-insert_before  53152
-delete
-current
-delete
-current
-next
-insert_before  9019
-damp
-damp
-insert_after  79350
-delete
-delete
-insert_after  52415
-empty
-next
-reset
 empty
 current
 empty
-delete
 current
-reset
-delete
-damp
-insert_before  5402
-insert_after  62932
-insert_before  69833
-next
-insert_after  58751
-next
+insert_after  79249
 current
-delete
+insert_after  73074
 current
-insert_before  26808
-damp
-delete
-next
-empty
-empty
-next
-delete
-damp
-damp
-insert_after  97344
-insert_after  100095
-next
-next
 current
-insert_after  17898
-empty
+insert_after  5053
+insert_after  55934
+insert_after  28071
+insert_after  47065
 current
-empty
-damp
-damp
-next
-next
-insert_after  54023
-next
-reset
-insert_before  63022
-damp
-insert_after  84074
-next
-next
-reset
 current
-reset
-insert_before  12556
-next
-next
-insert_after  59044
-insert_after  50753
-delete
-next
-empty
-empty
-delete
-damp
-empty
-insert_before  39938
 current
-insert_before  40711
-reset
-next
-insert_after  59946
-delete
-delete
-damp
-delete
-next
-reset
-next
-reset
-next
-next
-delete
-delete
+insert_after  39154
+insert_after  96363
 empty
-next
-next
 reset
-damp
-next
-damp
-next
 reset
-insert_before  59497
-empty
-current
-damp
+reset
 reset
 current
 current
-insert_after  37263
 empty
-insert_after  12661
-insert_before  6627
+insert_after  99164
+insert_after  8161
+reset
+current
+current
+reset
+current
+insert_after  30049
+current
+insert_after  90674
+current
+current
+insert_after  23721
+insert_after  34838
+next
+insert_after  93185
+reset
+insert_after  42547
+insert_after  32395
+current
+current
+current
+insert_after  68118
+current
+insert_after  10363
+empty
+next
+current
+insert_after  29524
+insert_after  36249
+current
+current
+next
+current
+empty
+reset
+insert_after  6081
+insert_after  53760
+next
+empty
+insert_after  621
+current
+next
+current
+insert_after  97670
+empty
+insert_after  13789
+current
+next
+next
+reset
+next
+insert_after  30107
+insert_after  16349
+reset
+insert_after  42080
+next
+current
+empty
+empty
+current
+insert_after  6688
+insert_after  56741
+empty
+next
+current
+current
+current
+next
+insert_after  82028
+empty
+current
+insert_after  97130
 next
 reset
 current
-damp
-insert_after  83435
-insert_after  98490
-reset
-next
-empty
-insert_after  85303
+current
+current
 empty
 empty
-reset
-reset
+current
+insert_after  91056
+insert_after  1370
 next
-insert_after  73386
-insert_before  44136
-damp
-damp
-delete
-insert_after  90914
-insert_before  47692
-reset
+insert_after  55643
+insert_after  53097
+current
+current
+current
+insert_after  27644
+insert_after  89797
+insert_after  97217
+insert_after  34983
+insert_after  94729
+current
+insert_after  43244
+current
 next
-damp
-damp
-delete
+current
+empty
+current
+insert_after  75290
+current
+empty
+insert_after  55872
+insert_after  17134
+insert_after  99543
+reset
+current
+current
+insert_after  2189
+insert_after  69138
+insert_after  58302
+empty
+current
+reset
+insert_after  61146
+reset
+current
+current
+current
+insert_after  85972
+insert_after  43021
+current
+empty
+current
+insert_after  95429
+current
+insert_after  90972
+current
+current
+insert_after  39412
+insert_after  94628
+current
+current
+next
+current
+insert_after  61931
+current
+insert_after  80637
+insert_after  39251
+current
+insert_after  78867
+current
+insert_after  30312
+next
+current
+insert_after  406
+next
+insert_after  39548
+current
+empty
+insert_after  79622
+insert_after  44235
+insert_after  86802
+insert_after  64807
+insert_after  56463
+current
+insert_after  59067
+current
+current
+insert_after  5977
+current
+reset
+empty
+insert_after  40957
+insert_after  7415
 next
 empty
 current
 next
-insert_before  44538
 reset
-reset
-insert_before  88193
-damp
-next
-reset
-reset
-insert_before  36337
-damp
-damp
-reset
-insert_before  95914
-damp
-delete
-reset
-empty
-insert_before  13907
-reset
-insert_after  51847
-delete
-damp
-delete
-next
-reset
-reset
-empty
-insert_before  36850
-next
-damp
-empty
-insert_before  29876
-insert_after  25788
-reset
-reset
-damp
-damp
-insert_before  78848
-reset
-current
-damp
-next
-next
-next
-reset
-damp
-empty
-insert_before  10172
-delete
-insert_after  29232
-next
-insert_after  15048
-current
-current
-current
-reset
-damp
-reset
-current
-insert_after  43691
-reset
-delete
-insert_before  18448
+insert_after  21245
 current
 empty
-damp
+next
+insert_after  80508
+insert_after  34104
+current
+reset
+current
+current
+current
+next
+reset
 current
 empty
-damp
-delete
 next
-damp
-next
-insert_before  67823
+insert_after  622
+current
+insert_after  48462
+insert_after  60218
+reset
 current
 empty
 current
-delete
-insert_after  74763
-empty
-damp
-damp
-insert_before  67730
-damp
-reset
-insert_before  3032
-damp
-insert_after  77466
-reset
-delete
 current
-delete
-insert_after  66524
-insert_before  45770
-current
-insert_before  75270
 empty
-insert_after  6966
+current
+next
+reset
+current
+current
+insert_after  82808
+current
+empty
+empty
+current
+next
+current
+next
+empty
+current
+current
+current
+insert_after  96929
+current
+current
+insert_after  6322
+insert_after  22433
+insert_after  43236
+current
+insert_after  53479
+empty
+next
+insert_after  33728
+current
+reset
+current
+insert_after  47493
+current
+current
+empty
+insert_after  31493
+insert_after  46012
+reset
+empty
+current
+current
+current
+current
+insert_after  82612
+current
+reset
+insert_after  93871
+insert_after  10858
+current
+insert_after  96832
+next
+empty
+empty
+current
+next
+current
+current
+reset
+current
+insert_after  53593
+current
+current
+insert_after  79492
+reset
+insert_after  54372
+empty
+current
+current
+insert_after  9220
+insert_after  49644
+next
+current
+next
+insert_after  64951
+current
+insert_after  26533
+current
+reset
+insert_after  13030
+current
+next
+reset
+current
+current
+reset
+empty
+insert_after  34919
+insert_after  34382
+reset
+reset
+current
+current
+insert_after  38043
+current
+current
+insert_after  92339
+current
+insert_after  92662
+insert_after  69533
+next
+empty
+insert_after  87745
+empty
+insert_after  50409
+next
+current
+current
+current
+next
+current
+current
+next
+insert_after  89336
+current
+reset
+current
+reset
+insert_after  81381
+insert_after  2190
+current
+next
+current
+reset
+insert_after  31356
+reset
+current
+insert_after  66448
+current
+current
+insert_after  46916
+next
+reset
+insert_after  70651
+insert_after  45079
+current
+insert_after  68761
+reset
+next
+reset
+insert_after  85692
+reset
+next
+current
+reset
+insert_after  56890
+insert_after  50114
+current
+empty
+insert_after  17077
+empty
+current
+next
+insert_after  24305
+current
+current
+current
+current
+current
+current
+insert_after  29972
+empty
+current
+insert_after  60568
+current
+insert_after  20913
+current
+insert_after  16015
+next
+current
+reset
+next
+current
+insert_after  10834
 next
 next
 current
 current
-delete
+empty
+current
+current
+reset
+current
+current
+current
+next
+current
+current
+next
+insert_after  90559
+current
+reset
+insert_after  92431
+insert_after  63049
+insert_after  50014
+current
+empty
+current
+insert_after  68299
+next
+empty
+current
+current
+next
+insert_after  70493
+insert_after  73826
+empty
+insert_after  42066
+insert_after  50942
+insert_after  29154
+current
+current
+insert_after  91314
 reset
 reset
-delete
-damp
+insert_after  77855
+insert_after  90282
+next
+empty
 reset
+next
+next
+insert_after  88642
+next
+reset
+current
+current
+current
+current
+current
+current
+empty
+empty
+current
+current
+insert_after  4210
+insert_after  71649
+empty
+next
+current
+current
+reset
+current
+insert_after  60688
+insert_after  30347
+insert_after  65430
+current
+reset
+insert_after  30887
+insert_after  83444
+current
+current
+insert_after  41105
+insert_after  7155
+reset
+insert_after  35400
+empty
+next
+current
+current
+insert_after  35583
+reset
+insert_after  56716
+insert_after  4662
+reset
+current
+current
+next
+empty
+current
+empty
+insert_after  80030
+next
+current
+current
+current
+current
+reset
+insert_after  97618
+empty
+current
+insert_after  2813
+insert_after  32443
+current
+current
+insert_after  23433
+insert_after  10905
+insert_after  16549
+insert_after  64105
+insert_after  17585
+insert_after  22928
+insert_after  60475
+reset
+empty
+current
+next
+current
+insert_after  63542
+current
+current
+insert_after  8109
+empty
+insert_after  76702
+reset
+insert_after  23605
+next
+insert_after  31785
+empty
+insert_after  11915
+insert_after  53125
+current
+current
+next
+current
+insert_after  70462
+current
+insert_after  13330
+empty
+insert_after  71285
+reset
+insert_after  37327
+current
+current
+reset
+insert_after  64264
+current
+next
+insert_after  22299
+current
+insert_after  53768
+current
+insert_after  13139
+insert_after  17057
+insert_after  64171
+next
+reset
+insert_after  1076
+current
+insert_after  19469
+insert_after  75565
+next
+next
+insert_after  26100
+insert_after  71452
+empty
+current
+current
+current
+next
+reset
+next
+insert_after  12484
+current
+empty
+insert_after  89709
+insert_after  15661
+next
+next
+next
+insert_after  82423
+empty
+reset
+empty
+empty
+empty
+insert_after  53625
+next
+reset
+insert_after  69207
+next
+insert_after  95890
+reset
+current
+insert_after  90472
+next
+reset
+insert_after  98763
+current
+current
+insert_after  85535
+next
+insert_after  48356
+next
+current
+insert_after  94472
+next
+insert_after  48891
+insert_after  29312
+insert_after  38365
+insert_after  81949
+current
+insert_after  77756
+current
+insert_after  75299
+insert_after  8554
+insert_after  35963
+insert_after  97592
+insert_after  61638
+next
+current
+reset
+current
+reset
+current
+next
+insert_after  22254
+insert_after  23512
+next
+current
+insert_after  48001
+current
+current
+insert_after  82931
+insert_after  18741
+insert_after  43019
+empty
+insert_after  60374
+insert_after  9727
+insert_after  70444
+current
+reset
+insert_after  61920
+current
+current
+insert_after  83761
+current
+empty
+empty
+current
+current
+insert_after  68825
+insert_after  2131
+insert_after  67647
+empty
+empty
+next
+insert_after  77075
+current
+reset
+empty
+insert_after  58905
+reset
+current
+reset
+insert_after  89226
+current
+next
+insert_after  76338
+next
+next
+current
+current
+current
+next
+current
+reset
+current
+insert_after  70784
+insert_after  82050
+insert_after  84747
+empty
+insert_after  92767
+insert_after  96262
+reset
+current
+current
+insert_after  68836
+insert_after  46959
+reset
+insert_after  19963
+insert_after  91811
+insert_after  39897
+current
+insert_after  59118
+current
+current
+empty
+insert_after  71293
+current
+next
+current
+insert_after  64948
+insert_after  79566
+next
+empty
+next
+insert_after  22528
+insert_after  88565
+empty
+current
+current
+current
+current
+insert_after  86015
+insert_after  92486
+next
+empty
+current
+insert_after  84299
+next
+insert_after  8482
+next
+insert_after  46948
+reset
+current
+insert_after  91330
+reset
+insert_after  31399
+current
+current
+insert_after  43378
+current
+empty
+next
+empty
+empty
+insert_after  92643
+empty
+insert_after  25979
+insert_after  60174
+reset
+current
+reset
+current
+next
+insert_after  61851
+next
+current
+next
+current
+insert_after  16457
+current
+reset
+next
+reset
+current

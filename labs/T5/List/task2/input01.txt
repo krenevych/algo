@@ -1,117 +1,110 @@
 next
 next
 next
+insert_after  5574
 next
 next
-current
-current
-current
-current
-current
-current
-prev
-prev
-prev
-prev
-prev
-prev
-swap_prev
-set_last
-damp
-len
-prev
-len
-empty
-prev
-insert_before  45577
-prev
-empty
-swap_next
-insert_after  35508
-swap_prev
-prev
-prev
-next
-set_last
-swap_prev
-insert_after  46075
-set_last
-swap_next
-swap_prev
-len
-set_first
-swap_next
 delete
-prev
-insert_after  13012
+next
+next
+empty
+next
+next
+next
+delete
+delete
+delete
+empty
+reset
+current
+insert_before  62296
+empty
+current
+insert_after  92377
+empty
+insert_after  51132
+insert_before  10723
+empty
+next
+insert_after  89440
+next
+reset
 damp
 current
 damp
-insert_before  33778
-len
-empty
 next
-prev
-insert_after  2902
-empty
-set_first
-set_first
-set_first
+reset
+damp
+insert_before  39030
+damp
+delete
+insert_before  92360
 current
-insert_before  3936
-insert_before  55724
 damp
-set_last
-prev
-insert_before  28585
-insert_after  63192
-set_last
-swap_prev
-swap_next
-insert_before  62611
+current
 damp
-len
-next
 delete
-delete
-prev
-set_first
-set_last
-delete
-set_last
-set_last
-delete
-swap_prev
-len
-delete
+insert_before  58934
+insert_after  63953
+reset
+empty
 delete
 current
+insert_before  78231
+insert_after  33902
+next
+reset
+insert_after  7799
+delete
 empty
-swap_prev
-prev
+current
 empty
-set_last
-swap_next
-set_last
+current
+empty
+empty
+damp
+current
 delete
-insert_before  26155
-swap_next
-len
-prev
-insert_after  94489
-swap_prev
-prev
-insert_before  45405
-set_first
-insert_after  75565
+current
+damp
+empty
+empty
+insert_before  46666
+current
+reset
+reset
+damp
+empty
+damp
+insert_before  15883
+reset
+current
 delete
-set_first
-insert_before  1733
-swap_next
-delete
-set_last
-insert_before  73396
-set_last
-insert_after  31241
+current
+next
+insert_before  79555
+damp
+damp
+current
 delete
 next
+delete
+damp
+empty
+insert_after  2318
+empty
+reset
+current
+insert_before  5613
+insert_before  91950
+next
+delete
+insert_after  31728
+empty
+delete
+current
+delete
+current
+current
+reset
+reset

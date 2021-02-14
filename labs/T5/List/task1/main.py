@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import user1 as user
+import user
 
 
 def main(input_file):

@@ -2,19 +2,15 @@ from random import randint
 
 commands = [
     "empty",
-    "set_first",
-    "set_last",
+    "reset",
     "next",
-    "prev",
     "current",
     "insert_after",
     "insert_before",
     "delete",
-    "damp",
-    "len",
-    "swap_prev",
-    "swap_next",
+    "damp"
 ]
+
 
 def generate(fname, commands_number):
     f_out = open(fname, "w")

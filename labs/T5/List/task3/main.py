@@ -31,12 +31,19 @@ def main(input_file):
                 if out_empty != lst_empty:
                     error += 1
 
-            elif key == "reset":
+            elif key == "set_first":
                 if len(_lst) == 0:
                     continue
 
                 _cur = 0
-                user.reset()
+                user.set_first()
+
+            elif key == "set_last":
+                if len(_lst) == 0:
+                    continue
+
+                _cur = len(_lst) - 1
+                user.set_last()
 
             elif key == "next":
                 test_num += 1
@@ -61,6 +68,32 @@ def main(input_file):
                 _cur += 1
                 try:
                     user.next()
+                except StopIteration:
+                    error += 1
+
+            elif key == "prev":
+                test_num += 1
+
+                if len(_lst) == 0:
+                    try:
+                        user.prev()
+                    except StopIteration:
+                        pass
+                    else:
+                        error += 1
+                    continue
+
+                if _cur == 0:
+                    try:
+                        user.prev()
+                        error += 1
+                    except StopIteration:
+                        pass
+                    continue
+
+                _cur -= 1
+                try:
+                    user.prev()
                 except StopIteration:
                     error += 1
 
@@ -97,6 +130,13 @@ def main(input_file):
                 if _cur == len(_lst):
                     _cur = len(_lst) - 1
 
+            elif key == "len":
+                test_num += 1
+                out_len = user.len()
+                lst_len = len(_lst)
+                if out_len != lst_len:
+                    error += 1
+
             elif key == "damp":
                 test_num += 1
                 out = user.damp()
@@ -108,9 +148,25 @@ def main(input_file):
                             error += 1
                             break
 
-        score = 100 * (test_num - error) / test_num
+            elif key == "swap_prev":
+                if len(_lst) == 0 or _cur == 0:
+                    continue
 
+                _lst[_cur - 1], _lst[_cur] = _lst[_cur], _lst[_cur - 1]
+                _cur -= 1
+                user.swap_prev()
+
+            elif key == "swap_next":
+                if len(_lst) == 0 or _cur == len(_lst) - 1:
+                    continue
+
+                _lst[_cur], _lst[_cur + 1] = _lst[_cur + 1], _lst[_cur]
+                _cur += 1
+                user.swap_next()
+
+        score = 100 * (test_num - error) / test_num
         return score if score > 35 else 0
+
 
 if __name__ == "__main__":
     res1 = main("input01.txt")
