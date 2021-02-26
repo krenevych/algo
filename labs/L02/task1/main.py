@@ -59,7 +59,7 @@ def check(test_cases_num):
         dt *= 100000
         # print('eng = %s, user_search = %s,  find time: %d ms' % (eng, user_search, dt))
         # print('find time: %d ms' % dt)
-        if user_search != dictionary[eng] or dt > 100:
+        if user_search != dictionary[eng] or dt > 150:
             errors += 1
 
     return errors
