@@ -5,6 +5,7 @@ from random import randint
 N_MAXKEY = 10000000
 TIME_MULTIPLIER = 100000
 TIME_TEST_LIMIT = 200
+VERIFICATION_THRESHOLD = 67
 
 _array = {}
 _deleted = set()
@@ -117,6 +118,7 @@ def main():
             error += 1
 
     score = 100 * (test_num - error) / test_num
+    score = score if score > VERIFICATION_THRESHOLD else 0
     print("Score: %d%%" % score)
 
 
