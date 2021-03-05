@@ -5,7 +5,7 @@ from random import randint
 N_MAXKEY = 10000000
 TIME_MULTIPLIER = 100000
 TIME_TEST_LIMIT = 200
-VERIFICATION_THRESHOLD = 67
+VERIFICATION_THRESHOLD = 70
 
 _array = {}
 _deleted = set()
