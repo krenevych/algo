@@ -67,7 +67,7 @@ class Stack:
 
         if self.empty():
             raise Exception("Stack: 'top' applied to empty container")
-        return self.mTopNode.item
+        return self.mTopNode.mItem
 
 
 # For testing
