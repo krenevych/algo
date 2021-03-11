@@ -141,7 +141,7 @@ def main():
     # generate_pairs("input.txt", 100000)
     readData("input.txt")
 
-    test_num = 500
+    test_num = 1000
     error = 0
 
     step_show = test_num / 100
