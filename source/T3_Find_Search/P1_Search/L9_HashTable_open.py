@@ -27,7 +27,7 @@ class HashTable:
             if self.keys[current] == key:
                 self.values[current] = value
                 return
-            current += 1
+            current = (current + 1) % self.max_size
 
         # якщо ключ у таблиці не знайдений
         self.keys[current] = key      # додаємо ключ
@@ -44,7 +44,7 @@ class HashTable:
         while self.keys[current] != None:
             if self.keys[current] == key:
                 return self.values[current]
-            current += 1
+            current = (current + 1) % self.max_size
 
         # якщо ключ у таблиці не знайдений
         return None
