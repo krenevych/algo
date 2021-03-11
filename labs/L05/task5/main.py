@@ -12,6 +12,7 @@ _deleted = set()
 table = HashTable()
 
 
+
 def generate_pairs(fname, N):
     f_out = open(fname, "w", encoding='utf-8')
     for i in range(N):
@@ -44,6 +45,7 @@ def add(key, value):
         _deleted.remove(key)
 
     return dt < TIME_TEST_LIMIT
+
 
 def delete():
     global _array, _deleted

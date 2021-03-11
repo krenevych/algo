@@ -90,6 +90,26 @@ def checkFindDeleted():
     return user_find is None and dt < TIME_TEST_LIMIT
 
 
+def checkRestoreDeleted():
+    global _array, _deleted
+
+    size = len(_deleted)
+    if size == 0:
+        return True
+
+    num = randint(0, size - 1)
+    key = list(_deleted)[num]
+
+    res_add = add(key, "new" + str(key))
+
+    val = _array[key]
+    t = time.time()
+    user_val = user.get(key)
+    dt = (time.time() - t) * TIME_MULTIPLIER
+
+    return res_add and user_val == val and dt < TIME_TEST_LIMIT
+
+
 def main():
     global _array, _deleted
 
@@ -104,8 +124,12 @@ def main():
     test_num = 10000
     error = 0
 
+    step_show = test_num / 100
+    j = 0
+    print("[", end="")
+
     for i in range(test_num):
-        case = randint(0, 2)
+        case = randint(0, 3)
         res = True
         if case == 0:
             res = delete()
@@ -113,9 +137,17 @@ def main():
             res = checkFind()
         elif case == 2:
             res = checkFindDeleted()
+        elif case <= 3:
+            res = checkRestoreDeleted()
 
-        if not res:
-            error += 1
+        error += 0 if res else 1
+
+        j += 1
+        if j > step_show:
+            j = 0
+            print(".", end="")
+
+    print("]")
 
     score = 100 * (test_num - error) / test_num
     score = score if score > VERIFICATION_THRESHOLD else 0

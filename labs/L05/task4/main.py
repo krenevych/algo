@@ -6,6 +6,7 @@ _book_catalog = {}
 _author_lst = []
 _deleted = set()
 
+VERIFICATION_THRESHOLD = 50
 
 def __add(author, title):
     global _book_catalog, _author_lst, _deleted
@@ -187,6 +188,10 @@ def main():
     test_num = 100000
     error = 0
 
+    step_show = test_num / 100
+    j = 0
+    print("[", end="")
+
     for i in range(test_num):
         case = randint(0, 4)
         res = True
@@ -201,11 +206,18 @@ def main():
         elif case == 4:
             res = restoreDeleted()
 
-        if not res:
-            error += 1
+        error += 0 if res else 1
+
+        j += 1
+        if j > step_show:
+            j = 0
+            print(".", end="")
+
+    print("]")
 
     valid_score = (test_num - error) / test_num
     score = 100 * valid_score
+    score = score if score > VERIFICATION_THRESHOLD else 0
     print("Score: %d%%" % score)
 
 
