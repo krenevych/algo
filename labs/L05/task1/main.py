@@ -36,9 +36,13 @@ def readData(fname):
 def add(key, value):
     global _array, _deleted
     _array[key] = value
+    t = time.time()
     user.set(key, value)
+    dt = (time.time() - t) * TIME_MULTIPLIER
     if key in _deleted:
         _deleted.remove(key)
+
+    return dt < TIME_TEST_LIMIT
 
 
 def delete():
