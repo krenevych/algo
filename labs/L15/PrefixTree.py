@@ -16,7 +16,7 @@ class PrefixTree:
 
             curr = curr.children[key]
 
-        if len(curr.children) != 0:
+        if curr.leaf or len(curr.children) != 0:
             return False
 
         curr.leaf = True
