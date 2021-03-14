@@ -3,20 +3,23 @@ class PrefixTree:
     def __init__(self, key=None):
         self.key = key
         self.leaf = False
-        self.children = {}
+        self.hasChildren = False
+        self.children = [None] * 10
 
     def add(self, branch):
         curr = self
-        for key in branch:
+        for c in branch:
             if curr.leaf:
                 return False
 
-            if key not in curr.children:
+            key = int(c)
+            if curr.children[key] == None:
+                curr.hasChildren = True
                 curr.children[key] = PrefixTree(key)
 
             curr = curr.children[key]
 
-        if curr.leaf or len(curr.children) != 0:
+        if curr.leaf or curr.hasChildren:
             return False
 
         curr.leaf = True
