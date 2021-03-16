@@ -20,7 +20,7 @@ def sort(array):
     n = len(array)
     for index in range(1, n):
         current = array[index]
-        for i in range(index - 1, 0, -1):
+        for i in range(index - 1, -1, -1):
             if array[i] > current:
                 array[i + 1] = array[i]
             else:
