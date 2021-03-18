@@ -1,3 +1,4 @@
+import sys
 import time
 
 import numpy
@@ -26,7 +27,8 @@ def testSort(base, sort):
     checkResult(s)
 
 
-sorting_method = [user.bubble_sort,
+sorting_method = [
+                  user.bubble_sort,
                   user.bubble_sort_optimized,
                   user.selection_sort,
                   user.insertion_sort,
@@ -35,6 +37,9 @@ sorting_method = [user.bubble_sort,
 
 
 def test():
+    sys.setrecursionlimit(10001)
+
+
     base = numpy.random.randint(0, 100000, user.N)
 
     print(" == Randomly generated array == ")
