@@ -1,33 +1,55 @@
+
+SIZE = 20000
 class Deque:
     def __init__(self):
-        pass
+        self.items = [0] * SIZE
+        self.bg = SIZE // 2
+        self.en = SIZE // 2
 
     def push_front(self, item):
-        pass
+        self.bg -= 1
+        self.items[self.bg] = item
+        print("ok")
 
     def push_back(self, item):
-        pass
+        self.items[self.en] = item
+        self.en += 1
+        print("ok")
 
     def isEmpty(self):
-        return True
+        return self.bg == self.en
 
     def pop_front(self):
-        return None
+        first = self.items[self.bg]
+        self.bg += 1
+        print(first)
+        return first
 
     def pop_back(self):
-        return None
+        self.en -= 1
+        last = self.items[self.en]
+        print(last)
+        return last
 
     def front(self):
-        return None
+        b = self.items[self.bg]
+        print(b)
+        return b
 
     def back(self):
-        return None
+        e = self.items[self.en - 1]
+        print(e)
+        return e
 
     def size(self):
-        return 0
+        siz = self.en - self.bg
+        print(siz)
+        return siz
 
     def clear(self):
-        pass
+        self.bg = SIZE // 2
+        self.en = SIZE // 2
+        print("ok")
 
 
 with open("input.txt") as f:
