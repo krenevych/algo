@@ -17,7 +17,7 @@ def checkResult(array):
 
 def testSort():
 
-    s = numpy.random.randint(0, 100000, user.N)
+    s = numpy.random.randint(-100000, 100000, user.N)
     t = time.process_time()
     user.sort(s)
     dt = time.process_time() - t
