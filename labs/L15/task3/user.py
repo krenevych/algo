@@ -39,11 +39,10 @@ def set_first():
     global front, last, curr
     curr = front
 
-
 def set_last():
-    """ Зробити поточними останній елемент списку
+    """ Робить останній елемент списку, поточним
 
-    Переставляє поточний елемент на перший елемент списку
+    Переставляє поточний елемент на останній елемент списку
     Гарантується, що функція не буде викликана, якщо список порожній.
     """
     global front, last, curr
@@ -57,7 +56,7 @@ def next():
     Породжує виключення StopIteration, якщо поточний елемент є останнім у списку.
     """
     global front, last, curr
-    if curr == None or curr.next == None:
+    if curr == last:
         raise StopIteration
 
     curr = curr.next
@@ -70,9 +69,8 @@ def prev():
     Породжує виключення StopIteration, якщо поточний елемент є першим у списку.
     """
     global front, last, curr
-    if curr == None or curr.prev == None:
+    if curr == front:
         raise StopIteration
-
 
     curr = curr.prev
 
@@ -83,6 +81,9 @@ def current():
     :return: Навантаження поточного елементу
     """
     global front, last, curr
+    if curr == None:
+        return None
+
     return curr.item
 
 
@@ -104,6 +105,7 @@ def insert_after(item):
     if node.next != None:
         node.next.prev = node
 
+    curr = node
 
 def insert_before(item):
     """ Вставляє новий елемент у список перед поточним.
@@ -129,6 +131,7 @@ def delete():
 
     Поточним при цьому стає наступний елемент, що йшов у списку після поточного.
     Якщо елемент, що видаляється був у списку останнім, то поточним стає передостанній елемент цього списку.
+    Гарантується, що функція не буде викликана, якщо список порожній.
     """
     global front, last, curr
     if front == last:

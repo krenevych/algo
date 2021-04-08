@@ -6,6 +6,9 @@ class Node:
         self.item = item
         self.next = None
 
+    def __str__(self):
+        return str(self.item)
+
 class List:
     def __init__(self):
         self.front : Node = None
@@ -94,9 +97,9 @@ class List:
 
         Поточним при цьому стає наступний елемент, що йшов у списку після поточного.
         Якщо елемент, що видаляється був у списку останнім, то поточним стає передостанній елемент цього списку.
+        Гарантується, що функція не буде викликана, якщо список порожній.
         """
         if self.empty():
-            pass
             return
 
         if self.cur == self.front:
@@ -115,14 +118,13 @@ class List:
 
         :return: список list елементів списку
         """
-        self.reset()
         res = []
-        while True:
-            try:
-                res.append(self.current())
-                self.next()
-            except StopIteration:
-                return res
+        iter = self.front
+        while iter != None:
+                res.append(iter.item)
+                iter = iter.next
+
+        return res
 
 lst = List()
 
@@ -179,7 +181,7 @@ def insert_before(item):
 
     :param item: елемент, що вставляється у список
     """
-    pass
+    lst.insert_before(item)
 
 
 def delete():
@@ -187,8 +189,9 @@ def delete():
 
     Поточним при цьому стає наступний елемент, що йшов у списку після поточного.
     Якщо елемент, що видаляється був у списку останнім, то поточним стає передостанній елемент цього списку.
+    Гарантується, що функція не буде викликана, якщо список порожній.
     """
-    pass
+    lst.delete()
 
 
 def damp():
@@ -196,4 +199,5 @@ def damp():
 
     :return: список list елементів списку
     """
-    return []
+    return lst.damp()
+
