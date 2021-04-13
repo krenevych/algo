@@ -28,15 +28,17 @@ class AVLTreeWithDelete(AVLTree):
             return
 
         if node.hasNoChildren():          # Якщо знайдений вузол - листок (немає нащадків)
+            isLeft = node.isLeftChild()
             node.removeSelfFromParent()
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, isLeft)
 
         elif node.hasLeft() and not node.hasRight():  # Якщо знайдений вузол має лише одну ліву гілку
             node.setNode(node.mLeftChild)             # Замінюємо знайдений вузол його лівим піддіревом
-            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, True)
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, node.isLeftChild())
 
         elif node.hasRight() and not node.hasLeft():  # Якщо знайдений вузол має лише одну праву гілку
             node.setNode(node.mRightChild)            # Замінюємо знайдений вузол його правим піддіревом
-            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, False)
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, node.isLeftChild())
 
         else:                                         # Якщо знайдений вузол має обидві гілки
             left_max = AVLTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
@@ -64,6 +66,7 @@ class AVLTreeWithDelete(AVLTree):
         # Якщо після оновлення балансу, вузол розбалансувався
         if node.mBalanceFactor > 1 or node.mBalanceFactor < -1:
             AVLTree.rebalance(node)  # Проводимо балансування вузла
+            node = node.mParent # після балансування змінилася вершина за яку була підвішена розбалансована вершина
 
         if node.mBalanceFactor == 0:
             # Якщо фактор балансу скорегувався до нуля,
@@ -72,15 +75,9 @@ class AVLTreeWithDelete(AVLTree):
             AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, node.isLeftChild())
 
     def removeSelfFromParent(self):
-        if self.mParent is not None:   # Якщо вершина не є коренем дерева
-            parent = self.mParent
-            if self.isLeftChild():              # Якщо вершина є лівим сином
-                self.mParent.mLeftChild = None  # Видаляєм себе у предку, як лівого сина
-                AVLTreeWithDelete.updateBalanceOnDelete(parent, True) # Оновлюємо баланс у предку з заначенням,
-                                                                       # що ми прийшли від правого сина
-            else:                                # Якщо вершина є правим сином
-                self.mParent.mRightChild = None  # Видаляєм себе у предку, як лівого сина
-                AVLTreeWithDelete.updateBalanceOnDelete(parent, False) # Оновлюємо баланс у предку з заначенням,
-                                                                       # що ми прийшли від правого сина
+        if self.isLeftChild():               # Якщо вершина є лівим сином
+            self.mParent.mLeftChild = None   # Видаляєм себе у предку, як лівого сина
+        else:                                # Якщо вершина є правим сином
+            self.mParent.mRightChild = None  # Видаляєм себе у предку, як лівого сина
 
 

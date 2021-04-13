@@ -789,6 +789,9 @@ if __name__ == "__main__":
 
     print("Search errors =", error)
 
+
+    search_tree.testBalance()
+
     for elem in s_delete:
          search_tree.delete(elem)
 
@@ -798,4 +801,5 @@ if __name__ == "__main__":
          if res != None:
               error += 1
 
+    search_tree.testBalance()
     print("Search after delete error =", error)

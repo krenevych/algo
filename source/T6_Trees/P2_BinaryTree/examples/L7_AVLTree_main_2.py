@@ -19,6 +19,9 @@ print("=========  ADDED  ===========")
 h = DFS_height(search_tree)
 print("Search tree height =", h)
 
+print("=========== testBalance before delete ===========")
+search_tree.testBalance()
+
 error = 0
 for i in s:
     res = search_tree.search(i)
@@ -33,6 +36,9 @@ print("Search errors =", error)
 
 for elem in s_delete:
     search_tree.delete(elem)
+
+print("======= testBalance after delete ===========")
+search_tree.testBalance()
 
 error = 0
 for i in s_delete:

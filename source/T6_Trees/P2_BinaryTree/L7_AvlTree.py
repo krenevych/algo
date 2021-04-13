@@ -9,6 +9,18 @@ class AVLTree(SearchTree):
         self.mBalanceFactor = 0
         self.mIsRoot = False
 
+        self.mHeight = 0
+
+    def setNode(self, item):
+        """ Змінює поточний вузол
+        :param item: Нове піддерево або ключ
+        """
+        super().setNode(item)
+        if isinstance(item, AVLTree):         # якщо item є деревом
+            self.mBalanceFactor = item.mBalanceFactor
+            self.mHeight = item.mHeight
+
+
     def setLeft(self, item):
         """ Змінює лівого сина.
 
@@ -16,7 +28,7 @@ class AVLTree(SearchTree):
         :return: None
         """
         if isinstance(item, AVLTree):           # якщо item є деревом
-            self.mLeftChild = item              # змінюємо все піддерево
+            raise RuntimeError                  # змінюємо все піддерево
         elif self.hasLeft():                    # якщо дерево містить лівого сина
             self.mLeftChild.setNode(item)       # замінюємо вузол
         else:                                   # якщо дерево немає лівого сина
@@ -31,7 +43,7 @@ class AVLTree(SearchTree):
         :return: None
         """
         if isinstance(item, AVLTree):            # якщо item є деревом
-            self.mRightChild = item              # змінюємо все піддерево
+            raise RuntimeError                   # змінюємо все піддерево
         elif self.hasRight():                    # якщо дерево містить правого сина
             self.mRightChild.setNode(item)       # замінюємо вузол
         else:                                    # якщо дерево немає правого сина
@@ -146,3 +158,38 @@ class AVLTree(SearchTree):
 
         return pivot
 
+    def recalculateHeights(self):
+        self.__recalculateHeights(self)
+
+    @staticmethod
+    def __recalculateHeights(root):
+        if root == None:
+            return 0
+
+        leftHeight =  AVLTree.__recalculateHeights(root.mLeftChild)
+        rightHeight = AVLTree.__recalculateHeights(root.mRightChild)
+
+        height = 1 + max(leftHeight, rightHeight)
+        root.mHeight = height
+        return height
+
+    def testBalance(self):
+        self.recalculateHeights()
+        AVLTree.__testBalance(self.mLeftChild)
+
+    @staticmethod
+    def __testBalance(root):
+
+        rightHeight = leftHeight = 0
+        if root.mLeftChild != None:
+            leftHeight = root.mLeftChild.mHeight
+        if root.mRightChild != None:
+            rightHeight = root.mRightChild.mHeight
+        factor = root.mBalanceFactor
+        if factor != leftHeight - rightHeight:
+            print("ERROR: " + str(root.mKey))
+
+        if root.mLeftChild != None:
+            AVLTree.__testBalance(root.mLeftChild)
+        if root.mRightChild != None:
+            AVLTree.__testBalance(root.mRightChild)
