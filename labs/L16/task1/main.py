@@ -17,27 +17,33 @@ class Tree:
     def __str__(self):
         return str(self.key) +" -> "+ str(list(self.children.keys()))
 
-    @staticmethod
-    def insert(tree, telNumber):
+    def insert(self, telNumber):
+        cur = self
+
         if len(telNumber) == 0:
             return
 
         childId = telNumber[0]
-        if childId not in tree:
-            tree.insertNode(childId)
+        if childId not in self:
+            self.insertNode(childId)
 
-        child = tree[childId]
+        child = self[childId]
         rest = telNumber[1:]
+
+        if child.isLeaf or (len(child.children) != 0 and len(rest) == 0):
+            return False
+            
+
         if len(rest) == 0:
             child.isLeaf = True
-        Tree.insert(child, rest)
 
+        res = child.insert(rest)
+
+        return res
 
 
 if __name__ == "__main__":
     tree = Tree("+")
-    Tree.insert(tree, "123")
-    Tree.insert(tree, "133")
-    Tree.insert(tree, "134")
-    Tree.insert(tree, "143")
+    print(tree.insert("12"))
+    print(tree.insert("123"))
     pass
