@@ -54,10 +54,11 @@ class DoublyLinkedList:
         :return: None
         """
         node = Node(item)  # створюємо вузол, для нового елементу списку
-        node.mNext = self.mCurr
+
         if self.empty():                 # вставка у порожній список
             self.mFirst = self.mLast = self.mCurr = node
         else:
+            node.mNext = self.mCurr
             if self.mCurr == self.mFirst:  # вставка перед першим елементом
                 self.mFirst = node
             else:                        # вставка всередині списку

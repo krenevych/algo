@@ -7,6 +7,9 @@ class Node:
         self.next = None
         self.prev = None
 
+    def __str__(self):
+        return str(self.item)
+
 """
 Реалізуйте структуру даних двобічнозв'язний список з поточним елементом.
 """
@@ -27,7 +30,7 @@ def empty():
     :return: True, якщо список не містить жодного елемента
     """
     global front, last, curr
-    return curr == None
+    return curr is None
 
 
 def set_first():
@@ -78,12 +81,10 @@ def prev():
 def current():
     """ Повертає навантаження поточного елементу.
 
+    Гарантується, що функція не буде викликана, якщо список порожній.
     :return: Навантаження поточного елементу
     """
     global front, last, curr
-    if curr == None:
-        return None
-
     return curr.item
 
 
@@ -98,14 +99,14 @@ def insert_after(item):
         front = last = curr = node
         return
 
-    node.next = curr.next
     node.prev = curr
+    if curr == last:
+        last = node
+    else:
+        curr.next.prev = node
+        node.next = curr.next
 
     curr.next = node
-    if node.next != None:
-        node.next.prev = node
-
-    curr = node
 
 def insert_before(item):
     """ Вставляє новий елемент у список перед поточним.
@@ -118,12 +119,14 @@ def insert_before(item):
         front = last = curr = node
         return
 
-    node.prev = curr.prev
     node.next = curr
+    if curr == front:
+        front = node
+    else:
+        curr.prev.next = node
+        node.prev = curr.prev
 
     curr.prev = node
-    if node.prev != None:
-        node.prev.next = node
 
 
 def delete():
