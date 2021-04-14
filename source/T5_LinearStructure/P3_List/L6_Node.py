@@ -9,3 +9,6 @@ class Node:
         self.mItem = item  # дані, що пов'язані з вузлом деку
         self.mNext = None  # наступний вузол
         self.mPrev = None  # попередній вузол
+
+    def __str__(self):
+        return str(self.mItem)

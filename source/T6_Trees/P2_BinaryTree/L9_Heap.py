@@ -46,6 +46,9 @@ class Heap:
             min_child = self.minChild(left, right)
             if self.mItems[i] > self.mItems[min_child]:
                 self.swap(min_child, i)
+            else:
+                break
+
             i = min_child
 
     def siftUp(self):
@@ -55,6 +58,9 @@ class Heap:
             parent = i // 2
             if self.mItems[i] < self.mItems[parent]:
                 self.swap(parent, i)
+            else:
+                break
+
             i = parent
 
     def swap(self, i, j):

@@ -80,6 +80,8 @@ class PriorityQueue:
             min_child = self.minChild(left, right)
             if self.mItems[i] > self.mItems[min_child]:
                 self.swap(min_child, i)
+            else:
+                break
             i = min_child
 
     def siftUp(self):
@@ -89,6 +91,8 @@ class PriorityQueue:
             parent = i // 2
             if self.mItems[i] < self.mItems[parent]:
                 self.swap(parent, i)
+            else:
+                break
             i = parent
 
     def minChild(self, left_child, right_child):
@@ -134,6 +138,8 @@ class PriorityQueue:
             parent = i // 2
             if self.mItems[i] < self.mItems[parent]:
                 self.swap(parent, i)
+            else:
+                break
             i = parent
 
         return True

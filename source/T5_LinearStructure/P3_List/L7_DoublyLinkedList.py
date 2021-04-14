@@ -65,7 +65,7 @@ class DoublyLinkedList:
                 node.mPrev = self.mCurr.mPrev
                 self.mCurr.mPrev.next = node
 
-        self.mCurr.mPrev = node
+            self.mCurr.mPrev = node
 
     def insertAfter(self, item):
         """ Вставити новий елемент після поточного
@@ -75,18 +75,18 @@ class DoublyLinkedList:
         :return: None
         """
         node = Node(item)  # створюємо вузол, для нового елементу списку
-        node.mPrev = self.mCurr
         if self.empty():  # вставка у порожній список
             self.mFirst = self.mLast = self.mCurr = node
         else:
+            node.mPrev = self.mCurr
             if self.mCurr == self.mLast:  # вставка перед першим елементом
                 self.mLast = node
             else:                       # вставка всередині списку
                 node.mNext = self.mCurr.mNext
                 self.mCurr.mNext.prev = node
 
-        self.mCurr.mNext = node
-        self.mCurr = node  # елемент, що був вставлений стає поточним
+            self.mCurr.mNext = node
+            self.mCurr = node  # елемент, що був вставлений стає поточним
 
     def remove(self):
         """ Видалити поточний елемент зі списку """
