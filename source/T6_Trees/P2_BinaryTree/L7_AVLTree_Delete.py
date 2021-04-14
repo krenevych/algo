@@ -13,24 +13,22 @@ class AVLTreeWithDelete(AVLTree):
 
     @staticmethod
     def _delete_helper(root, key):
-        """ Допоміжний рекурсиввий метод, що видаляє заданий елемент з дерева у заданому піддереві
-            якщо такий елемент міситься у деремі. Пошук розпочинається з піддерева,
-        що має коренем вершину startNode. Для технічних цілей передаємо у підпрограму
-        предка вузла startNode - parent
+        """ Допоміжний рекурсивний метод, що видаляє з дерева вузол з
+            заданим ключем, якщо такий ключ міститься у дереві.
 
         :param root: корінь піддерева у якому потрібно видалити заданий елемент
-        :param key: Елемент, який потрібно видалити
+        :param key: ключ елемента, який потрібно видалити
         """
 
         node = root.search(key)  # Знаходимо вузол, який треба видалити
 
-        if node is None or node.mIsRoot:  # Якщо шуканий елемент не міститься у дереві, то припиняємо роботу підпрограми
-            return
+        if node is None or node.mIsRoot:  # Якщо шуканий елемент не міститься у дереві,
+            return                        # то припиняємо роботу підпрограми
 
         if node.hasNoChildren():          # Якщо знайдений вузол - листок (немає нащадків)
-            isLeft = node.isLeftChild()
-            node.removeSelfFromParent()
-            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, isLeft)
+            isLeft = node.isLeftChild()   # Запам'ятаємо, яким сином по відношенню до батьківського є вузол, що видаляється
+            node.removeSelfFromParent()   # Видаляємо вузол
+            AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, isLeft)  # Оновлюємо баланс батьківського вузла
 
         elif node.hasLeft() and not node.hasRight():  # Якщо знайдений вузол має лише одну ліву гілку
             node.setNode(node.mLeftChild)             # Замінюємо знайдений вузол його лівим піддіревом
@@ -43,8 +41,8 @@ class AVLTreeWithDelete(AVLTree):
         else:                                         # Якщо знайдений вузол має обидві гілки
             left_max = AVLTreeWithDelete._search_max(node.mLeftChild)  # Знаходимо максимальний вузол у лівому піддереві
             left_max_key = left_max.mKey
-            AVLTreeWithDelete._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева найбільшого елементу
             node.setNode(left_max_key)                # Замінюємо значення елемета node знайденим максимальним
+            AVLTreeWithDelete._delete_helper(node.mLeftChild, left_max_key)  # Видалення з лівого піддерева найбільшого елементу
 
     @staticmethod
     def updateBalanceOnDelete(node, came_from_left):
@@ -66,7 +64,7 @@ class AVLTreeWithDelete(AVLTree):
         # Якщо після оновлення балансу, вузол розбалансувався
         if node.mBalanceFactor > 1 or node.mBalanceFactor < -1:
             AVLTree.rebalance(node)  # Проводимо балансування вузла
-            node = node.mParent # після балансування змінилася вершина за яку була підвішена розбалансована вершина
+            node = node.mParent      # після балансування змінилася вершина за яку була підвішена розбалансована вершина
 
         if node.mBalanceFactor == 0:
             # Якщо фактор балансу скорегувався до нуля,
@@ -74,10 +72,5 @@ class AVLTreeWithDelete(AVLTree):
             # оновлення балансу для предка поточної вершини
             AVLTreeWithDelete.updateBalanceOnDelete(node.mParent, node.isLeftChild())
 
-    def removeSelfFromParent(self):
-        if self.isLeftChild():               # Якщо вершина є лівим сином
-            self.mParent.mLeftChild = None   # Видаляєм себе у предку, як лівого сина
-        else:                                # Якщо вершина є правим сином
-            self.mParent.mRightChild = None  # Видаляєм себе у предку, як лівого сина
 
 

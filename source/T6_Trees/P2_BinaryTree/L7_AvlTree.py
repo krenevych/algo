@@ -16,10 +16,9 @@ class AVLTree(SearchTree):
         :param item: Нове піддерево або ключ
         """
         super().setNode(item)
-        if isinstance(item, AVLTree):         # якщо item є деревом
+        if isinstance(item, AVLTree):         # якщо item є АВЛ-деревом
             self.mBalanceFactor = item.mBalanceFactor
             self.mHeight = item.mHeight
-
 
     def setLeft(self, item):
         """ Змінює лівого сина.
