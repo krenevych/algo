@@ -1,4 +1,4 @@
-from source.T6_Trees.P2_BinaryTree.L10_PQElement import PQElement
+from source.T6_Trees.P2_BinaryTree.L11_PQElement import PQElement
 
 
 class PriorityQueue:

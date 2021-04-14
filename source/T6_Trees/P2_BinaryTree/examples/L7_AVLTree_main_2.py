@@ -1,4 +1,4 @@
-from source.T6_Trees.P2_BinaryTree.L7_AVLTree_Delete import AVLTreeWithDelete
+from source.T6_Trees.P2_BinaryTree.L8_AVLTree_Delete import AVLTreeWithDelete
 from source.T6_Trees.P2_BinaryTree.examples.DFS_height import DFS_height
 
 
