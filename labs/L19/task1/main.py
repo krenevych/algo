@@ -1,22 +1,26 @@
 class Heap:
-    def __init__(self):
-        self.data = [0]
+    def __init__(self, max_heap_size):
+        self.data = [0] * max_heap_size
+        self.size = 1
 
     def insert(self, key):
         # print("insert")
-        self.data.append(key)
+        # self.data.append(key)
+        self.data[self.size] = key
+        self.size += 1
         self.siftUp()
 
     def extract(self):
         res = self.data[1]
-        self.data[1] = self.data[-1]
-        self.data.pop()
+        self.data[1] = self.data[self.size - 1]
+        self.size -= 1
+        # self.data.pop()
         self.siftDown()
 
         return res
 
     def siftUp(self):
-        start = len(self.data) - 1
+        start = self.size - 1
         while start > 1:
             parent = start // 2
             if self.data[start] > self.data[parent]:
@@ -32,7 +36,7 @@ class Heap:
 
     def siftDown(self):
         start = 1
-        while 2 * start <= len(self.data) - 1:
+        while 2 * start <= self.size - 1:
             left = 2 * start
             right = left + 1
             maxChild = self.getMaxChild(left, right)
@@ -44,7 +48,7 @@ class Heap:
             start = maxChild
 
     def getMaxChild(self, left, right):
-        if right >= len(self.data):
+        if right >= self.size:
             return left
         elif self.data[left] > self.data[right]:
             return left
@@ -55,7 +59,7 @@ class Heap:
 
 with open("input.txt") as f:
     N = int(f.readline())
-    heap = Heap()
+    heap = Heap(N + 1)
     for quarry in range(N):
         command = list(map(int, f.readline().split()))
         if command[0] == 0:
