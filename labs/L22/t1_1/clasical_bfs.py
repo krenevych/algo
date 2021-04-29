@@ -33,27 +33,23 @@ def bfs(graph, s, f):
     s = s - 1  # В умові вершини нумеруються з 1, а в нашому графі - з нуля
     f = f - 1
     dist = 0
-    # visited = set()  # множина відвіданих вершин
-    distances = [-1] * n
+    visited = set()  # множина відвіданих вершин
     q = Queue(105)
     q.enque(s)
-    # visited.add(s)  # помічаємо стартову вершину як відвідану
-    distances[s] = 0
+    visited.add(s)  # помічаємо стартову вершину як відвідану
     while not q.empty():
         cur = q.deque()
         # опрацювати і додати в чергу всіх не відвіданих сусідів вершини cur
-        # print(cur + 1)
+        print(cur + 1)
         for vertex in range(n):
-            if graph[cur][vertex] != 0 and distances[vertex] == -1:
+            if graph[cur][vertex] != 0 and vertex not in visited:
+                visited.add(vertex)
                 q.enque(vertex)
-                # visited.add(vertex)
-                distances[vertex] = distances[cur] + 1
 
-    return distances[f] if distances[f] != -1 else 0 # мінімальну відстань від початкової вершини s до кінцевої f
+    return dist # мінімальну відстань від початкової вершини s до кінцевої f
 
 def main():
     graph, n, s, f = readGrapf()
-    dist = bfs(graph, s, f)
-    print(dist)
+    bfs(graph, s, f)
 
 if __name__ == "__main__": main()
