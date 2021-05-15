@@ -8,6 +8,10 @@ from source.T7_Graphs.P4_Weighted.L6_Dijkstra import Dijkstra
 
 def show_way(vertices, weight, tag):
     # виводимо шлях way на екран
+    if vertices is None:
+        print("Way doesn't exist!")
+        return
+
     print(tag, "(%d): " % weight, end="")
     for i in range(len(vertices) - 1):
         print(vertices[i], end=" -> ")

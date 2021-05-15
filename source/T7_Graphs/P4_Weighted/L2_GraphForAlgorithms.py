@@ -34,7 +34,7 @@ class GraphForAlgorithms(Graph):
         :return: Кортеж, що містить список вершин - найкоротший шлях, що сполучає вершини start та end та його вагу
         """
 
-        if self[end].source is None:  # шляху не існує
+        if self[end].source() is None:  # шляху не існує
             return None, INF
 
         # будуємо шлях за допомогою стеку
@@ -45,8 +45,6 @@ class GraphForAlgorithms(Graph):
             if current == start:
                 break
             current = self[current].source()
-            if current is None:
-                return None
 
         way = []  # Послідовність вершин шляху
         while not stack.empty():
