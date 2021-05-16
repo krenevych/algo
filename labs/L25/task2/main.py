@@ -52,7 +52,7 @@ def test(input_file):
             distance = 0
             for i in range(len(way) - 1):
                 try:
-                    distance += edges_dict[(user_way[i], user_way[i - 1])]
+                    distance += edges_dict[(user_way[i], user_way[i + 1])]
                 except LookupError:
                     pass
 
