@@ -12,6 +12,7 @@ class Vertex:
         self.key = key
         self.neighbour = {}  # список (словник ключ_вершини: вага ребра) сусідів
         self.distance = INF
+        self.source = None  # використовується для побудови шляху - вершина з якої ми прийшли у поточну вершину
 
     def __str__(self):
         return str(self.key) + ":" + str(*self.neighbour.keys())
@@ -27,6 +28,7 @@ def init(vertices, edges):
     @param edges:  кількість ребер графа
     """
     global graph
+    graph = []
     for i in range(vertices):
         graph.append(Vertex(i))
 
@@ -52,26 +54,32 @@ def getWay(start, end):
     global graph
     for v in graph:
         v.distance = INF
+        v.source = None
 
     graph[start].distance = 0
     pq = PriorityQueue()
     for key_ver in range(len(graph)):
         pq.insert(key_ver, graph[key_ver].distance)
 
-    fixed = set()  # список фіксованих(оброблених) вершин
-
     while not pq.empty():
         vert = pq.extractMinimum()
-        fixed.add(vert)
 
         for neigb, weight in graph[vert].neighbour.items():
-            if neigb in fixed:
-                continue
-
             new_dist = graph[vert].distance + weight
-            if new_dist < graph[neigb].distance:
+            if neigb in pq and new_dist < graph[neigb].distance:
                 graph[neigb].distance = new_dist
+                graph[neigb].source = vert
                 pq.updatePriority(neigb, graph[neigb].distance)
 
-    dist = graph[end].distance
-    return None
+    if graph[end].distance == INF:
+        return []
+
+    curr = end
+    way = []
+    while True:
+        way.append(curr)
+        if curr == start:
+            break
+        curr = graph[curr].source
+
+    return way[::-1]

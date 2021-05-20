@@ -26,6 +26,7 @@ def init(vertices, edges):
     @param edges:  кількість ребер графа
     """
     global graph
+    graph = []  # Створюємо новий граф
     for i in range(vertices):
         graph.append(Vertex(i))
 

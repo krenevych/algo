@@ -42,26 +42,29 @@ def test(input_file):
 
     user_way = user.getWay(start, end)
 
-    try:
-        if len(user_way) == 0:
-            if dist == INF:
-                print("OK!")
+    if user_way == way:
+        print("OK!")
+    else:
+        try:
+            if len(user_way) == 0:
+                if dist == INF:
+                    print("OK!")
+                else:
+                    print("Fail!")
             else:
-                print("Fail!")
-        else:
-            distance = 0
-            for i in range(len(way) - 1):
-                try:
-                    distance += edges_dict[(user_way[i], user_way[i + 1])]
-                except LookupError:
-                    pass
+                distance = 0
+                for i in range(len(way) - 1):
+                    try:
+                        distance += edges_dict[(user_way[i], user_way[i + 1])]
+                    except LookupError:
+                        pass
 
-            if dist == distance:
-                print("OK!")
-            else:
-                print("Fail!")
-    except TypeError:
-        print("Fail!")
+                if dist == distance:
+                    print("OK!")
+                else:
+                    print("Fail!")
+        except TypeError:
+            print("Fail!")
 
 
 def main():
@@ -74,3 +77,4 @@ def main():
 
 
 if __name__ == "__main__": main()
+
