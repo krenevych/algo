@@ -10,20 +10,11 @@ N = 10000    # Кількість елементів масиву.
              # Для швидких алгоритмів сортування з асимптотикою
              # nlog(n) встановіть значення 1 000 000
 
-# Sorting time:  19.09375
-# Errors:        0
 
 def sort(array):
     """ Сортування масиву
     :param array: Вхідний масив даних, що треба відсортувати.
     """
-    n = len(array)
-    for pass_num in range(n - 1, 0, -1):
-        ind_max = 0
-        for i in range(1, pass_num + 1):
-            if array[i] > array[ind_max]:
-                ind_max = i
-
-        array[ind_max], array[pass_num] = array[pass_num], array[ind_max]
+    pass
 
 
