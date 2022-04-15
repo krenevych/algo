@@ -7,6 +7,7 @@ _author_lst = []
 _deleted = set()
 
 VERIFICATION_THRESHOLD = 50
+VERIFICATION_THRESHOLD_ONCE = 150
 
 def __add(author, title):
     global _book_catalog, _author_lst, _deleted
@@ -75,7 +76,10 @@ def checkFind():
         dt = t1 - t
         dt *= 100000
 
-        if user_find and dt < 10:
+        if dt > VERIFICATION_THRESHOLD_ONCE:
+            return False
+
+        if user_find:
             return True
         return False
 
@@ -96,7 +100,10 @@ def checkFindDeleted():
     dt = t1 - t
     dt *= 100000
 
-    if not user_find and dt < 10:
+    if dt > VERIFICATION_THRESHOLD_ONCE:
+        return False
+
+    if not user_find:
         return True
     return False
 
@@ -117,8 +124,13 @@ def checkFindAuthor():
     dt = t1 - t
     dt *= 100000
 
-    if len(user_find) == books_num and dt < 10:
+    if dt > VERIFICATION_THRESHOLD_ONCE:
+        return False
+
+    if len(user_find) == books_num:
         return True
+
+    user_find = user.findByAuthor(author)
     return False
 
 
@@ -147,10 +159,10 @@ def _delete():
         dt = t1 - t
         dt *= 100000
 
-        if dt < 10:
-            return True
-        return False
+        if dt > VERIFICATION_THRESHOLD_ONCE:
+            return False
 
+        return True
 
 def restoreDeleted():
     global _book_catalog, _deleted
@@ -168,7 +180,10 @@ def restoreDeleted():
     dt = t1 - t
     dt *= 100000
 
-    if user_find and dt < 10:
+    if dt > VERIFICATION_THRESHOLD_ONCE:
+        return False
+
+    if user_find:
         return True
     return False
 
