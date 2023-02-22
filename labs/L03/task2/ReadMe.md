@@ -13,7 +13,9 @@ def addTranslation(eng, translation)
 
 додає до словника англійське слово `eng` та його переклад `translation`. 
 Пари `(eng, translation)` приходяться у порядку, що відповідає лексикографічному 
-порядку. Функція 
+порядку.
+
+Функція 
 
 ```python
 def find(eng)
