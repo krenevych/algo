@@ -84,6 +84,7 @@ def main(input_file):
 
         return score if score > 35 else 0
 
+
 if __name__ == "__main__":
     res1 = main("input01.txt")
     print("Score 1: %d%%" % res1)
