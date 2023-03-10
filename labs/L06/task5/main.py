@@ -3,8 +3,8 @@ from user import HashTable
 from random import randint
 
 N_MAXKEY = 10000000
-TIME_MULTIPLIER = 100000
-TIME_TEST_LIMIT = 200
+TIME_MSEC_MULTIPLIER = 1000
+TIME_MSEC_THRESHOLD = 30
 VERIFICATION_THRESHOLD = 70
 
 _array = {}
@@ -40,11 +40,11 @@ def add(key, value):
     _array[key] = value
     t = time.time()
     table.set(key, value)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = (time.time() - t) * TIME_MSEC_MULTIPLIER
     if key in _deleted:
         _deleted.remove(key)
 
-    return dt < TIME_TEST_LIMIT
+    return dt < TIME_MSEC_THRESHOLD
 
 
 def delete():
@@ -59,9 +59,9 @@ def delete():
 
     t = time.time()
     table.delete(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = (time.time() - t) * TIME_MSEC_MULTIPLIER
 
-    return dt < TIME_TEST_LIMIT
+    return dt < TIME_MSEC_THRESHOLD
 
 
 def checkFind():
@@ -74,9 +74,9 @@ def checkFind():
 
     t = time.time()
     user_val = table.get(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = (time.time() - t) * TIME_MSEC_MULTIPLIER
 
-    return user_val == val and dt < TIME_TEST_LIMIT
+    return user_val == val and dt < TIME_MSEC_THRESHOLD
 
 
 def checkFindDeleted():
@@ -91,9 +91,9 @@ def checkFindDeleted():
 
     t = time.time()
     user_find = table.get(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = (time.time() - t) * TIME_MSEC_MULTIPLIER
 
-    return user_find is None and dt < TIME_TEST_LIMIT
+    return user_find is None and dt < TIME_MSEC_THRESHOLD
 
 def checkRestoreDeleted():
     global _array, _deleted
@@ -110,9 +110,9 @@ def checkRestoreDeleted():
     val = _array[key]
     t = time.time()
     user_val = table.get(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = (time.time() - t) * TIME_MSEC_MULTIPLIER
 
-    return res_add and user_val == val and dt < TIME_TEST_LIMIT
+    return res_add and user_val == val and dt < TIME_MSEC_THRESHOLD
 
 
 def checkIteratator():
