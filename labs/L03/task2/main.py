@@ -3,6 +3,9 @@ from random import randint
 
 import user
 
+MSEC_MULTIPLIER = 1000
+TIME_THRESHOLD_MSEC = 30
+
 dictionary = {}
 eng_lst = []
 
@@ -56,10 +59,10 @@ def check(test_cases_num):
         user_search = user.find(eng)
         t1 = time.time()
         dt = t1 - t
-        dt *= 100000
+        dt *= MSEC_MULTIPLIER
         # print('eng = %s, user_search = %s,  find time: %d ms' % (eng, user_search, dt))
         # print('find time: %d ms' % dt)
-        if user_search != dictionary[eng] or dt > 100:
+        if user_search != dictionary[eng] or dt > TIME_THRESHOLD_MSEC:
             errors += 1
 
     return errors
@@ -80,10 +83,10 @@ def checkInvalid(test_cases_num):
         user_search = user.find(eng)
         t1 = time.time()
         dt = t1 - t
-        dt *= 100000
+        dt *= MSEC_MULTIPLIER
         # print('eng = %s, user_search = %s,  find time: %d ms' % (eng, user_search, dt))
         # print('find time: %d ms' % dt)
-        if user_search != "" or dt > 100:
+        if user_search != "" or dt > TIME_THRESHOLD_MSEC:
             errors += 1
 
     return errors

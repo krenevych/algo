@@ -7,6 +7,8 @@ _author_lst = []
 _deleted = set()
 
 VERIFICATION_THRESHOLD = 50
+TIME_MSEC_MULTIPLIER = 1000
+TIME_MSEC_THRESHOLD = 30
 
 def __add(author, title):
     global _book_catalog, _author_lst, _deleted
@@ -73,9 +75,9 @@ def checkFind():
         user_find = user.find(author, title)
         t1 = time.time()
         dt = t1 - t
-        dt *= 100000
+        dt *= TIME_MSEC_MULTIPLIER
 
-        if user_find and dt < 10:
+        if user_find and dt < TIME_MSEC_THRESHOLD:
             return True
         return False
 
@@ -94,9 +96,9 @@ def checkFindDeleted():
     user_find = user.find(author, title)
     t1 = time.time()
     dt = t1 - t
-    dt *= 100000
+    dt *= TIME_MSEC_MULTIPLIER
 
-    if not user_find and dt < 10:
+    if not user_find and dt < TIME_MSEC_THRESHOLD:
         return True
     return False
 
@@ -115,9 +117,9 @@ def checkFindAuthor():
     user_find = user.findByAuthor(author)
     t1 = time.time()
     dt = t1 - t
-    dt *= 100000
+    dt *= TIME_MSEC_MULTIPLIER
 
-    if len(user_find) == books_num and dt < 10:
+    if len(user_find) == books_num and dt < TIME_MSEC_THRESHOLD:
         return True
     return False
 
@@ -145,9 +147,9 @@ def _delete():
         user.delete(author, title)
         t1 = time.time()
         dt = t1 - t
-        dt *= 100000
+        dt *= TIME_MSEC_MULTIPLIER
 
-        if dt < 10:
+        if dt < TIME_MSEC_THRESHOLD:
             return True
         return False
 
@@ -166,9 +168,9 @@ def restoreDeleted():
     user_find = user.find(*pair)
     t1 = time.time()
     dt = t1 - t
-    dt *= 100000
+    dt *= TIME_MSEC_MULTIPLIER
 
-    if user_find and dt < 10:
+    if user_find and dt < TIME_MSEC_THRESHOLD:
         return True
     return False
 
