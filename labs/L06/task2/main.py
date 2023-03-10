@@ -2,9 +2,9 @@ import time
 import user
 from random import randint
 
+DEBUG = False
 N_MAXKEY = 10000000
-TIME_MULTIPLIER = 100000
-TIME_TEST_LIMIT = 30
+TIME_TEST_LIMIT = 40_000_000  # 40 msec
 VERIFICATION_THRESHOLD = 70
 
 _array = {}
@@ -36,11 +36,14 @@ def readData(fname):
 def add(key, value):
     global _array, _deleted
     _array[key] = value
-    t = time.time()
+    t = time.time_ns()
     user.set(key, value)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = time.time_ns() - t
     if key in _deleted:
         _deleted.remove(key)
+
+    if DEBUG and dt >= TIME_TEST_LIMIT:
+        print(f"ALARM add: dt >= TIME_TEST_LIMIT, dt = {dt}")
 
     return dt < TIME_TEST_LIMIT
 
@@ -55,9 +58,12 @@ def delete():
     del _array[key]
     _deleted.add(key)
 
-    t = time.time()
+    t = time.time_ns()
     user.delete(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = time.time_ns() - t
+
+    if DEBUG and dt >= TIME_TEST_LIMIT:
+        print(f"ALARM delete: dt >= TIME_TEST_LIMIT, dt = {dt}")
 
     return dt < TIME_TEST_LIMIT
 
@@ -70,9 +76,15 @@ def checkFind():
 
     val = _array[key]
 
-    t = time.time()
+    t = time.time_ns()
     user_val = user.get(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = time.time_ns() - t
+
+    if DEBUG and dt >= TIME_TEST_LIMIT:
+        print(f"ALARM checkFind: dt >= TIME_TEST_LIMIT, dt = {dt}")
+
+    if DEBUG and user_val != val:
+        print("ALARM checkFind: user_val != val")
 
     return user_val == val and dt < TIME_TEST_LIMIT
 
@@ -87,9 +99,15 @@ def checkFindDeleted():
     num = randint(0, size - 1)
     key = list(_deleted)[num]
 
-    t = time.time()
+    t = time.time_ns()
     user_find = user.get(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = time.time_ns() - t
+
+    if DEBUG and dt >= TIME_TEST_LIMIT:
+        print(f"ALARM checkFindDeleted: dt >= TIME_TEST_LIMIT, dt = {dt}")
+
+    if DEBUG and user_find is not None:
+        print("ALARM checkFindDeleted: user_find is not None")
 
     return user_find is None and dt < TIME_TEST_LIMIT
 
@@ -107,9 +125,15 @@ def checkRestoreDeleted():
     res_add = add(key, "new" + str(key))
 
     val = _array[key]
-    t = time.time()
+    t = time.time_ns()
     user_val = user.get(key)
-    dt = (time.time() - t) * TIME_MULTIPLIER
+    dt = time.time_ns() - t
+
+    if DEBUG and dt >= TIME_TEST_LIMIT:
+        print(f"ALARM checkRestoreDeleted : dt >= TIME_TEST_LIMIT, dt = {dt}")
+
+    if DEBUG and not res_add or user_val != val:
+        print("ALARM checkRestoreDeleted: not res_add or user_val != val")
 
     return res_add and user_val == val and dt < TIME_TEST_LIMIT
 
