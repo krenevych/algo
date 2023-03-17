@@ -15,6 +15,20 @@ def sort(array):
     """ Сортування масиву
     :param array: Вхідний масив даних, що треба відсортувати.
     """
-    pass
+    n = len(array)
+    for edge in range(n - 1, 0, -1):
+        max_pos = 0
+        for i in range(1, edge + 1):
+            if array[i] > array[max_pos]:
+                max_pos = i
+
+        array[edge], array[max_pos] = array[max_pos], array[edge]
+
+
+if __name__ == '__main__':
+    a = [6, 11, 4, 13, 7]
+    sort(a)
+    print(a)
+
 
 
