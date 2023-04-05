@@ -1,40 +1,59 @@
+class Node:
+    def __init__(self, item):
+        self.item = item
+        self.next = None
+
 
 class Stack:
 
     def __init__(self):
-        self.elems = [0] * 101
-        self.top = 0
+        self.__top = None
+        self.__size = 0
 
     def push(self, elem):
-        self.elems[self.top] = elem
-        self.top += 1
+        new_top = Node(elem)
+        self.__size += 1
+        new_top.next = self.__top
+        self.__top = new_top
 
     def pop(self):
-        # if self.empty():  # міститься у операції back()
-        #     raise RuntimeError("Stack is empty")
+        if self.empty():
+            # raise RuntimeError("Stack is empty")
+            return "error"
 
         top_elem = self.back()
-        self.top -= 1
-
+        self.__top = self.__top.next
+        self.__size -= 1
         return top_elem
 
     def back(self):
         if self.empty():
-            raise RuntimeError("Stack is empty")
-        return self.elems[self.top - 1]
+            # raise RuntimeError("Stack is empty")
+            return "error"
+
+        return self.__top.item
 
     def empty(self):
-        return self.size() == 0
+        return self.__top is None
 
     def size(self):
-        return self.top
+        return self.__size
+
+        # # лінійний підрахунок кількості елементів у стеку - важкий по часу
+        # counter = 0
+        # current: Node = self.__top
+        # while current is not None:
+        #     counter += 1
+        #     current = current.next
+        #
+        # return counter
 
     def clear(self):
-        self.top = 0
+        self.__top = None
+        self.__size = 0
 
 
 if __name__ == '__main__':
-
     with open("input.txt") as f:
         stack = Stack()
         while True:
