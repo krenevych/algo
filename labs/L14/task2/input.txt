@@ -1,3 +1,0 @@
-push 1
-front
-exit
