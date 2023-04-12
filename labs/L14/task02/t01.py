@@ -4,18 +4,22 @@ class Queue:
         pass
 
     def push(self, n):
-        pass
+        print("push", n)
 
     def pop(self):
+        print("pop")
         return 0
 
     def front(self):
+        print("front")
         return 0
 
     def size(self):
+        print("size")
         return 0
 
     def clear(self):
+        print("clear")
         pass
 
 
@@ -30,7 +34,6 @@ if __name__ == '__main__':
                 break
 
             commands = line.split()
-            print(commands)
             command = commands[0]
             if command == "push":
                 queue.push(commands[1])
