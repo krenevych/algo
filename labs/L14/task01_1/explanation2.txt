@@ -1,0 +1,16 @@
+[3 5]
+
+
+
+push 2
+push 3
+push 5
+front
+size
+pop
+size
+push 7
+pop
+clear
+size
+exit
