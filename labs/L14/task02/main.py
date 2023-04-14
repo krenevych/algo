@@ -1,26 +1,54 @@
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
 class Queue:
     def __init__(self):
-        pass
+        self.bg = None
+        self.en = None
+        self.counter = 0
 
     def push(self, n):
-        print("push", n)
+        newNode = Node(n)
+        if not self.empty():
+            self.en.next = newNode
+        else:
+            self.bg = newNode
+
+        self.en = newNode
+        self.counter += 1
+
 
     def pop(self):
-        print("pop")
-        return 0
+        if self.empty():
+            return "error"
+
+        front = self.bg.data
+        if self.bg.next is None:
+            self.en = None
+
+        self.bg = self.bg.next
+        self.counter -= 1
+        return front
 
     def front(self):
-        print("front")
-        return 0
+        if self.empty():
+            return "error"
+
+        return self.bg.data
+
+    def empty(self):
+        # return self.counter == 0
+        return self.bg is None
 
     def size(self):
-        print("size")
-        return 0
+        return self.counter
 
     def clear(self):
-        print("clear")
-        pass
+        self.bg = None
+        self.en = None
+        self.counter = 0
 
 
 if __name__ == '__main__':

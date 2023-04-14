@@ -23,24 +23,20 @@ class Deque:
 
     def pop_front(self):
         # print("pop_front", end=": ")
-        if self.empty() : return "error"
         front = self.items[self.b]
         self.b += 1
         return front
 
     def pop_back(self):
-        if self.empty() : return "error"
         # print("pop_back", end=": ")
         self.e -= 1
         return self.items[self.e]
 
     def front(self):
-        if self.empty() : return "error"
         # print("front", end=": ")
         return self.items[self.b]
 
     def back(self):
-        if self.empty() : return "error"
         # print("back", end=": ")
         return self.items[self.e - 1]
 
