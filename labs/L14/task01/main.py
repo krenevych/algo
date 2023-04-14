@@ -1,26 +1,32 @@
-
 class Queue:
     def __init__(self):
-        pass
+        self.items = [0] * 1000
+        self.bg = 0
+        self.en = 0
 
     def push(self, n):
-        print("push", n)
+        self.items[self.en] = n
+        self.en += 1
 
     def pop(self):
-        print("pop")
-        return 0
+        if not self.empty():
+            res = self.items[self.bg]
+            self.bg += 1
+            return res
 
     def front(self):
-        print("front")
-        return 0
+        if not self.empty():
+            return self.items[self.bg]
 
     def size(self):
-        print("size")
-        return 0
+        return self.en - self.bg
+
+    def empty(self):
+        return self.bg == self.en
 
     def clear(self):
-        print("clear")
-        pass
+        self.bg = 0
+        self.en = 0
 
 
 if __name__ == '__main__':
@@ -34,6 +40,7 @@ if __name__ == '__main__':
                 break
 
             commands = line.split()
+            # print(commands)
             command = commands[0]
             if command == "push":
                 queue.push(commands[1])
@@ -47,5 +54,3 @@ if __name__ == '__main__':
             elif command == "clear":
                 queue.clear()
                 print("ok")
-
-
