@@ -1,5 +1,0 @@
-push 123
-size
-push -5
-pop
-exit
