@@ -1,4 +1,3 @@
-
 class PrefixTree:
     def __init__(self, key):
         self.key = key
@@ -20,6 +19,7 @@ class PrefixTree:
     def __repr__(self):
         return f"{self.key}"
 
+
 def checkPhone(root, phone):
     if len(phone) == 0:
         return len(root.children) == 0
@@ -27,7 +27,6 @@ def checkPhone(root, phone):
         key = phone[0]
         child = root.children[key]
         return checkPhone(child, phone[1:])
-
 
 
 if __name__ == '__main__':
@@ -42,9 +41,12 @@ if __name__ == '__main__':
                 phones.append(phone)
                 root.addChild(phone)
 
-            for phone in phones:
-                if not checkPhone(root, phone):
-                    print("NO")
-                    break
+            if len(phones) != len(set(phones)):  # Ось тут була помилка! не може бути двох однакових номерів у списку
+                print("NO")
             else:
-                print("YES")
+                for phone in phones:
+                    if not checkPhone(root, phone):
+                        print("NO")
+                        break
+                else:
+                    print("YES")
