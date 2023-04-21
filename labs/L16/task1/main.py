@@ -1,49 +1,52 @@
-class Tree:
+class PrefixTree:
     def __init__(self, key):
         self.key = key
-        self.isLeaf = False
-        self.children = {}
+        self.children = {}  # пари ключ, піддерево
 
-    def insertNode(self, key):
-        node = Tree(key)
-        self.children[key] = node
-
-    def __contains__(self, item):
-        return item in self.children
-
-    def __getitem__(self, item):
-        return self.children[item]
-
-    def __str__(self):
-        return str(self.key) +" -> "+ str(list(self.children.keys()))
-
-    def insert(self, telNumber):
-        cur = self
-
-        if len(telNumber) == 0:
+    def addChild(self, tail):
+        if len(tail) == 0:
             return
 
-        childId = telNumber[0]
-        if childId not in self:
-            self.insertNode(childId)
+        key = tail[0]
 
-        child = self[childId]
-        rest = telNumber[1:]
+        child = self.children.get(key)
+        if child is None:
+            child = PrefixTree(key)
+            self.children[key] = child
 
-        if child.isLeaf or (len(child.children) != 0 and len(rest) == 0):
-            return False
-            
+        child.addChild(tail[1:])
 
-        if len(rest) == 0:
-            child.isLeaf = True
-
-        res = child.insert(rest)
-
-        return res
+    def __repr__(self):
+        return f"{self.key}"
 
 
-if __name__ == "__main__":
-    tree = Tree("+")
-    print(tree.insert("12"))
-    print(tree.insert("123"))
-    pass
+def checkPhone(root, phone):
+    if len(phone) == 0:
+        return len(root.children) == 0
+    else:
+        key = phone[0]
+        child = root.children[key]
+        return checkPhone(child, phone[1:])
+
+
+if __name__ == '__main__':
+    with open("input.txt") as f:
+        testNum = int(f.readline())
+        for i in range(testNum):
+            phones = []
+            phonesNum = int(f.readline())
+            root = PrefixTree("#")
+            for ph in range(phonesNum):
+                phone = (f.readline()).strip()
+                phones.append(phone)
+                root.addChild(phone)
+
+            if len(phones) != len(set(phones)):  # Ось тут була помилка! не може бути двох однакових номерів у списку
+                print("NO")
+            else:
+                for phone in phones:
+                    if not checkPhone(root, phone):
+                        print("NO")
+                        break
+                else:
+                    print("YES")
