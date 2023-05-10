@@ -1,25 +1,13 @@
-def dfs(g, visited, start):
-    n = len(g)
-    for neighbour in range(n):
-        if g[start][neighbour] != 0 and neighbour not in visited:
-            visited.add(neighbour)
-            dfs(g, visited, neighbour)
-
-
-g = []
+# граф реалізовано через матрицю суміжності
+graph = []
 with open("input.txt") as input_file:
-    f_line = input_file.readline()
-    n = int(f_line)
+    n = int(input_file.readline())
     for i in range(n):
         f_line = input_file.readline()
         row = [int(el) for el in f_line.split()]
-        g.append(row)
+        graph.append(row)
 
-visited = set()
-current_connectivity_component = 0
-for i in range(n):
-    if i not in visited:
-        current_connectivity_component += 1
-        dfs(g, visited, i)
-
-print(current_connectivity_component)
+# for debug - remove before submit
+print(f"vertices = {n}")
+for row in graph:
+    print(*row)
