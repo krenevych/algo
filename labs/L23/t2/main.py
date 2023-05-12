@@ -11,6 +11,21 @@ with open("input.txt") as input_file:
 
 
 # for debug - remove before submit
-print(f"vertices = {n}, edges = {m}")
-for v in graph:
-    print(f"{v}: , {graph[v]}")
+# print(f"vertices = {n}, edges = {m}")
+# for v in graph:
+#     print(f"{v}: , {graph[v]}")
+
+def dfs(start):
+    global graph, visited, n
+    visited.add(start)
+    for start_neig in graph[start]:
+        if start_neig not in visited:
+            dfs(start_neig)
+
+
+visited = set()
+dfs(1)
+if len(visited) == n:
+    print("YES")
+else:
+    print("NO")
