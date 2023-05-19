@@ -1,56 +1,58 @@
-def dfs(maze, si, sj):
-    visited = []
-    n = len(maze)
-    for i in range(n):
-        row = [0] * n
-        visited.append(row)
-
-    __dfs_helper(maze, si, sj, visited)
-
-    # suma = 0
-    # for r in visited:
-    #     # print(r)
-    #     for el in r:
-    #         suma += el
-    #
-    # return suma
-
-
-di = [-1, 0, 1, 0]
-dj = [0, -1, 0, 1]
-
-
-# di = [-1, 0, 1, 0, -1,  1, 1, -1]
-# dj = [0, -1, 0, 1, -1, -1, 1,  1]
-
-def __dfs_helper(maze, si, sj, visited):
-    visited[si][sj] = 1
-    global square
-    square += 1
-    #     запускаємо DFS для усіх сусідів поточної клітини
-    for k in range(len(di)):
-        ni = si + di[k]  # координата рядка сусіда
-        nj = sj + dj[k]  # координата стовпчика сусіда
-        if maze[ni][nj] == "." and visited[ni][nj] != 1:
-            __dfs_helper(maze, ni, nj, visited)
-
-
 maze = []
-square = 0
 with open("input.txt") as input_file:
     n = int(input_file.readline())
-    fline = "*" * (n + 2)
-    lline = "*" * (n + 2)
-    maze.append(fline)
+    # print(n)
+    maze.append("*" * (n + 2))
     for i in range(n):
-        row = "*" + input_file.readline().rstrip() + "*"
-        maze.append(row)
-    maze.append(lline)
-    si, sj = map(int, input_file.readline().split())
+        row = input_file.readline().strip()
+        maze.append("*" + row + "*")
+        # print(row)
+    maze.append("*" * (n + 2))
+    # for row in maze:
+    #     print(row)
 
-    # for r in maze:
-    #     print(r)
-    # print(si, sj)
+    start_row, start_col = map(int, input_file.readline().split())
+    # print(start_row, start_col)
 
-    dfs(maze, si, sj)
-    print(square)
+visited = []
+# NON_VISITED = 0
+# VISITED = 1
+
+for i in range(len(maze)):
+    row = [0] * len(maze[0])
+    visited.append(row)
+
+# for row in visited:
+#     print(row)
+
+# рух дозволяється лише вгору, вправо, вниз, вліво
+di = [-1, 0, 1, 0]
+dj = [0, 1, 0, -1]
+
+
+# випадок, якщо можна також рухатися по діагоналі
+# di = [-1, -1, 0, 1, 1,  1,  0, -1]
+# dj = [ 0,  1 ,1, 1, 0, -1, -1, -1]
+square_counter = 0
+def dfs(maze, visited, start_i, start_j):
+    visited[start_i][start_j] = 1
+    global square_counter
+    square_counter += 1
+
+    # запускаємо dfs для всіх сусідів клітини start_i, start_j
+    for k in range(len(di)):
+        neig_i = start_i + di[k]  # рядок
+        neig_j = start_j + dj[k]  # стовпчик
+        # якщо сусідня клітина не стінка і вона не була відвідана
+        if maze[neig_i][neig_j] != "*" and visited[neig_i][neig_j] == 0:
+            dfs(maze, visited, neig_i, neig_j)
+
+
+dfs(maze, visited, start_row, start_col)
+
+# print("After dfs")
+# for row in visited:
+#     square_counter += sum(row)
+#     print(row)
+
+print(square_counter)

@@ -1,5 +1,5 @@
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 maze = []
 with open("input.txt") as input_file:
@@ -16,14 +16,17 @@ with open("input.txt") as input_file:
             print(row)
 
     start_row, start_col = map(int, input_file.readline().split())
-    if DEBUG: print(start_row, start_col)
+    finish_row, finish_col = map(int, input_file.readline().split())
+    if DEBUG:
+        print(start_row, start_col)
+        print(finish_row, finish_col)
 
 visited = []
 # NON_VISITED = 0
 # VISITED = 1
 
 for i in range(len(maze)):
-    row = [0] * len(maze[0])
+    row = [-1] * len(maze[0])
     visited.append(row)
 
 if DEBUG:
@@ -36,8 +39,7 @@ dj = [0, 1, 0, -1]
 
 # випадок, якщо можна також рухатися по діагоналі
 # di = [-1, -1, 0, 1, 1,  1,  0, -1]
-# dj = [ 0,  1 ,1, 1, 0, -1, -1, -1]
-square_counter = 0
+# dj = [ 0,  1, 1, 1, 0, -1, -1, -1]
 
 
 class Queue:
@@ -62,14 +64,14 @@ class Queue:
 def bfs(maze, visited, start_i, start_j):
     q = Queue(110) # розмір черги 101, оскільки за умовою задачі, лабіринт може мати не більше ніж 10 рядків та 10 стовпчиків
     q.enque((start_i, start_j))
-    visited[start_i][start_j] = 1
+    visited[start_i][start_j] = 0
     while not q.empty():
         i, j = q.deque()
         for k in range(len(di)):
             neig_i = i + di[k]
             neig_j = j + dj[k]
-            if maze[neig_i][neig_j] != "*" and visited[neig_i][neig_j] == 0:
-                visited[neig_i][neig_j] = 1
+            if maze[neig_i][neig_j] != "*" and visited[neig_i][neig_j] == -1:
+                visited[neig_i][neig_j] = visited[i][j] + 1
                 q.enque((neig_i, neig_j))
 
 bfs(maze, visited, start_row, start_col)
@@ -78,7 +80,12 @@ if DEBUG:
     print("After bfs")
 
 for row in visited:
-    if DEBUG: print(row)
-    square_counter += sum(row)
+    if DEBUG:
+        for el in row:
+            if el == -1:
+                print("-", end="")
+            else:
+                print(el, end="")
+        print()
 
-print(square_counter)
+
