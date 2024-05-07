@@ -252,43 +252,12 @@ def main():
 
 
 def constractSpanningTree(graph):
-
     for v in graph:
         v.distance = INF
         v.source = None
 
-    start = 1
-
-    graph[start].distance = 0
-    pq = PriorityQueue()
-    for key_ver in range(len(graph)):
-        pq.insert(key_ver, graph[key_ver].distance)
-
-    while not pq.empty():
-        vert = pq.extractMinimum()
-
-        for neigb, weight in graph[vert].neighbour.items():
-            if neigb in pq and weight < graph[neigb].distance:
-                graph[neigb].distance = weight
-                graph[neigb].source = vert
-                pq.updatePriority(neigb, graph[neigb].distance)
+    return 0
 
 
-    spanningTree = []
-    vertices = len(graph)
-    for i in range(vertices + 1):
-        spanningTree.append(Vertex(i))
-
-
-    spanningTreeWeight = 0
-    for destination in range(vertices):
-        if graph[destination].source is not None:
-            spanningTreeWeight += graph[destination].distance
-            source = graph[destination].source
-            spanningTree[destination].neighbour[source] = graph[destination].distance
-
-
-    return spanningTreeWeight
-
-
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    main()
