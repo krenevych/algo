@@ -13,65 +13,68 @@
 --------------
 
 24.1.
-[Площа кімнати](https://www.e-olymp.com/uk/problems/4001)
+[Площа кімнати](https://www.eolymp.com/uk/problems/4001)
 
 
 Завдання для самостійної роботи
 ------------------
 24.2.
-[Лінії](https://www.e-olymp.com/uk/problems/1060)
+[Лінії](https://www.eolymp.com/uk/problems/1060)
 
 24.3.
-[Видалення клітинок](https://www.e-olymp.com/uk/problems/1063)
+[Видалення клітинок](https://www.eolymp.com/uk/problems/1063)
 
 24.4.
-[Вихід з лабіринту](https://www.e-olymp.com/uk/problems/4820)
+[Вихід з лабіринту](https://www.eolymp.com/uk/problems/4820)
 
 24.5.
-[Лабіринт](https://www.e-olymp.com/uk/problems/5622)
+[Лабіринт](https://www.eolymp.com/uk/problems/5622)
 
 24.6.
-[Уникайте озер](https://www.e-olymp.com/uk/problems/1058)
+[Уникайте озер](https://www.eolymp.com/uk/problems/1058)
 
 Додаткові завдання для самостійної роботи
 --------------------
 24.7.
-[Lines (2)](https://www.e-olymp.com/uk/problems/1062)
+[Lines (2)](https://www.eolymp.com/uk/problems/1062)
 
 24.8.
-[Грядки](https://www.e-olymp.com/uk/problems/1065)
+[Грядки](https://www.eolymp.com/uk/problems/1065)
 
 
 Завдання для самостійної роботи підвищеної складності
 ------------------
 
 24.9.
-[Помста Лі Чака](https://www.e-olymp.com/uk/problems/88)
+[Помста Лі Чака](https://www.eolymp.com/uk/problems/88)
 
 24.10.
-[Підземелля](https://www.e-olymp.com/uk/problems/432)
+[Підземелля](https://www.eolymp.com/uk/problems/432)
 
 24.11.
-[Три держави](https://www.e-olymp.com/uk/problems/1061)
+[Три держави](https://www.eolymp.com/uk/problems/1061)
 
 24.12.
-[Шлях коня](https://www.e-olymp.com/uk/problems/1064)
+[Шлях коня](https://www.eolymp.com/uk/problems/1064)
 
 24.13.
-[Переміщення коня](https://www.e-olymp.com/uk/problems/2820)
+[Переміщення коня](https://www.eolymp.com/uk/problems/2820)
 
 24.14.
-[Іграшковий лабіринт](https://www.e-olymp.com/uk/problems/4452)
+[Іграшковий лабіринт](https://www.eolymp.com/uk/problems/4452)
 
 24.15.
-[Місце зустрічі змінити не можна](https://www.e-olymp.com/uk/problems/5069)
+[Місце зустрічі змінити не можна](https://www.eolymp.com/uk/problems/5069)
 
 24.16.
-[Лабіринт](https://www.e-olymp.com/uk/problems/7215)
+[Лабіринт](https://www.eolymp.com/uk/problems/7215)
 
 24.17.
-[Гном і монети](https://www.e-olymp.com/uk/problems/7229)
+[Ліва кнопка миші](https://www.eolymp.com/uk/problems/1092)
 
 24.18.
-[Виведи хом'ячків](https://www.e-olymp.com/uk/problems/213)
+[Гном і монети](https://www.eolymp.com/uk/problems/7229)
+
+24.19.
+[Виведи хом'ячків](https://www.eolymp.com/uk/problems/213)
 
